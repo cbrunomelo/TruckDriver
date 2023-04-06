@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TruckDriver.WindowsFormsApp.Formularios;
+using TruckDriver.WindowsFormsApp.Formularios.Login;
 
 namespace TruckDriver.WindowsFormsApp
 {
@@ -17,7 +18,7 @@ namespace TruckDriver.WindowsFormsApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frm_Principal());
+            Application.Run(new frm_Login());
         }
     }
 }

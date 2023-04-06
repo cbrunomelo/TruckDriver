@@ -64,7 +64,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\TruckDriverLoginTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\TruckDriverPanelButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\TruckDriverPanelLogin.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\TruckDriverTextBox.cs">
@@ -113,6 +119,31 @@
     <Compile Include="Formularios\ChildForms\frm_Motoristas.Designer.cs">
       <DependentUpon>frm_Motoristas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\BitmapFactory.cs" />
+    <Compile Include="Formularios\Login\beckup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Login\beckup.Designer.cs">
+      <DependentUpon>beckup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Login\frm_LoginBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Login\frm_LoginBase.Designer.cs">
+      <DependentUpon>frm_LoginBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Login\frm_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Login\frm_Login.Designer.cs">
+      <DependentUpon>frm_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Login\frm_Registrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Login\frm_Registrar.Designer.cs">
+      <DependentUpon>frm_Registrar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -142,11 +173,24 @@
     <EmbeddedResource Include="Formularios\ChildForms\frm_Motoristas.resx">
       <DependentUpon>frm_Motoristas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Login\beckup.resx">
+      <DependentUpon>beckup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Login\frm_LoginBase.resx">
+      <DependentUpon>frm_LoginBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Login\frm_Login.resx">
+      <DependentUpon>frm_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Login\frm_Registrar.resx">
+      <DependentUpon>frm_Registrar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -192,6 +236,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Imagens\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\user-login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\frontal-truck-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\padlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\padlock2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\user-login2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
