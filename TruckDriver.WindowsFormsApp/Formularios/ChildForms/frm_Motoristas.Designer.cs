@@ -46,7 +46,7 @@
             this.grp_Motoristas.Controls.Add(this.dgv_Motoristas);
             this.grp_Motoristas.Location = new System.Drawing.Point(2, 12);
             this.grp_Motoristas.Name = "grp_Motoristas";
-            this.grp_Motoristas.Size = new System.Drawing.Size(1070, 565);
+            this.grp_Motoristas.Size = new System.Drawing.Size(1095, 565);
             this.grp_Motoristas.TabIndex = 0;
             this.grp_Motoristas.TabStop = false;
             this.grp_Motoristas.Text = "Motoristas";
@@ -59,14 +59,14 @@
             this.dgv_Motoristas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Motoristas.Location = new System.Drawing.Point(3, 16);
             this.dgv_Motoristas.Name = "dgv_Motoristas";
-            this.dgv_Motoristas.Size = new System.Drawing.Size(1064, 546);
+            this.dgv_Motoristas.Size = new System.Drawing.Size(1089, 546);
             this.dgv_Motoristas.TabIndex = 0;
             // 
             // btn_Adcionar
             // 
             this.btn_Adcionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Adcionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Adcionar.Location = new System.Drawing.Point(990, 587);
+            this.btn_Adcionar.Location = new System.Drawing.Point(1015, 587);
             this.btn_Adcionar.Name = "btn_Adcionar";
             this.btn_Adcionar.Size = new System.Drawing.Size(75, 23);
             this.btn_Adcionar.TabIndex = 1;
@@ -78,7 +78,7 @@
             // 
             this.btn_Exibir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Exibir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Exibir.Location = new System.Drawing.Point(909, 587);
+            this.btn_Exibir.Location = new System.Drawing.Point(934, 587);
             this.btn_Exibir.Name = "btn_Exibir";
             this.btn_Exibir.Size = new System.Drawing.Size(75, 23);
             this.btn_Exibir.TabIndex = 2;
@@ -89,7 +89,7 @@
             // 
             this.btn_Cancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Cancelar.Location = new System.Drawing.Point(828, 587);
+            this.btn_Cancelar.Location = new System.Drawing.Point(853, 587);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(75, 23);
             this.btn_Cancelar.TabIndex = 3;
@@ -110,7 +110,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1077, 635);
+            this.ClientSize = new System.Drawing.Size(1102, 635);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_Cancelar);
             this.Controls.Add(this.btn_Exibir);

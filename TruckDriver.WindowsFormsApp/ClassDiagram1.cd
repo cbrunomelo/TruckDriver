@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TruckDriver.WindowsFormsApp.Formularios.Login.frm_LoginBase">
+    <Position X="3.25" Y="3.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAGAAAAgAAACCQAACAAAAAAAAAABCAAQAAAg=</HashCode>
+      <FileName>Formularios\Login\frm_LoginBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TruckDriver.WindowsFormsApp.Formularios.Login.frm_Registrar">
+    <Position X="0.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAICCAAAgCIQSAAAACAAAQBEAAAAAAAABAAgA=</HashCode>
+      <FileName>Formularios\Login\frm_Registrar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TruckDriver.WindowsFormsApp.Formularios.Login.frm_Login">
+    <Position X="5.75" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAICCAAAgCAQTAQAACAAAABEAAAAgAAAAAAAA=</HashCode>
+      <FileName>Formularios\Login\frm_Login.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TruckDriver.WindowsFormsApp.Controls.BitmapFactory" Collapsed="true">
+    <Position X="11.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\BitmapFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TruckDriver.WindowsFormsApp.Controls.ThemeColor" Collapsed="true">
+    <Position X="9.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAACAAAAAAAAAAAAAAAAAACAAAAAAgA=</HashCode>
+      <FileName>Controls\ThemeColor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TruckDriver.WindowsFormsApp.Controls.TruckDriverLoginTextBox" Collapsed="true">
+    <Position X="11.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAACAAAAAAAABACAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\TruckDriverLoginTextBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TruckDriver.WindowsFormsApp.Controls.TruckDriverPanelButton" Collapsed="true">
+    <Position X="13.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAgAIAAAIAAAAAAACAAACICAAAAAABAAQAAA=</HashCode>
+      <FileName>Controls\TruckDriverPanelButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TruckDriver.WindowsFormsApp.Controls.TruckDriverPanelLogin" Collapsed="true">
+    <Position X="15" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAACAAAAAABADACAAIAhAAAAAAQBAAAA=</HashCode>
+      <FileName>Controls\TruckDriverPanelLogin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.Controls.TruckDriverTextBox" Collapsed="true">
+    <Position X="9.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAQAAoQgAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Controls\TruckDriverTextBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.Formularios.Cadastros.frm_CadastroMotorista" Collapsed="true">
+    <Position X="15" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CQBACBAAESAABkAUEACABBACHAAAAQYAAEACAFCAEJA=</HashCode>
+      <FileName>Formularios\Cadastros\frm_CadastroMotorista.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TruckDriver.WindowsFormsApp.Formularios.ChildForms.ChildBase">
+    <Position X="3.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Formularios\ChildForms\ChildBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TruckDriver.WindowsFormsApp.Formularios.ChildForms.ChildFormFactory" Collapsed="true">
+    <Position X="13.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Formularios\ChildForms\ChildFormFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TruckDriver.WindowsFormsApp.Formularios.ChildForms.frm_caminhao" Collapsed="true">
+    <Position X="6.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Formularios\ChildForms\frm_caminhao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TruckDriver.WindowsFormsApp.Formularios.ChildForms.frm_Configuracao" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Formularios\ChildForms\frm_Configuracao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TruckDriver.WindowsFormsApp.Formularios.ChildForms.frm_Motoristas" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAEhBAAAADAACAiAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Formularios\ChildForms\frm_Motoristas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TruckDriver.WindowsFormsApp.Formularios.ChildForms.frm_Pedidos" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Formularios\ChildForms\frm_Pedidos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TruckDriver.WindowsFormsApp.Formularios.frm_Principal" Collapsed="true">
+    <Position X="9.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAIAABIhCAABBAAAKCACAACQBAABIKBEAAAABBRAAA=</HashCode>
+      <FileName>Formularios\frm_Principal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TruckDriver.WindowsFormsApp.Formularios.Login.beckup" Collapsed="true">
+    <Position X="9.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AJAAAEAAICCAAAACAQSAAAACAAAABEAAAABAAAQAABg=</HashCode>
+      <FileName>Formularios\Login\beckup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TruckDriver.WindowsFormsApp.Program" Collapsed="true">
+    <Position X="11.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TruckDriver.WindowsFormsApp.Properties.Resources" Collapsed="true">
+    <Position X="13.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgEAAAABEACAAQCAIAIACIACAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TruckDriver.WindowsFormsApp.Properties.Settings" Collapsed="true">
+    <Position X="15" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
