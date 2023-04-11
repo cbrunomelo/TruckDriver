@@ -35,3 +35,12 @@ D:\dev\windowsform-Csharp\projetos\TruckDriver\TruckDriver.WindowsFormsApp\obj\D
 D:\dev\windowsform-Csharp\projetos\TruckDriver\TruckDriver.WindowsFormsApp\obj\Debug\TruckDriver.WindowsFormsApp.csproj.CoreCompileInputs.cache
 D:\dev\windowsform-Csharp\projetos\TruckDriver\TruckDriver.WindowsFormsApp\obj\Debug\TruckDriver.WindowsFormsApp.exe
 D:\dev\windowsform-Csharp\projetos\TruckDriver\TruckDriver.WindowsFormsApp\obj\Debug\TruckDriver.WindowsFormsApp.pdb
+D:\dev\windowsform-Csharp\projetos\TruckDriver\TruckDriver.WindowsFormsApp\bin\Debug\TruckDriver.Domain.dll
+D:\dev\windowsform-Csharp\projetos\TruckDriver\TruckDriver.WindowsFormsApp\bin\Debug\TruckDriver.Domain.pdb
+D:\dev\windowsform-Csharp\projetos\TruckDriver\TruckDriver.WindowsFormsApp\obj\Debug\TruckDriver.WindowsFormsApp.csproj.CopyComplete
+D:\dev\windowsform-Csharp\projetos\TruckDriver\TruckDriver.WindowsFormsApp\bin\Debug\FluentValidation.dll
+D:\dev\windowsform-Csharp\projetos\TruckDriver\TruckDriver.WindowsFormsApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\dev\windowsform-Csharp\projetos\TruckDriver\TruckDriver.WindowsFormsApp\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\dev\windowsform-Csharp\projetos\TruckDriver\TruckDriver.WindowsFormsApp\bin\Debug\FluentValidation.xml
+D:\dev\windowsform-Csharp\projetos\TruckDriver\TruckDriver.WindowsFormsApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\dev\windowsform-Csharp\projetos\TruckDriver\TruckDriver.WindowsFormsApp\bin\Debug\System.Threading.Tasks.Extensions.xml

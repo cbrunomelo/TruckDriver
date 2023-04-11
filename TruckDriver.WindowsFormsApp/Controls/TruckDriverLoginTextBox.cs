@@ -12,7 +12,7 @@ namespace TruckDriver.WindowsFormsApp.Controls
     public class TruckDriverLoginTextBox : TextBox
     {              
         private TruckDriverPanelLogin _panel;
-        private string DefaultPlaceHolder;
+        public string DefaultPlaceHolder { get; private set; }
 
         public TruckDriverLoginTextBox SetPanel(TruckDriverPanelLogin panel)
         {

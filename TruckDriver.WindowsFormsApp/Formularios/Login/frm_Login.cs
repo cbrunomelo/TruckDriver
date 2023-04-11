@@ -8,12 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using TruckDriver.Domain.Commands.UserCommands;
+using TruckDriver.Domain.Handlers;
+using System.Runtime.InteropServices;
+using TruckDriver.Domain.Commands.Contracts;
+using TruckDriver.Domain.Commands;
 
 namespace TruckDriver.WindowsFormsApp.Formularios.Login
 {
     public partial class frm_Login : frm_LoginBase
     {
         Thread t1;
+
+        private UserHandler _handler;
         public frm_Login()
         {
             InitializeComponent();
@@ -28,12 +35,26 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
 
             ButtonsNames("Entrar", "Registrar");
 
+            _handler = new UserHandler();
+
         }
 
 
         protected override void btnBlue_Click(object sender, EventArgs e)
         {
             base.btnBlue_Click(sender, e);
+
+            string nome = txtUsuario.Text == txtUsuario.DefaultPlaceHolder ? string.Empty : txtUsuario.Text;
+            string senha = txtSenha.Text == txtSenha.DefaultPlaceHolder ? string.Empty : txtSenha.Text;
+
+            CreateUserCommand user = new CreateUserCommand(nome, senha);
+            GenericCommandResult result = (GenericCommandResult)_handler.Handle(user);
+
+            if (!result.Success)
+                return;
+
+
+
             this.Close();
             t1 = new Thread(OpenFrmPrincipal);
             t1.SetApartmentState(ApartmentState.STA);
