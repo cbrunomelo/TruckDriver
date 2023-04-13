@@ -13,6 +13,7 @@ using TruckDriver.Domain.Handlers;
 using System.Runtime.InteropServices;
 using TruckDriver.Domain.Commands.Contracts;
 using TruckDriver.Domain.Commands;
+using FluentValidation.Results;
 
 namespace TruckDriver.WindowsFormsApp.Formularios.Login
 {
@@ -35,7 +36,7 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
 
             ButtonsNames("Entrar", "Registrar");
 
-            _handler = new UserHandler();
+            //_handler = new UserHandler();
 
         }
 
@@ -44,14 +45,7 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
         {
             base.btnBlue_Click(sender, e);
 
-            string nome = txtUsuario.Text == txtUsuario.DefaultPlaceHolder ? string.Empty : txtUsuario.Text;
-            string senha = txtSenha.Text == txtSenha.DefaultPlaceHolder ? string.Empty : txtSenha.Text;
 
-            CreateUserCommand user = new CreateUserCommand(nome, senha);
-            GenericCommandResult result = (GenericCommandResult)_handler.Handle(user);
-
-            if (!result.Success)
-                return;
 
 
 
