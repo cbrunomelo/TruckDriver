@@ -45,10 +45,6 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
         {
             base.btnBlue_Click(sender, e);
 
-
-
-
-
             this.Close();
             t1 = new Thread(OpenFrmPrincipal);
             t1.SetApartmentState(ApartmentState.STA);
@@ -59,7 +55,10 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
         {
             frm_Registrar frm = new frm_Registrar();
             
-            frm.Show();
+            frm.ShowDialog();
+
+            lblMessage.Text = frm.ReturnMessage;            
+            lblMessage.Visible=true;
         }
 
 

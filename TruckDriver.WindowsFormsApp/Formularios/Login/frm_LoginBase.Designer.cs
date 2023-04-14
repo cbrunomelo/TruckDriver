@@ -115,7 +115,7 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox picLogo;
+        protected System.Windows.Forms.PictureBox picLogo;
         private System.Windows.Forms.Button btnNone;
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Button btnBlue;

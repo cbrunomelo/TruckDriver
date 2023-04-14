@@ -36,6 +36,8 @@
             this.txtUsuario = new TruckDriver.WindowsFormsApp.Controls.TruckDriverLoginTextBox();
             this.picUsuario = new System.Windows.Forms.PictureBox();
             this.pnlLinhaUsuario = new System.Windows.Forms.Panel();
+            this.lblMessage = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.pnlSenha.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picSenha)).BeginInit();
             this.pnlUsuario.SuspendLayout();
@@ -120,17 +122,33 @@
             this.pnlLinhaUsuario.Size = new System.Drawing.Size(228, 1);
             this.pnlLinhaUsuario.TabIndex = 7;
             // 
+            // lblMessage
+            // 
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMessage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblMessage.Location = new System.Drawing.Point(60, 284);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(50, 18);
+            this.lblMessage.TabIndex = 15;
+            this.lblMessage.Text = "label1";
+            this.lblMessage.Visible = false;
+            // 
             // frm_Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(355, 429);
+            this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.pnlSenha);
             this.Controls.Add(this.pnlUsuario);
             this.Name = "frm_Login";
             this.Text = "teste";
+            this.Controls.SetChildIndex(this.picLogo, 0);
             this.Controls.SetChildIndex(this.pnlUsuario, 0);
             this.Controls.SetChildIndex(this.pnlSenha, 0);
+            this.Controls.SetChildIndex(this.lblMessage, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.pnlSenha.ResumeLayout(false);
             this.pnlSenha.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picSenha)).EndInit();
@@ -138,6 +156,7 @@
             this.pnlUsuario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -151,5 +170,6 @@
         private Controls.TruckDriverLoginTextBox txtUsuario;
         private System.Windows.Forms.PictureBox picUsuario;
         private System.Windows.Forms.Panel pnlLinhaUsuario;
+        private System.Windows.Forms.Label lblMessage;
     }
 }

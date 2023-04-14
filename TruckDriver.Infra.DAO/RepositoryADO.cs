@@ -38,15 +38,13 @@ namespace TruckDriver.Infra.DAO
 
 
                 string valor1 = user.Name;
-                string valor2 = user.Name;
-                string valor3 = user.Password;
+                string valor2 = user.Password;
 
                 
-                string sql = "INSERT INTO [user] VALUES (@valor1, @valor2, @valor3)";
+                string sql = "INSERT INTO [user] (name,password) VALUES (@valor1, @valor2)";
                 SqliteCommand command = new SqliteCommand(sql, connection);
                 command.Parameters.AddWithValue("@valor1", valor1);
                 command.Parameters.AddWithValue("@valor2", valor2);
-                command.Parameters.AddWithValue("@valor3", valor3);
 
                 int rowsAffected = command.ExecuteNonQuery();
 

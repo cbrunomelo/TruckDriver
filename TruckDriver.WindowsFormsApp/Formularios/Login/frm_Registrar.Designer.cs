@@ -40,6 +40,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtRepeteSenha = new TruckDriver.WindowsFormsApp.Controls.TruckDriverLoginTextBox();
             this.pnlLinhaRepeteSenha = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.pnlSenha.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picSenha)).BeginInit();
             this.pnlUsuario.SuspendLayout();
@@ -165,19 +167,35 @@
             this.pnlLinhaRepeteSenha.Size = new System.Drawing.Size(228, 1);
             this.pnlLinhaRepeteSenha.TabIndex = 8;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(59, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 18);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "label1";
+            this.label1.Visible = false;
+            // 
             // frm_Registrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(355, 429);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlRepeteSenha);
             this.Controls.Add(this.pnlSenha);
             this.Controls.Add(this.pnlUsuario);
             this.Name = "frm_Registrar";
             this.Text = "Registrar";
+            this.Controls.SetChildIndex(this.picLogo, 0);
             this.Controls.SetChildIndex(this.pnlUsuario, 0);
             this.Controls.SetChildIndex(this.pnlSenha, 0);
             this.Controls.SetChildIndex(this.pnlRepeteSenha, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.pnlSenha.ResumeLayout(false);
             this.pnlSenha.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picSenha)).EndInit();
@@ -188,6 +206,7 @@
             this.pnlRepeteSenha.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -205,5 +224,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private Controls.TruckDriverLoginTextBox txtRepeteSenha;
         private System.Windows.Forms.Panel pnlLinhaRepeteSenha;
+        private System.Windows.Forms.Label label1;
     }
 }

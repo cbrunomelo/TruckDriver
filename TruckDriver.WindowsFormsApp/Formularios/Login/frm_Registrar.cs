@@ -17,6 +17,9 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
 {
     public partial class frm_Registrar : frm_LoginBase
     {
+        public const string SUCESS_MESSAGE = "Usuario registrado com sucesso";
+        public string ReturnMessage;
+
         private UserHandler _handler;
         public frm_Registrar()
         {
@@ -46,28 +49,21 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
         protected override void btnBlue_Click(object sender, EventArgs e)
         {
             base.btnBlue_Click(sender, e);
-           
-            string nome = txtUsuario.Text == txtUsuario.DefaultPlaceHolder ? string.Empty : txtUsuario.Text;
-            string senha = txtSenha.Text == txtSenha.DefaultPlaceHolder ? string.Empty : txtSenha.Text;
-            string Repetesenha = txtRepeteSenha.Text == txtRepeteSenha.DefaultPlaceHolder ? string.Empty : txtRepeteSenha.Text;
 
-            CreateUserCommand user = new CreateUserCommand(nome, senha, Repetesenha);
+            CreateUserCommand user = BindCommand();
+
             GenericCommandResult result = (GenericCommandResult)_handler.Handle(user);
-
-
-            var teste = result.Data;
 
             if (!result.Success)
             {
-                foreach (var erro in (List<ValidationFailure>)result.Data)
-                {
-                    Console.WriteLine(erro.PropertyName);
-                }
+
+                AtualizaControlles((List<ValidationFailure>)result.Data);
                 return;
             }
 
             else
             {
+                ReturnMessage = SUCESS_MESSAGE;
                 this.Close();
             }
         }
@@ -78,6 +74,27 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
             this.Close();
         }
 
+
+        private CreateUserCommand BindCommand()
+        {
+            string nome = txtUsuario.Text == txtUsuario.DefaultPlaceHolder ? string.Empty : txtUsuario.Text;
+            string senha = txtSenha.Text == txtSenha.DefaultPlaceHolder ? string.Empty : txtSenha.Text;
+            string Repetesenha = txtRepeteSenha.Text == txtRepeteSenha.DefaultPlaceHolder ? string.Empty : txtRepeteSenha.Text;
+            return new CreateUserCommand(nome, senha, Repetesenha);
+        }
+
+        private void AtualizaControlles(List<ValidationFailure> erros)
+        {            
+            label1.Visible = true;
+            picLogo.Visible= false;
+            label1.Text = string.Empty;
+            
+            foreach(var erro in erros)
+            {
+                label1.Text += erro.ErrorMessage;
+                label1.Text += "\n";
+            }
+        }
 
     }
 }
