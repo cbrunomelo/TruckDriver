@@ -7,6 +7,7 @@ using TruckDriver.Domain.Commands.Contracts;
 using TruckDriver.Domain.Commands.UserCommands;
 using TruckDriver.Domain.Commands.UserCommands.Validations;
 using TruckDriver.Domain.Entitys;
+using TruckDriver.Domain.Queries;
 using TruckDriver.Domain.Repository;
 
 namespace TruckDriver.Domain.Handlers
@@ -14,9 +15,16 @@ namespace TruckDriver.Domain.Handlers
     public class UserHandler
     {
         private readonly IUserRepository _repository;
+        private readonly IUserQuery _userquery;
         public UserHandler(IUserRepository repository)
         {
-            _repository = repository;
+            _repository = repository;            
+
+        }
+
+        public UserHandler(IUserQuery userquery)
+        {
+            _userquery = userquery;
         }
 
         public ICommandResult Handle(CreateUserCommand command) 
@@ -33,8 +41,22 @@ namespace TruckDriver.Domain.Handlers
             
             return new GenericCommandResult(true, "Usuario criado com sucesso", result.Errors);
 
+        }
+
+        public ICommandResult Handle(string name, string password) 
+        {
+            User user = _userquery.GetUserByName(name);
+
+            if(user == null)
+                return new GenericCommandResult(false, "Usuario ou senha invalida", null);
 
 
+            if (user.VerifyPassword(password))
+                return new GenericCommandResult(true, "Usuario autenticado", null);
+
+            return new GenericCommandResult(false, "Usuario ou senha invalida", null);
+
+            
         }
     }
 }

@@ -14,6 +14,10 @@ using System.Runtime.InteropServices;
 using TruckDriver.Domain.Commands.Contracts;
 using TruckDriver.Domain.Commands;
 using FluentValidation.Results;
+using TruckDriver.Infra.DAO;
+using TruckDriver.Domain.Entitys;
+using TruckDriver.WindowsFormsApp.Repository;
+using TruckDriver.Domain.Queries;
 
 namespace TruckDriver.WindowsFormsApp.Formularios.Login
 {
@@ -21,14 +25,16 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
     {
         Thread t1;
 
-        private UserHandler _handler;
+        private readonly IUserQuery _userQuery;
         public frm_Login()
         {
             InitializeComponent();
             pnlSenha
+                .LoadConfControls()
                 .SetIDefaultmage("padlock.png")
                 .SetImageOnClick("padlock2.png")
-                .LoadConfControls();
+                .SetTextBoxAsPasswordChar();
+
             pnlUsuario
                 .SetIDefaultmage("user-login.png")
                 .SetImageOnClick("user-login2.png")
@@ -36,7 +42,7 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
 
             ButtonsNames("Entrar", "Registrar");
 
-            //_handler = new UserHandler();
+            _userQuery = new UserRepositoryADO();
 
         }
 
@@ -45,10 +51,28 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
         {
             base.btnBlue_Click(sender, e);
 
-            this.Close();
-            t1 = new Thread(OpenFrmPrincipal);
-            t1.SetApartmentState(ApartmentState.STA);
-            t1.Start();
+            string nome = txtUsuario.Text == txtUsuario.DefaultPlaceHolder ? string.Empty : txtUsuario.Text;
+            string senha = txtSenha.Text == txtSenha.DefaultPlaceHolder ? string.Empty : txtSenha.Text;
+
+            User user = _userQuery.GetUserByName(nome);            
+
+            if (user != null && user.VerifyPassword(senha))
+            {
+
+                this.Close();
+                t1 = new Thread(OpenFrmPrincipal);
+                t1.SetApartmentState(ApartmentState.STA);
+                t1.Start();
+            }
+
+
+            lblErroMessage.Text = "Usuario Ou senha invalida";
+            lblErroMessage.Visible = true;
+            picLogo.Visible = false;
+            ClearControls();
+            return;
+
+
         }
 
         protected override void btnNone_Click(object sender, EventArgs e)
@@ -65,6 +89,12 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
         private void OpenFrmPrincipal(object obj)
         {
             Application.Run(new frm_Principal());
+        }
+
+        private void ClearControls()
+        {
+            txtUsuario.resetTextBox();
+            txtSenha.resetTextBox();
         }
     }
 }

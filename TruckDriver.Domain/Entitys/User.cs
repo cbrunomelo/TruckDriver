@@ -13,7 +13,7 @@ namespace TruckDriver.Domain.Entitys
 
         public User()
         {
-            
+
         }
 
         public User(string name, string password)
@@ -27,7 +27,7 @@ namespace TruckDriver.Domain.Entitys
         private string HashPassword(string password)
         {
             using (var sha256 = SHA256.Create())
-            {                
+            {
                 byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
 
                 byte[] hashBytes = sha256.ComputeHash(passwordBytes);
@@ -36,6 +36,13 @@ namespace TruckDriver.Domain.Entitys
 
                 return hash;
             }
+        }
+
+        public bool VerifyPassword(string password)
+        {
+            string calculatedHash = HashPassword(password);
+
+            return this.Password.Equals(calculatedHash);
         }
     }
 }

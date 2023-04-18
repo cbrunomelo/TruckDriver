@@ -37,6 +37,7 @@
             this.picUsuario = new System.Windows.Forms.PictureBox();
             this.pnlLinhaUsuario = new System.Windows.Forms.Panel();
             this.lblMessage = new System.Windows.Forms.Label();
+            this.lblErroMessage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.pnlSenha.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picSenha)).BeginInit();
@@ -134,11 +135,24 @@
             this.lblMessage.Text = "label1";
             this.lblMessage.Visible = false;
             // 
+            // lblErroMessage
+            // 
+            this.lblErroMessage.AutoSize = true;
+            this.lblErroMessage.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErroMessage.ForeColor = System.Drawing.Color.Transparent;
+            this.lblErroMessage.Location = new System.Drawing.Point(60, 13);
+            this.lblErroMessage.Name = "lblErroMessage";
+            this.lblErroMessage.Size = new System.Drawing.Size(50, 18);
+            this.lblErroMessage.TabIndex = 16;
+            this.lblErroMessage.Text = "label1";
+            this.lblErroMessage.Visible = false;
+            // 
             // frm_Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(355, 429);
+            this.Controls.Add(this.lblErroMessage);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.pnlSenha);
             this.Controls.Add(this.pnlUsuario);
@@ -148,6 +162,7 @@
             this.Controls.SetChildIndex(this.pnlUsuario, 0);
             this.Controls.SetChildIndex(this.pnlSenha, 0);
             this.Controls.SetChildIndex(this.lblMessage, 0);
+            this.Controls.SetChildIndex(this.lblErroMessage, 0);
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.pnlSenha.ResumeLayout(false);
             this.pnlSenha.PerformLayout();
@@ -171,5 +186,6 @@
         private System.Windows.Forms.PictureBox picUsuario;
         private System.Windows.Forms.Panel pnlLinhaUsuario;
         private System.Windows.Forms.Label lblMessage;
+        private System.Windows.Forms.Label lblErroMessage;
     }
 }

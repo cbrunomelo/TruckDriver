@@ -12,6 +12,7 @@ using TruckDriver.Domain.Commands.UserCommands;
 using TruckDriver.Domain.Commands;
 using TruckDriver.Domain.Handlers;
 using TruckDriver.Infra.DAO;
+using TruckDriver.WindowsFormsApp.Repository;
 
 namespace TruckDriver.WindowsFormsApp.Formularios.Login
 {
@@ -25,22 +26,25 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
         {
             InitializeComponent();
             pnlSenha
+                .LoadConfControls()
                 .SetIDefaultmage("padlock.png")
                 .SetImageOnClick("padlock2.png")
-                .LoadConfControls();
+                .SetTextBoxAsPasswordChar();
+
             pnlUsuario
                 .SetIDefaultmage("user-login.png")
                 .SetImageOnClick("user-login2.png")
                 .LoadConfControls();
 
             pnlRepeteSenha
+                .LoadConfControls()
                 .SetIDefaultmage("padlock.png")
                 .SetImageOnClick("padlock2.png")
-                .LoadConfControls();
+                .SetTextBoxAsPasswordChar();
 
             ButtonsNames("Registrar", "Voltar");
 
-            _handler = new UserHandler(new RepositoryADO());
+            _handler = HandlerInstances.GetUserHandler();
 
 
         }

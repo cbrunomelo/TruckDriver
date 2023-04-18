@@ -27,6 +27,7 @@ namespace TruckDriver.WindowsFormsApp.Controls
                 if (ctrl.GetType() == typeof(TruckDriverLoginTextBox))
                 { 
                   ((TruckDriverLoginTextBox)ctrl).SetPanel(this);
+                    this.textbox = (TruckDriverLoginTextBox)ctrl;
           
                 }
 
@@ -55,6 +56,12 @@ namespace TruckDriver.WindowsFormsApp.Controls
         public TruckDriverPanelLogin SetImageOnClick(string imageName)
         {
             this.Image_On_click = imageName;
+            return this;
+        }
+
+        public TruckDriverPanelLogin SetTextBoxAsPasswordChar()
+        {
+            textbox.SetThisAsPasswordTextBox();
             return this;
         }
 

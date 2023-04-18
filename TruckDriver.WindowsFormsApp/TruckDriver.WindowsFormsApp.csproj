@@ -188,6 +188,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Controls\ThemeColor.cs" />
+    <Compile Include="Repository\HandlerInstances.cs" />
     <EmbeddedResource Include="Formularios\Cadastros\frm_CadastroMotorista.resx">
       <DependentUpon>frm_CadastroMotorista.cs</DependentUpon>
     </EmbeddedResource>

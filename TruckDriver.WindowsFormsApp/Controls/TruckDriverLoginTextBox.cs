@@ -14,23 +14,29 @@ namespace TruckDriver.WindowsFormsApp.Controls
         private TruckDriverPanelLogin _panel;
         public string DefaultPlaceHolder { get; private set; }
 
+        private char _none = '\0';
+
+        private char _passwordChar = '\0';
+
         public TruckDriverLoginTextBox SetPanel(TruckDriverPanelLogin panel)
         {
+            this.PasswordChar = _none;
             DefaultPlaceHolder = Text;
             this._panel = panel;
             return this;
 
         }
 
- 
-
-
-        protected override void OnClick(EventArgs e)
+        protected override void OnEnter(EventArgs e)
         {
-            base.OnClick(e);
-            if(Text == DefaultPlaceHolder) 
+            base.OnEnter(e);
+            if (Text == DefaultPlaceHolder)
+            {
+                this.PasswordChar = _none;
                 this.Clear();
-            
+
+            }
+            this.PasswordChar = _passwordChar;
             _panel.Onclick();
 
 
@@ -42,11 +48,24 @@ namespace TruckDriver.WindowsFormsApp.Controls
             if (Text.Length == 0)
             {
                 Text = DefaultPlaceHolder;
+                this.PasswordChar = _none;
             }
             _panel.OnLeave();
 
         
         }
 
+
+        public void SetThisAsPasswordTextBox()
+        {
+            _passwordChar = '*';
+        }
+
+        public void resetTextBox() 
+        {
+            this.PasswordChar = _none;
+            Text = DefaultPlaceHolder;
+
+        }
     }
 }
