@@ -33,10 +33,6 @@ namespace TruckDriver.WindowsFormsApp.Formularios
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Principal));
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.btnConfiguracao = new TruckDriver.WindowsFormsApp.Controls.TruckDriverPanelButton();
-            this.btnCaminhao = new TruckDriver.WindowsFormsApp.Controls.TruckDriverPanelButton();
-            this.btnMotorista = new TruckDriver.WindowsFormsApp.Controls.TruckDriverPanelButton();
-            this.btnPedidos = new TruckDriver.WindowsFormsApp.Controls.TruckDriverPanelButton();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.labelTitle = new System.Windows.Forms.Label();
             this.panelTitleBar = new System.Windows.Forms.Panel();
@@ -47,6 +43,12 @@ namespace TruckDriver.WindowsFormsApp.Formularios
             this.lblTitle = new System.Windows.Forms.Label();
             this.PanelChildren = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnConfiguracao = new TruckDriver.WindowsFormsApp.Controls.TruckDriverPanelButton();
+            this.btnCaminhao = new TruckDriver.WindowsFormsApp.Controls.TruckDriverPanelButton();
+            this.btnMotorista = new TruckDriver.WindowsFormsApp.Controls.TruckDriverPanelButton();
+            this.btnPedidos = new TruckDriver.WindowsFormsApp.Controls.TruckDriverPanelButton();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
@@ -57,6 +59,8 @@ namespace TruckDriver.WindowsFormsApp.Formularios
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(77)))));
+            this.panelMenu.Controls.Add(this.button1);
+            this.panelMenu.Controls.Add(this.label1);
             this.panelMenu.Controls.Add(this.btnConfiguracao);
             this.panelMenu.Controls.Add(this.btnCaminhao);
             this.panelMenu.Controls.Add(this.btnMotorista);
@@ -67,83 +71,6 @@ namespace TruckDriver.WindowsFormsApp.Formularios
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(250, 691);
             this.panelMenu.TabIndex = 0;
-            // 
-            // btnConfiguracao
-            // 
-            this.btnConfiguracao.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnConfiguracao.FlatAppearance.BorderSize = 0;
-            this.btnConfiguracao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfiguracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfiguracao.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnConfiguracao.Image = ((System.Drawing.Image)(resources.GetObject("btnConfiguracao.Image")));
-            this.btnConfiguracao.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnConfiguracao.Location = new System.Drawing.Point(0, 260);
-            this.btnConfiguracao.Name = "btnConfiguracao";
-            this.btnConfiguracao.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnConfiguracao.Size = new System.Drawing.Size(250, 60);
-            this.btnConfiguracao.TabIndex = 4;
-            this.btnConfiguracao.Text = "    Configuração";
-            this.btnConfiguracao.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnConfiguracao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnConfiguracao.UseVisualStyleBackColor = true;
-            // 
-            // btnCaminhao
-            // 
-            this.btnCaminhao.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCaminhao.FlatAppearance.BorderSize = 0;
-            this.btnCaminhao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCaminhao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCaminhao.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnCaminhao.Image = ((System.Drawing.Image)(resources.GetObject("btnCaminhao.Image")));
-            this.btnCaminhao.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCaminhao.Location = new System.Drawing.Point(0, 200);
-            this.btnCaminhao.Name = "btnCaminhao";
-            this.btnCaminhao.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnCaminhao.Size = new System.Drawing.Size(250, 60);
-            this.btnCaminhao.TabIndex = 3;
-            this.btnCaminhao.Text = "    Caminhao";
-            this.btnCaminhao.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCaminhao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCaminhao.UseVisualStyleBackColor = true;
-            // 
-            // btnMotorista
-            // 
-            this.btnMotorista.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMotorista.FlatAppearance.BorderSize = 0;
-            this.btnMotorista.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMotorista.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMotorista.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnMotorista.Image = ((System.Drawing.Image)(resources.GetObject("btnMotorista.Image")));
-            this.btnMotorista.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMotorista.Location = new System.Drawing.Point(0, 140);
-            this.btnMotorista.Name = "btnMotorista";
-            this.btnMotorista.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnMotorista.Size = new System.Drawing.Size(250, 60);
-            this.btnMotorista.TabIndex = 2;
-            this.btnMotorista.Text = "    Motorista";
-            this.btnMotorista.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMotorista.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnMotorista.UseVisualStyleBackColor = true;
-            // 
-            // btnPedidos
-            // 
-            this.btnPedidos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPedidos.FlatAppearance.BorderSize = 0;
-            this.btnPedidos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPedidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPedidos.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnPedidos.Image = ((System.Drawing.Image)(resources.GetObject("btnPedidos.Image")));
-            this.btnPedidos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPedidos.Location = new System.Drawing.Point(0, 80);
-            this.btnPedidos.Name = "btnPedidos";
-            this.btnPedidos.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnPedidos.Size = new System.Drawing.Size(250, 60);
-            this.btnPedidos.TabIndex = 1;
-            this.btnPedidos.Text = "    Pedidos";
-            this.btnPedidos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPedidos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPedidos.UseVisualStyleBackColor = true;
-
             // 
             // panelLogo
             // 
@@ -277,6 +204,107 @@ namespace TruckDriver.WindowsFormsApp.Formularios
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.Transparent;
+            this.label1.Location = new System.Drawing.Point(12, 661);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(135, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Bem vindo,  Biruleibe !";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.button1.ForeColor = System.Drawing.Color.Transparent;
+            this.button1.Location = new System.Drawing.Point(145, 656);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Sair";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // btnConfiguracao
+            // 
+            this.btnConfiguracao.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnConfiguracao.FlatAppearance.BorderSize = 0;
+            this.btnConfiguracao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfiguracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfiguracao.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnConfiguracao.Image = ((System.Drawing.Image)(resources.GetObject("btnConfiguracao.Image")));
+            this.btnConfiguracao.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnConfiguracao.Location = new System.Drawing.Point(0, 260);
+            this.btnConfiguracao.Name = "btnConfiguracao";
+            this.btnConfiguracao.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnConfiguracao.Size = new System.Drawing.Size(250, 60);
+            this.btnConfiguracao.TabIndex = 4;
+            this.btnConfiguracao.Text = "    Configuração";
+            this.btnConfiguracao.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnConfiguracao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnConfiguracao.UseVisualStyleBackColor = true;
+            // 
+            // btnCaminhao
+            // 
+            this.btnCaminhao.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCaminhao.FlatAppearance.BorderSize = 0;
+            this.btnCaminhao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCaminhao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCaminhao.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnCaminhao.Image = ((System.Drawing.Image)(resources.GetObject("btnCaminhao.Image")));
+            this.btnCaminhao.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCaminhao.Location = new System.Drawing.Point(0, 200);
+            this.btnCaminhao.Name = "btnCaminhao";
+            this.btnCaminhao.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnCaminhao.Size = new System.Drawing.Size(250, 60);
+            this.btnCaminhao.TabIndex = 3;
+            this.btnCaminhao.Text = "    Caminhao";
+            this.btnCaminhao.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCaminhao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCaminhao.UseVisualStyleBackColor = true;
+            // 
+            // btnMotorista
+            // 
+            this.btnMotorista.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMotorista.FlatAppearance.BorderSize = 0;
+            this.btnMotorista.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMotorista.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMotorista.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnMotorista.Image = ((System.Drawing.Image)(resources.GetObject("btnMotorista.Image")));
+            this.btnMotorista.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMotorista.Location = new System.Drawing.Point(0, 140);
+            this.btnMotorista.Name = "btnMotorista";
+            this.btnMotorista.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnMotorista.Size = new System.Drawing.Size(250, 60);
+            this.btnMotorista.TabIndex = 2;
+            this.btnMotorista.Text = "    Motorista";
+            this.btnMotorista.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMotorista.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnMotorista.UseVisualStyleBackColor = true;
+            // 
+            // btnPedidos
+            // 
+            this.btnPedidos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPedidos.FlatAppearance.BorderSize = 0;
+            this.btnPedidos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPedidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPedidos.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnPedidos.Image = ((System.Drawing.Image)(resources.GetObject("btnPedidos.Image")));
+            this.btnPedidos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPedidos.Location = new System.Drawing.Point(0, 80);
+            this.btnPedidos.Name = "btnPedidos";
+            this.btnPedidos.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnPedidos.Size = new System.Drawing.Size(250, 60);
+            this.btnPedidos.TabIndex = 1;
+            this.btnPedidos.Text = "    Pedidos";
+            this.btnPedidos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPedidos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPedidos.UseVisualStyleBackColor = true;
+            // 
             // frm_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -291,6 +319,7 @@ namespace TruckDriver.WindowsFormsApp.Formularios
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Truck Driver";
             this.panelMenu.ResumeLayout(false);
+            this.panelMenu.PerformLayout();
             this.panelLogo.ResumeLayout(false);
             this.panelLogo.PerformLayout();
             this.panelTitleBar.ResumeLayout(false);
@@ -321,6 +350,8 @@ namespace TruckDriver.WindowsFormsApp.Formularios
         private System.Windows.Forms.Button btnMaxMinSizeApp;
         private System.Windows.Forms.Button btnMinizeApp;
         private System.Windows.Forms.Button btnCloseApp;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }
 
