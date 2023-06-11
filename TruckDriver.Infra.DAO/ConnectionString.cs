@@ -15,7 +15,7 @@ namespace TruckDriver.Infra.DAO
         {
             string diretorioAtual = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-            int index = diretorioAtual.IndexOf(DIRETORIO_DB_LOCALIZADO);
+            int index = diretorioAtual.LastIndexOf(DIRETORIO_DB_LOCALIZADO);
 
             string connectionString = diretorioAtual.Substring(0, index + DIRETORIO_DB_LOCALIZADO.Length);
 
