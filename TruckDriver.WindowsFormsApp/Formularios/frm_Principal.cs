@@ -13,12 +13,15 @@ using TruckDriver.WindowsFormsApp.Formularios;
 using WindowsFormsApp1.Formularios;
 using WindowsFormsApp1.Formularios.Cadastros;
 using TruckDriver.WindowsFormsApp.Formularios.ChildForms;
+using System.Threading;
+using TruckDriver.WindowsFormsApp.Formularios.Login;
 
 namespace TruckDriver.WindowsFormsApp.Formularios
 {
 
     public partial class frm_Principal : Form
     {
+        Thread t1;
         public Button currentButton;        
         public Form activeForm;
 
@@ -144,6 +147,14 @@ namespace TruckDriver.WindowsFormsApp.Formularios
                 .SetChildForm(new frm_caminhao())
                 .Setfrm_Principal(this)
                 .SelectThemeColor(9);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            t1 = new Thread(() => Application.Run(new frm_Login()));
+            t1.SetApartmentState(ApartmentState.STA);
+            t1.Start();
         }
     }
 }
