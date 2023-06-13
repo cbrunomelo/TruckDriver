@@ -12,16 +12,19 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
     abstract class ChildFormFactory
     {
         private const string PathNameSpace = "TruckDriver.WindowsFormsApp.Formularios.ChildForms.";
-        public static ChildBase GetChildForm(Type type) 
+
+        private static Dictionary<string, Func<ChildBase>> _childs = new Dictionary<string, Func<ChildBase>>()
         {
-            switch (type.ToString())
-            {
-                case PathNameSpace + "frm_caminhao": return new frm_caminhao();
-                case PathNameSpace+ "frm_Motoristas": return new frm_Motoristas();
-                case PathNameSpace + "frm_Pedidos": return new frm_Pedidos();
-                case PathNameSpace + "frm_Configuracao": return new frm_Configuracao();
-                default: return null;
-            }
-        }
+            {PathNameSpace + "frm_caminhao", () => new  frm_caminhao()},
+            { PathNameSpace+ "frm_Motoristas",() => new frm_Motoristas()},
+            { PathNameSpace + "frm_Pedidos", () => new frm_Pedidos()},
+            { PathNameSpace + "frm_Configuracao", () => new frm_Configuracao()}
+
+        };
+
+        public static ChildBase GetChildForm(Type type) => _childs[type.ToString()]();
+
+
+        
     }
 }
