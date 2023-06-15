@@ -38,5 +38,10 @@ namespace WindowsFormsApp1.Formularios.Cadastros
             txt_NumeroCNH.MaxLength = 11;
             
         }
+
+        private void btn_Cadastrar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
