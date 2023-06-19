@@ -11,6 +11,9 @@ using System.Windows.Forms;
 using WindowsFormsApp1.Formularios.Cadastros;
 using WindowsFormsApp1;
 using TruckDriver.WindowsFormsApp.Controls;
+using TruckDriver.Domain.Handlers;
+using TruckDriver.Infra.ADO;
+using TruckDriver.Domain.Entitys;
 
 namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
 {

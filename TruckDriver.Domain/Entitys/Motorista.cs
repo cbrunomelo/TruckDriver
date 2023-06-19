@@ -4,12 +4,13 @@ using System.Text;
 
 namespace TruckDriver.Domain.Entitys
 {
-    public class Motorista
+    public class Motorista : Entity
     {
-        public Motorista(int id, string name, string sobrenome, string cpf, int cnh, int telefone)
-        {
-            Id = id;
-            Name = name;
+        public override string TABLE_NAME { get => "Motorista"; set => base.TABLE_NAME = value; }
+
+        public Motorista(string name, string sobrenome, string cpf, int cnh, int telefone)
+        {            
+            Nome = name;
             Sobrenome = sobrenome;
             this.cpf = cpf;
             this.cnh = cnh;
@@ -21,9 +22,9 @@ namespace TruckDriver.Domain.Entitys
             
         }
 
-        public int Id { get; set; }
+        public int Id { get; set; } = 0;
 
-        public string Name { get; set; }
+        public string Nome { get; set; }
 
         public string Sobrenome { get; set; }
 

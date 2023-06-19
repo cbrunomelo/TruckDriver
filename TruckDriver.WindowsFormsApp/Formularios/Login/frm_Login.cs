@@ -18,6 +18,7 @@ using TruckDriver.Infra.DAO;
 using TruckDriver.Domain.Entitys;
 using TruckDriver.WindowsFormsApp.Repository;
 using TruckDriver.Domain.Queries;
+using TruckDriver.Infra.ADO;
 
 namespace TruckDriver.WindowsFormsApp.Formularios.Login
 {
@@ -42,7 +43,7 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
 
             ButtonsNames("Entrar", "Registrar");
 
-            _userQuery = new UserRepositoryADO();
+            _userQuery = new UserRepositoryADO(new RepositoryBase<User>() );
 
         }
 
