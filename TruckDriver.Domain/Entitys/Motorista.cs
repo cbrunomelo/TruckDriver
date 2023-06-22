@@ -8,7 +8,7 @@ namespace TruckDriver.Domain.Entitys
     {
         public override string TABLE_NAME { get => "Motorista"; set => base.TABLE_NAME = value; }
 
-        public Motorista(string name, string sobrenome, string cpf, int cnh, int telefone)
+        public Motorista(string name, string sobrenome, string cpf, string cnh, string telefone)
         {            
             Nome = name;
             Sobrenome = sobrenome;
@@ -30,8 +30,8 @@ namespace TruckDriver.Domain.Entitys
 
         public string cpf { get; set; }
 
-        public int cnh { get; set; }
+        public string cnh { get; set; }
 
-        public int telefone { get; set; }
+        public string telefone { get; set; }
     }
 }
