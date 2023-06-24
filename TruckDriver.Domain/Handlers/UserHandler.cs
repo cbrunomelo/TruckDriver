@@ -37,7 +37,7 @@ namespace TruckDriver.Domain.Handlers
 
             User user = new User(command.Name, command.Password);
 
-            _repository.CreateUser(user);
+            _repository.Creat(user);
             
             return new GenericCommandResult(true, "Usuario criado com sucesso", result.Errors);
 

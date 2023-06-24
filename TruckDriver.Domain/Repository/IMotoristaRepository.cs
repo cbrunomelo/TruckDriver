@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Dynamic;
 using System.Text;
 using TruckDriver.Domain.Entitys;
 
 namespace TruckDriver.Domain.Repository
 {
-    public interface IUserRepository : IRepository
+    public interface IMotoristaRepository : IRepository
     {
-        void Creat(User user);
+        int Creat(Motorista motorista);
     }
 }

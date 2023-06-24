@@ -1,11 +1,4 @@
-﻿using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using TruckDriver.Domain.Commands.Contracts;
-using TruckDriver.Domain.Entitys;
-
-namespace TruckDriver.Domain.Commands.UserCommands
+﻿namespace TruckDriver.Domain.Commands.UserCommands
 {
     public class CreateUserCommand
     {
