@@ -13,9 +13,9 @@ namespace TruckDriver.Domain.Commands.MotoristaCommands
         {
             Name = name;
             Sobrenome = sobrenome;
-            this.cpf = LimparMascara(cpf);
-            this.cnh = LimparMascara(cnh);
-            this.telefone = LimparMascara(telefone);
+            this.cpf = cpf;
+            this.cnh = cnh;
+            this.telefone = telefone;
         }
 
         public string Name { get; set; }
@@ -25,52 +25,36 @@ namespace TruckDriver.Domain.Commands.MotoristaCommands
         private string _cpf;
         public string cpf
         {
-            get
-            {
-                return _cpf;
-            }
-            set
-            {
-                _cpf = LimparMascara(value);
-            }
+            get => _cpf;
+            
+            set => _cpf = LimparMascara(value);
+            
         }
 
         private string _cnh;
 
         public string cnh
         {
-            get
-            {
-                return _cnh;
-            }
-            set
-            {
-                _cnh = LimparMascara(value);
-            }
+            get => _cnh;
+            
+            set => _cnh = LimparMascara(value);
+            
         }
 
 
         private string _telefone;
         public string telefone
         {
-            get
-            {
-                return _telefone;
-            }
-            set
-            {
-                _telefone = LimparMascara(value);
-            }
+            get => _telefone; 
+            set => _telefone = LimparMascara(value);
         }
 
 
 
-        private string LimparMascara(string str)
-        {
-            str = new string(str.Where(char.IsDigit).ToArray());
+        private string LimparMascara(string str) => new string(str.Where(char.IsDigit).ToArray());
 
-            return str;
-        }
+            
+        
     }
 
 

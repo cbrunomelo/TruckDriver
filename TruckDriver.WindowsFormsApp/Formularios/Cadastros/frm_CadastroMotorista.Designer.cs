@@ -41,7 +41,7 @@ namespace WindowsFormsApp1.Formularios.Cadastros
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.grp_Endereco = new System.Windows.Forms.GroupBox();
             this.mtxt_CEP = new System.Windows.Forms.MaskedTextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.txt_Cidade = new WindowsFormsApp1.Controls.TruckDriverTextBox();
             this.lbl_Estado = new System.Windows.Forms.Label();
             this.lbl_Cidade = new System.Windows.Forms.Label();
@@ -149,7 +149,7 @@ namespace WindowsFormsApp1.Formularios.Cadastros
             // grp_Endereco
             // 
             this.grp_Endereco.Controls.Add(this.mtxt_CEP);
-            this.grp_Endereco.Controls.Add(this.comboBox1);
+            this.grp_Endereco.Controls.Add(this.cmbEstado);
             this.grp_Endereco.Controls.Add(this.txt_Cidade);
             this.grp_Endereco.Controls.Add(this.lbl_Estado);
             this.grp_Endereco.Controls.Add(this.lbl_Cidade);
@@ -175,13 +175,13 @@ namespace WindowsFormsApp1.Formularios.Cadastros
             this.mtxt_CEP.Size = new System.Drawing.Size(71, 20);
             this.mtxt_CEP.TabIndex = 5;
             // 
-            // comboBox1
+            // cmbEstado
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(199, 184);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(128, 21);
-            this.comboBox1.TabIndex = 10;
+            this.cmbEstado.FormattingEnabled = true;
+            this.cmbEstado.Location = new System.Drawing.Point(199, 184);
+            this.cmbEstado.Name = "cmbEstado";
+            this.cmbEstado.Size = new System.Drawing.Size(128, 21);
+            this.cmbEstado.TabIndex = 10;
             // 
             // txt_Cidade
             // 
@@ -376,7 +376,7 @@ namespace WindowsFormsApp1.Formularios.Cadastros
         private TruckDriverTextBox txt_Complemento;
         private TruckDriverTextBox txt_Bairro;
         private System.Windows.Forms.Label lbl_Bairro;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbEstado;
         private TruckDriverTextBox txt_Cidade;
         private System.Windows.Forms.Label lbl_Estado;
         private System.Windows.Forms.Label lbl_Cidade;

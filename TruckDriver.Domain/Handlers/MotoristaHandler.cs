@@ -30,9 +30,9 @@ namespace TruckDriver.Domain.Handlers
 
             Motorista motorista = new Motorista(command.Name, command.Sobrenome, command.cpf, command.cnh, command.telefone);
 
-            _repository.Creat(motorista);
+            int id = _repository.Creat(motorista);
 
-            return new GenericCommandResult(true, "Usuario criado com sucesso", result.Errors);
+            return new GenericCommandResult(true, "Usuario criado com sucesso", id);
             
        }
     }

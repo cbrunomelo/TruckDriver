@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TruckDriver.Domain.Commands;
 using TruckDriver.Domain.Commands.Contracts;
+using TruckDriver.Domain.Commands.EnderecoCommands;
 using TruckDriver.Domain.Commands.MotoristaCommands;
 using TruckDriver.Domain.Handlers;
 using TruckDriver.Infra.ADO;
@@ -19,12 +20,14 @@ namespace WindowsFormsApp1.Formularios.Cadastros
     public partial class frm_CadastroMotorista : Form
     {
         private readonly MotoristaHandler _handler;
+        private readonly EnderecoHandler _enderecoHandler;
         
         public frm_CadastroMotorista()
         {
             InitializeComponent();
             AtualizarControles();
             _handler = new MotoristaHandler(new MotoristaRepository());
+            _enderecoHandler = new EnderecoHandler(new EnderecoRepository());
 
         }
 
@@ -56,12 +59,6 @@ namespace WindowsFormsApp1.Formularios.Cadastros
             command.cpf = mtxt_CPF.Text;
 
 
-            //command.Name = "teste";
-            //command.Sobrenome = "teste";
-            //command.cnh = 12345;
-            //command.telefone = 1234;
-            //command.cpf = "28556272063";
-
             GenericCommandResult result = (GenericCommandResult)_handler.Handle(command);
 
 
@@ -73,9 +70,25 @@ namespace WindowsFormsApp1.Formularios.Cadastros
                     erros+=erro.ErrorMessage+"\n";
                 }
                 MessageBox.Show($"Nao foi possivel criar um novo motorista:\n{erros}", "Erro");
+                return;
             }
             else
             {
+                CreateEnderecoCommand createEnderecoCommand = new CreateEnderecoCommand();
+
+                createEnderecoCommand.bairro = txt_Bairro.Text;
+                createEnderecoCommand.Cep = mtxt_CEP.Text;
+                createEnderecoCommand.logradouro = txt_Logradouro.Text;
+                createEnderecoCommand.complemento = txt_Complemento.Text;
+                createEnderecoCommand.cidade = txt_Cidade.Text;
+                //createEnderecoCommand.estado = cmbEstado.SelectedItem.ToString();
+                createEnderecoCommand.estado = "teste";
+                createEnderecoCommand.Fk_motorista_id = (int)result.Data;
+
+                GenericCommandResult enderecoCommandresult = (GenericCommandResult)_enderecoHandler.Handle(createEnderecoCommand);
+
+
+
                 MessageBox.Show("Motorista Criado com sucesso", "Sucesso");
             }
 

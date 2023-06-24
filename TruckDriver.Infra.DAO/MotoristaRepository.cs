@@ -14,9 +14,9 @@ namespace TruckDriver.Infra.ADO
             _repository = new RepositoryBase<Motorista>();
         }
 
-        public void Creat(Motorista motorista)
+        public int Creat(Motorista motorista)
         {
-            _repository.Creat(motorista);
+            return _repository.Creat(motorista);
         }
     }
 }

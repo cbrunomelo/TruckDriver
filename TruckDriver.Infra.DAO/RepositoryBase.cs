@@ -13,7 +13,7 @@ namespace TruckDriver.Infra.ADO
         public readonly string connectionString = ConnectionString.Get();
 
 
-        public void Creat(TEntity entity)
+        public int Creat(TEntity entity)
         {
             using (var connection = new SqliteConnection(connectionString))
             {
@@ -43,7 +43,7 @@ namespace TruckDriver.Infra.ADO
 
                 foreach (var prop in entity.GetType().GetProperties())
                 {
-                    if (prop.Name == "TABLE_NAME" || prop.Name.ToLower().Contains("id"))
+                    if (prop.Name == "TABLE_NAME" || (prop.Name.ToLower().Contains("id") && !prop.Name.ToLower().Contains("fk")))
                         continue;
                     propNames += prop.Name + ",";
                     values += $"@valor{i}, ";
@@ -55,22 +55,24 @@ namespace TruckDriver.Infra.ADO
 
 
 
-                string sql = $"INSERT INTO [{entity.TABLE_NAME}] ({propNames}) VALUES ({values})";
+                string sql = $"INSERT INTO [{entity.TABLE_NAME}] ({propNames}) VALUES ({values}); SELECT last_insert_rowid();";
                 SqliteCommand command = new SqliteCommand(sql, connection);
 
                 i = 1;
                 foreach (var prop in entity.GetType().GetProperties())
                 {
-                    if (prop.Name == "TABLE_NAME" || prop.Name.ToLower().Contains("id"))
+                    if (prop.Name == "TABLE_NAME" || (prop.Name.ToLower().Contains("id") && !prop.Name.ToLower().Contains("fk")))
                         continue;
                     command.Parameters.AddWithValue($"valor{i}", prop.GetValue(entity));
                     i++;
                 }
 
 
-                int rowsAffected = command.ExecuteNonQuery();
+                long idInserido = (long)command.ExecuteScalar();
 
                 connection.Close();
+
+                return (int)idInserido;
 
             }
         }
