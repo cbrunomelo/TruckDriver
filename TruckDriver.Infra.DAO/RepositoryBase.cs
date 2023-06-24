@@ -43,7 +43,7 @@ namespace TruckDriver.Infra.ADO
 
                 foreach (var prop in entity.GetType().GetProperties())
                 {
-                    if (prop.Name == "TABLE_NAME" || (prop.Name.ToLower().Contains("id") && !prop.Name.ToLower().Contains("fk")))
+                    if (prop.Name == "TABLE_NAME" || (prop.Name.ToLower().EndsWith("id") && !prop.Name.ToLower().Contains("fk")))
                         continue;
                     propNames += prop.Name + ",";
                     values += $"@valor{i}, ";
@@ -61,7 +61,7 @@ namespace TruckDriver.Infra.ADO
                 i = 1;
                 foreach (var prop in entity.GetType().GetProperties())
                 {
-                    if (prop.Name == "TABLE_NAME" || (prop.Name.ToLower().Contains("id") && !prop.Name.ToLower().Contains("fk")))
+                    if (prop.Name == "TABLE_NAME" || (prop.Name.ToLower().EndsWith("id") && !prop.Name.ToLower().Contains("fk")))
                         continue;
                     command.Parameters.AddWithValue($"valor{i}", prop.GetValue(entity));
                     i++;

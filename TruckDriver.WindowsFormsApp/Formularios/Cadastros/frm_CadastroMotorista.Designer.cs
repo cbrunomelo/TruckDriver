@@ -31,25 +31,17 @@ namespace WindowsFormsApp1.Formularios.Cadastros
         {
             this.grp_DadosPessoais = new System.Windows.Forms.GroupBox();
             this.mtxt_CPF = new System.Windows.Forms.MaskedTextBox();
-            this.txt_NumeroCNH = new WindowsFormsApp1.Controls.TruckDriverTextBox();
             this.lbl_CNH = new System.Windows.Forms.Label();
             this.lbl_Cpf = new System.Windows.Forms.Label();
-            this.txt_Sobrenome = new WindowsFormsApp1.Controls.TruckDriverTextBox();
             this.lbl_Sobrenome = new System.Windows.Forms.Label();
             this.lbl_Nome = new System.Windows.Forms.Label();
-            this.txt_NomeMotorista = new WindowsFormsApp1.Controls.TruckDriverTextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.grp_Endereco = new System.Windows.Forms.GroupBox();
             this.mtxt_CEP = new System.Windows.Forms.MaskedTextBox();
-            this.cmbEstado = new System.Windows.Forms.ComboBox();
-            this.txt_Cidade = new WindowsFormsApp1.Controls.TruckDriverTextBox();
             this.lbl_Estado = new System.Windows.Forms.Label();
             this.lbl_Cidade = new System.Windows.Forms.Label();
-            this.txt_Bairro = new WindowsFormsApp1.Controls.TruckDriverTextBox();
             this.lbl_Bairro = new System.Windows.Forms.Label();
-            this.txt_Complemento = new WindowsFormsApp1.Controls.TruckDriverTextBox();
             this.lbl_Complemento = new System.Windows.Forms.Label();
-            this.txt_Logradouro = new WindowsFormsApp1.Controls.TruckDriverTextBox();
             this.lbl_Logradouro = new System.Windows.Forms.Label();
             this.lbl_CEP = new System.Windows.Forms.Label();
             this.grp_Telefone = new System.Windows.Forms.GroupBox();
@@ -59,6 +51,14 @@ namespace WindowsFormsApp1.Formularios.Cadastros
             this.lbl_Celular = new System.Windows.Forms.Label();
             this.btn_Cadastrar = new System.Windows.Forms.Button();
             this.btn_Cancelar = new System.Windows.Forms.Button();
+            this.txt_estado = new WindowsFormsApp1.Controls.TruckDriverTextBox();
+            this.txt_Cidade = new WindowsFormsApp1.Controls.TruckDriverTextBox();
+            this.txt_Bairro = new WindowsFormsApp1.Controls.TruckDriverTextBox();
+            this.txt_Complemento = new WindowsFormsApp1.Controls.TruckDriverTextBox();
+            this.txt_Logradouro = new WindowsFormsApp1.Controls.TruckDriverTextBox();
+            this.txt_NumeroCNH = new WindowsFormsApp1.Controls.TruckDriverTextBox();
+            this.txt_Sobrenome = new WindowsFormsApp1.Controls.TruckDriverTextBox();
+            this.txt_NomeMotorista = new WindowsFormsApp1.Controls.TruckDriverTextBox();
             this.grp_DadosPessoais.SuspendLayout();
             this.grp_Endereco.SuspendLayout();
             this.grp_Telefone.SuspendLayout();
@@ -89,13 +89,6 @@ namespace WindowsFormsApp1.Formularios.Cadastros
             this.mtxt_CPF.Size = new System.Drawing.Size(89, 20);
             this.mtxt_CPF.TabIndex = 3;
             // 
-            // txt_NumeroCNH
-            // 
-            this.txt_NumeroCNH.Location = new System.Drawing.Point(199, 119);
-            this.txt_NumeroCNH.Name = "txt_NumeroCNH";
-            this.txt_NumeroCNH.Size = new System.Drawing.Size(135, 20);
-            this.txt_NumeroCNH.TabIndex = 4;
-            // 
             // lbl_CNH
             // 
             this.lbl_CNH.AutoSize = true;
@@ -113,13 +106,6 @@ namespace WindowsFormsApp1.Formularios.Cadastros
             this.lbl_Cpf.Size = new System.Drawing.Size(33, 13);
             this.lbl_Cpf.TabIndex = 4;
             this.lbl_Cpf.Text = "CPF: ";
-            // 
-            // txt_Sobrenome
-            // 
-            this.txt_Sobrenome.Location = new System.Drawing.Point(199, 54);
-            this.txt_Sobrenome.Name = "txt_Sobrenome";
-            this.txt_Sobrenome.Size = new System.Drawing.Size(226, 20);
-            this.txt_Sobrenome.TabIndex = 2;
             // 
             // lbl_Sobrenome
             // 
@@ -139,17 +125,10 @@ namespace WindowsFormsApp1.Formularios.Cadastros
             this.lbl_Nome.TabIndex = 1;
             this.lbl_Nome.Text = "Nome:";
             // 
-            // txt_NomeMotorista
-            // 
-            this.txt_NomeMotorista.Location = new System.Drawing.Point(9, 54);
-            this.txt_NomeMotorista.Name = "txt_NomeMotorista";
-            this.txt_NomeMotorista.Size = new System.Drawing.Size(167, 20);
-            this.txt_NomeMotorista.TabIndex = 1;
-            // 
             // grp_Endereco
             // 
+            this.grp_Endereco.Controls.Add(this.txt_estado);
             this.grp_Endereco.Controls.Add(this.mtxt_CEP);
-            this.grp_Endereco.Controls.Add(this.cmbEstado);
             this.grp_Endereco.Controls.Add(this.txt_Cidade);
             this.grp_Endereco.Controls.Add(this.lbl_Estado);
             this.grp_Endereco.Controls.Add(this.lbl_Cidade);
@@ -174,21 +153,7 @@ namespace WindowsFormsApp1.Formularios.Cadastros
             this.mtxt_CEP.Name = "mtxt_CEP";
             this.mtxt_CEP.Size = new System.Drawing.Size(71, 20);
             this.mtxt_CEP.TabIndex = 5;
-            // 
-            // cmbEstado
-            // 
-            this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Location = new System.Drawing.Point(199, 184);
-            this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(128, 21);
-            this.cmbEstado.TabIndex = 10;
-            // 
-            // txt_Cidade
-            // 
-            this.txt_Cidade.Location = new System.Drawing.Point(9, 184);
-            this.txt_Cidade.Name = "txt_Cidade";
-            this.txt_Cidade.Size = new System.Drawing.Size(170, 20);
-            this.txt_Cidade.TabIndex = 9;
+            this.mtxt_CEP.Leave += new System.EventHandler(this.mtxt_CEP_Leave);
             // 
             // lbl_Estado
             // 
@@ -208,13 +173,6 @@ namespace WindowsFormsApp1.Formularios.Cadastros
             this.lbl_Cidade.TabIndex = 8;
             this.lbl_Cidade.Text = "Cidade:";
             // 
-            // txt_Bairro
-            // 
-            this.txt_Bairro.Location = new System.Drawing.Point(199, 119);
-            this.txt_Bairro.Name = "txt_Bairro";
-            this.txt_Bairro.Size = new System.Drawing.Size(131, 20);
-            this.txt_Bairro.TabIndex = 8;
-            // 
             // lbl_Bairro
             // 
             this.lbl_Bairro.AutoSize = true;
@@ -224,13 +182,6 @@ namespace WindowsFormsApp1.Formularios.Cadastros
             this.lbl_Bairro.TabIndex = 6;
             this.lbl_Bairro.Text = "Bairro:";
             // 
-            // txt_Complemento
-            // 
-            this.txt_Complemento.Location = new System.Drawing.Point(9, 119);
-            this.txt_Complemento.Name = "txt_Complemento";
-            this.txt_Complemento.Size = new System.Drawing.Size(167, 20);
-            this.txt_Complemento.TabIndex = 7;
-            // 
             // lbl_Complemento
             // 
             this.lbl_Complemento.AutoSize = true;
@@ -239,13 +190,6 @@ namespace WindowsFormsApp1.Formularios.Cadastros
             this.lbl_Complemento.Size = new System.Drawing.Size(74, 13);
             this.lbl_Complemento.TabIndex = 4;
             this.lbl_Complemento.Text = "Complemento:";
-            // 
-            // txt_Logradouro
-            // 
-            this.txt_Logradouro.Location = new System.Drawing.Point(199, 54);
-            this.txt_Logradouro.Name = "txt_Logradouro";
-            this.txt_Logradouro.Size = new System.Drawing.Size(322, 20);
-            this.txt_Logradouro.TabIndex = 6;
             // 
             // lbl_Logradouro
             // 
@@ -332,6 +276,66 @@ namespace WindowsFormsApp1.Formularios.Cadastros
             this.btn_Cancelar.UseVisualStyleBackColor = true;
             this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
             // 
+            // txt_estado
+            // 
+            this.txt_estado.Location = new System.Drawing.Point(199, 184);
+            this.txt_estado.Name = "txt_estado";
+            this.txt_estado.ReadOnly = true;
+            this.txt_estado.Size = new System.Drawing.Size(59, 20);
+            this.txt_estado.TabIndex = 11;
+            // 
+            // txt_Cidade
+            // 
+            this.txt_Cidade.Location = new System.Drawing.Point(9, 184);
+            this.txt_Cidade.Name = "txt_Cidade";
+            this.txt_Cidade.ReadOnly = true;
+            this.txt_Cidade.Size = new System.Drawing.Size(170, 20);
+            this.txt_Cidade.TabIndex = 9;
+            // 
+            // txt_Bairro
+            // 
+            this.txt_Bairro.Location = new System.Drawing.Point(199, 119);
+            this.txt_Bairro.Name = "txt_Bairro";
+            this.txt_Bairro.ReadOnly = true;
+            this.txt_Bairro.Size = new System.Drawing.Size(131, 20);
+            this.txt_Bairro.TabIndex = 8;
+            // 
+            // txt_Complemento
+            // 
+            this.txt_Complemento.Location = new System.Drawing.Point(9, 119);
+            this.txt_Complemento.Name = "txt_Complemento";
+            this.txt_Complemento.Size = new System.Drawing.Size(167, 20);
+            this.txt_Complemento.TabIndex = 7;
+            // 
+            // txt_Logradouro
+            // 
+            this.txt_Logradouro.Location = new System.Drawing.Point(199, 54);
+            this.txt_Logradouro.Name = "txt_Logradouro";
+            this.txt_Logradouro.ReadOnly = true;
+            this.txt_Logradouro.Size = new System.Drawing.Size(322, 20);
+            this.txt_Logradouro.TabIndex = 6;
+            // 
+            // txt_NumeroCNH
+            // 
+            this.txt_NumeroCNH.Location = new System.Drawing.Point(199, 119);
+            this.txt_NumeroCNH.Name = "txt_NumeroCNH";
+            this.txt_NumeroCNH.Size = new System.Drawing.Size(135, 20);
+            this.txt_NumeroCNH.TabIndex = 4;
+            // 
+            // txt_Sobrenome
+            // 
+            this.txt_Sobrenome.Location = new System.Drawing.Point(199, 54);
+            this.txt_Sobrenome.Name = "txt_Sobrenome";
+            this.txt_Sobrenome.Size = new System.Drawing.Size(226, 20);
+            this.txt_Sobrenome.TabIndex = 2;
+            // 
+            // txt_NomeMotorista
+            // 
+            this.txt_NomeMotorista.Location = new System.Drawing.Point(9, 54);
+            this.txt_NomeMotorista.Name = "txt_NomeMotorista";
+            this.txt_NomeMotorista.Size = new System.Drawing.Size(167, 20);
+            this.txt_NomeMotorista.TabIndex = 1;
+            // 
             // frm_CadastroMotorista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -376,7 +380,6 @@ namespace WindowsFormsApp1.Formularios.Cadastros
         private TruckDriverTextBox txt_Complemento;
         private TruckDriverTextBox txt_Bairro;
         private System.Windows.Forms.Label lbl_Bairro;
-        private System.Windows.Forms.ComboBox cmbEstado;
         private TruckDriverTextBox txt_Cidade;
         private System.Windows.Forms.Label lbl_Estado;
         private System.Windows.Forms.Label lbl_Cidade;
@@ -389,5 +392,6 @@ namespace WindowsFormsApp1.Formularios.Cadastros
         private System.Windows.Forms.MaskedTextBox mtxt_CEP;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.MaskedTextBox mtxt_Celular;
+        private TruckDriverTextBox txt_estado;
     }
 }
