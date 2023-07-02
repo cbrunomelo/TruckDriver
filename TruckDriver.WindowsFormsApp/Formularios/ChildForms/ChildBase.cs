@@ -26,24 +26,31 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
 
         private void ChildBase_Load(object sender, EventArgs e)
         {
-            foreach (Control btns in this.Controls)
+            BuscarBotao(this);
+
+            
+        }
+
+
+        private void BuscarBotao(Control controls)
+        {
+            foreach (Control Control in controls.Controls)
             {
-                if (btns.GetType() == typeof(Button))
+                if (Control.GetType() == typeof(Button))
                 {
-                    Button btn = (Button)btns;
+                    Button btn = (Button)Control;
                     btn.BackColor = ThemeColor.PrimaryColor;
                     btn.ForeColor = Color.White;
                     btn.FlatAppearance.BorderColor = ThemeColor.SecondaryColor;
 
                 }
-            }
-            foreach (Control label in this.Controls)
-            {
-                if (label.GetType() == typeof(System.Windows.Forms.Label))
-                {
-                    label.ForeColor = ThemeColor.PrimaryColor;
 
+                if (Control.GetType() == typeof(GroupBox))
+                {
+                    BuscarBotao(Control);
                 }
+
+
             }
         }
     }

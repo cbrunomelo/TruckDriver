@@ -1,20 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.Formularios.Cadastros;
-using WindowsFormsApp1;
-using TruckDriver.WindowsFormsApp.Controls;
-using TruckDriver.Domain.Handlers;
-using TruckDriver.Infra.ADO;
-using TruckDriver.Domain.Entitys;
 using TruckDriver.Domain.Queries;
+using TruckDriver.Infra.ADO;
+using WindowsFormsApp1.Formularios.Cadastros;
 
 namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
 {
@@ -39,13 +27,15 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
 
         private void UpdateControls()
         {
+            cmb_MotoristaStatus.Items.Clear();
+            string[] Items = { string.Empty, "Em Viagem", "Férias", "Aguardando"};
+            cmb_MotoristaStatus.Items.AddRange(Items);
 
-            
         }
 
         private void UpdateGrid(int skip, int take)
         {
-            dgv_Motoristas.DataSource =_query.GetMotoristas(skip, take);
+            dgv_Motoristas.DataSource = _query.GetMotoristas(skip, take);
             dgv_Motoristas.Columns[0].HeaderText = "Nome";
             dgv_Motoristas.Columns[1].HeaderText = "Sobrenome";
             dgv_Motoristas.Columns[2].HeaderText = "Cpf";
