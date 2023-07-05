@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing.Text;
 using System.Windows.Forms;
 using TruckDriver.Domain.Queries;
 using TruckDriver.Infra.ADO;
@@ -8,13 +9,18 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
 {
     public partial class frm_Motoristas : ChildBase
     {
+        private int PaginaAtual = 1;
+        private int _UltimaPagina;
+        private const int _NumeroDeRegistroPorPagina = 23;
+
+
         private IMotoristaQuery _query;
         public frm_Motoristas()
         {
             InitializeComponent();
-            UpdateControls();
             _query = new MotoristaRepository();
-            UpdateGrid(0, 23);
+            UpdateControls();
+            UpdateGrid();
             AdjustColumnSize();
 
         }
@@ -28,19 +34,30 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
         private void UpdateControls()
         {
             cmb_MotoristaStatus.Items.Clear();
-            string[] Items = { string.Empty, "Em Viagem", "Férias", "Aguardando"};
+            string[] Items = { string.Empty, "Em Viagem", "Férias", "Aguardando", "Em Retorno"};
             cmb_MotoristaStatus.Items.AddRange(Items);
+
+            txt_Ir.NotAllowLetters();
+            txt_Ir.NotAllowWhiteSpace();
+
+            txt_BuscarPorNome.NotAllowNumbers();
+
+            _UltimaPagina = (_query.QuantidadeDeMotoristas()/ _NumeroDeRegistroPorPagina) + 1;
+
+            
 
         }
 
-        private void UpdateGrid(int skip, int take)
+        private void UpdateGrid(int skip = 0)
         {
-            dgv_Motoristas.DataSource = _query.GetMotoristas(skip, take);
+            dgv_Motoristas.DataSource = _query.GetMotoristas(skip, _NumeroDeRegistroPorPagina);
             dgv_Motoristas.Columns[0].HeaderText = "Nome";
             dgv_Motoristas.Columns[1].HeaderText = "Sobrenome";
             dgv_Motoristas.Columns[2].HeaderText = "Cpf";
             dgv_Motoristas.Columns[3].HeaderText = "Cnh";
             dgv_Motoristas.Columns[4].HeaderText = "Telefone";
+
+            lbl_NumeroDePaginas.Text = $"{PaginaAtual} de {_UltimaPagina} Páginas";
         }
 
 
@@ -59,6 +76,24 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
         private void dgv_Motoristas_SizeChanged(object sender, EventArgs e)
         {
             AdjustColumnSize();
+        }
+
+        private void btn_Ir_Click(object sender, EventArgs e)
+        {
+            int IrParaPagina = Convert.ToInt32(txt_Ir.Text);
+            int skip = (IrParaPagina - 1) * _NumeroDeRegistroPorPagina;
+            PaginaAtual = IrParaPagina;
+            UpdateGrid(skip);
+
+
+
+
+            // com o filtro acima
+        }
+
+        private void bnt_filtrar_Click(object sender, EventArgs e)
+        {
+            // filtrar de acordo
         }
     }
 }
