@@ -1,19 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using TruckDriver.WindowsFormsApp.Controls;
-using TruckDriver.WindowsFormsApp.Formularios;
-using WindowsFormsApp1.Formularios;
-using WindowsFormsApp1.Formularios.Cadastros;
 using TruckDriver.WindowsFormsApp.Formularios.ChildForms;
-using System.Threading;
 using TruckDriver.WindowsFormsApp.Formularios.Login;
 
 namespace TruckDriver.WindowsFormsApp.Formularios
@@ -22,7 +13,7 @@ namespace TruckDriver.WindowsFormsApp.Formularios
     public partial class frm_Principal : Form
     {
         Thread t1;
-        public Button currentButton;        
+        public Button currentButton;
         public Form activeForm;
 
         public frm_Principal()
@@ -75,7 +66,7 @@ namespace TruckDriver.WindowsFormsApp.Formularios
             DisableButtons();
             lblTitle.Text = "HOME";
             panelTitleBar.BackColor = Color.FromArgb(51, 51, 77);
-            panelLogo.BackColor = Color.FromArgb(39, 39, 58);            
+            panelLogo.BackColor = Color.FromArgb(39, 39, 58);
             currentButton = null;
             btnCloseChildren.Visible = false;
         }
@@ -83,38 +74,38 @@ namespace TruckDriver.WindowsFormsApp.Formularios
 
         public void OnActivateButton(TruckDriverPanelButton btnSender, ChildBase childForm)
         {
-     
-             if (currentButton != (TruckDriverPanelButton)btnSender)
-                {
-                    DisableButtons();
-                    currentButton = (TruckDriverPanelButton)btnSender;
-                    Color color = btnSender._color;
-                    btnSender.ActivateThisButton();
-                    panelTitleBar.BackColor = color;
-                    panelLogo.BackColor = ThemeColor.ChangeColorBrightness(color, -0.3);
-                    ThemeColor.PrimaryColor = color;
-                    ThemeColor.SecondaryColor = ThemeColor.ChangeColorBrightness(color, -0.3);
-                    btnCloseChildren.Visible = true;
-       
-                   if (activeForm != null)
-                        activeForm.Close();
-                    activeForm = childForm;
-                    PanelChildren.Controls.Add(childForm);
-                    PanelChildren.Tag = childForm;
-                    lblTitle.Text = childForm.Text;
-                    childForm.BringToFront();
-                    childForm.Show();
 
-                }
-            
+            if (currentButton != (TruckDriverPanelButton)btnSender)
+            {
+                DisableButtons();
+                currentButton = (TruckDriverPanelButton)btnSender;
+                Color color = btnSender._color;
+                btnSender.ActivateThisButton();
+                panelTitleBar.BackColor = color;
+                panelLogo.BackColor = ThemeColor.ChangeColorBrightness(color, -0.3);
+                ThemeColor.PrimaryColor = color;
+                ThemeColor.SecondaryColor = ThemeColor.ChangeColorBrightness(color, -0.3);
+                btnCloseChildren.Visible = true;
+
+                if (activeForm != null)
+                    activeForm.Close();
+                activeForm = childForm;
+                PanelChildren.Controls.Add(childForm);
+                PanelChildren.Tag = childForm;
+                lblTitle.Text = childForm.Text;
+                childForm.BringToFront();
+                childForm.Show();
+
+            }
+
         }
 
         public void DisableButtons()
         {
             foreach (Control previousBtn in panelMenu.Controls)
             {
-                if (previousBtn.GetType() == typeof(TruckDriverPanelButton)) 
-                    ((TruckDriverPanelButton)previousBtn).DisableThisButton();                
+                if (previousBtn.GetType() == typeof(TruckDriverPanelButton))
+                    ((TruckDriverPanelButton)previousBtn).DisableThisButton();
             }
         }
 

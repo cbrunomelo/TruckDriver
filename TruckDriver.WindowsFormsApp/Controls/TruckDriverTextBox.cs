@@ -16,6 +16,8 @@ namespace WindowsFormsApp1.Controls
 
         private bool _NotAllowWhiteSpace { get; set; } = false;
 
+        private int _MaxNumberAllowed { get; set; } = 0;
+
         public void NotAllowNumbers() => _NotAllowNumbers = true;            
         
         public void NotAllowLetters() => _NotAllowLetters = true;            
@@ -33,13 +35,20 @@ namespace WindowsFormsApp1.Controls
             NotAllowDigit(char.IsDigit(e.KeyChar), _NotAllowNumbers, e);
             NotAllowDigit(char.IsLetter(e.KeyChar), _NotAllowLetters, e);
             NotAllowDigit(e.KeyChar == ' ', _NotAllowWhiteSpace, e);
-                           
+
+
+            
         }
 
         private void NotAllowDigit(bool cond1, bool cond2, KeyPressEventArgs e)
         { 
             if(cond1 && cond2)
                 e.Handled = true;
+        }
+
+        private bool VerifyMaxNumber() 
+        {
+            return false;
         }
     }
 }
