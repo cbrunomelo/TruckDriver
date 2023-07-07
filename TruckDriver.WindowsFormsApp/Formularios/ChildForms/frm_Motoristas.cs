@@ -9,9 +9,11 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
 {
     public partial class frm_Motoristas : ChildBase
     {
-        private int PaginaAtual = 1;
+        private int _PaginaAtual = 1;
         private int _UltimaPagina;
         private const int _NumeroDeRegistroPorPagina = 23;
+        private string _FiltroNomeAtual = string.Empty;
+        private string _FiltroStatusAtual = string.Empty;
 
 
         private IMotoristaQuery _query;
@@ -48,16 +50,16 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
 
         }
 
-        private void UpdateGrid(int skip = 0)
+        private void UpdateGrid(int skip = 0, string filtroNome = "", string filtroStatus = "")
         {
-            dgv_Motoristas.DataSource = _query.GetMotoristas(skip, _NumeroDeRegistroPorPagina);
+            dgv_Motoristas.DataSource = _query.GetMotoristas(skip, _NumeroDeRegistroPorPagina, filtroNome, filtroStatus);
             dgv_Motoristas.Columns[0].HeaderText = "Nome";
             dgv_Motoristas.Columns[1].HeaderText = "Sobrenome";
             dgv_Motoristas.Columns[2].HeaderText = "Cpf";
             dgv_Motoristas.Columns[3].HeaderText = "Cnh";
             dgv_Motoristas.Columns[4].HeaderText = "Telefone";
-
-            lbl_NumeroDePaginas.Text = $"{PaginaAtual} de {_UltimaPagina} Páginas";
+            
+            lbl_NumeroDePaginas.Text = $"{_PaginaAtual} de {_UltimaPagina} Páginas";
         }
 
 
@@ -82,18 +84,27 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
         {
             int IrParaPagina = Convert.ToInt32(txt_Ir.Text);
             int skip = (IrParaPagina - 1) * _NumeroDeRegistroPorPagina;
-            PaginaAtual = IrParaPagina;
-            UpdateGrid(skip);
-
-
-
-
-            // com o filtro acima
+            _PaginaAtual = IrParaPagina;
+            int numeroDigitado = Convert.ToInt32(txt_Ir.Text);
+            if (numeroDigitado > _UltimaPagina)
+                return;
+            UpdateGrid(skip, _FiltroNomeAtual, _FiltroStatusAtual);
+            
         }
 
         private void bnt_filtrar_Click(object sender, EventArgs e)
-        {
-            // filtrar de acordo
+        {            
+            string filtroNome = txt_BuscarPorNome.Text;
+            string filtroStatus = string.Empty;
+
+            txt_Ir.Text = string.Empty;
+            _PaginaAtual = 1;
+            _FiltroNomeAtual = filtroNome;
+
+            _UltimaPagina = (_query.QuantidadeDeMotoristas(filtroNome, filtroStatus) / _NumeroDeRegistroPorPagina) + 1;
+
+            UpdateGrid(0, filtroNome, _FiltroStatusAtual);
+            
         }
     }
 }

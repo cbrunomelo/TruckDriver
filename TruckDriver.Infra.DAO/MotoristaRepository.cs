@@ -22,9 +22,13 @@ namespace TruckDriver.Infra.ADO
             return _repository.Creat(motorista);
         }
 
-        public DataTable GetMotoristas(int skip, int take)
+        public DataTable GetMotoristas(int skip, int take, string filtroNome , string filtroStatus)
         {            
-            string query = "SELECT Nome, Sobrenome, Cpf, Cnh, Telefone FROM Motorista LIMIT @Take OFFSET @Skip";
+            string query = "SELECT Nome, Sobrenome, Cpf, Cnh, Telefone FROM Motorista ";
+            if (filtroNome != "")
+                query += "where nome = @filtroNome ";
+
+            query += "LIMIT @Take OFFSET @Skip";
 
             DataTable dataTable = new DataTable();
 
@@ -35,6 +39,8 @@ namespace TruckDriver.Infra.ADO
                 SqliteCommand command = new SqliteCommand(query, connection);
                 command.Parameters.AddWithValue("@Skip", skip);
                 command.Parameters.AddWithValue("@Take", take);
+                if (filtroNome != "")
+                    command.Parameters.AddWithValue("@filtroNome", filtroNome);
 
 
                 SqliteDataReader reader = command.ExecuteReader();
@@ -47,9 +53,23 @@ namespace TruckDriver.Infra.ADO
             return dataTable;
         }
 
-        public int QuantidadeDeMotoristas()
+        public DataTable GetMotoristas(int skip, int take) => GetMotoristas(skip, take, string.Empty, string.Empty);
+
+        public DataTable GetMotoristas(string filtroNome, string filtroStatus) => GetMotoristas(0, Int32.MaxValue, filtroNome, filtroStatus);
+
+        public DataTable GetMotoristas() => GetMotoristas(string.Empty, string.Empty);
+
+
+        public int QuantidadeDeMotoristas() => QuantidadeDeMotoristas(string.Empty, string.Empty);
+
+        public int QuantidadeDeMotoristas(string filtroNome = "", string filtroStatus = "")
         {
-            string query = "SELECT COUNT(*) FROM Motorista";
+            string query = "SELECT COUNT(*) FROM Motorista ";
+
+            if (!string.IsNullOrEmpty(filtroNome))
+                query += "Where nome = @filtroNome";
+
+
 
             int quantidadeRegistros = 0;
 
@@ -58,6 +78,9 @@ namespace TruckDriver.Infra.ADO
                 connection.Open();
 
                 SqliteCommand command = new SqliteCommand(query, connection);
+
+                if (!string.IsNullOrEmpty(filtroNome))
+                    command.Parameters.AddWithValue("@filtroNome", filtroNome);
 
                 quantidadeRegistros = Convert.ToInt32(command.ExecuteScalar());
             }

@@ -57,7 +57,7 @@
             this.grp_Motoristas.Controls.Add(this.dgv_Motoristas);
             this.grp_Motoristas.Location = new System.Drawing.Point(3, 100);
             this.grp_Motoristas.Name = "grp_Motoristas";
-            this.grp_Motoristas.Size = new System.Drawing.Size(1122, 496);
+            this.grp_Motoristas.Size = new System.Drawing.Size(1146, 536);
             this.grp_Motoristas.TabIndex = 0;
             this.grp_Motoristas.TabStop = false;
             this.grp_Motoristas.Text = "Motoristas";
@@ -70,7 +70,7 @@
             this.dgv_Motoristas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Motoristas.Location = new System.Drawing.Point(3, 16);
             this.dgv_Motoristas.Name = "dgv_Motoristas";
-            this.dgv_Motoristas.Size = new System.Drawing.Size(1116, 477);
+            this.dgv_Motoristas.Size = new System.Drawing.Size(1140, 517);
             this.dgv_Motoristas.TabIndex = 0;
             this.dgv_Motoristas.SizeChanged += new System.EventHandler(this.dgv_Motoristas_SizeChanged);
             // 
@@ -78,7 +78,7 @@
             // 
             this.btn_Adcionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Adcionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Adcionar.Location = new System.Drawing.Point(1047, 619);
+            this.btn_Adcionar.Location = new System.Drawing.Point(1071, 659);
             this.btn_Adcionar.Name = "btn_Adcionar";
             this.btn_Adcionar.Size = new System.Drawing.Size(75, 23);
             this.btn_Adcionar.TabIndex = 1;
@@ -90,7 +90,7 @@
             // 
             this.btn_Exibir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Exibir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Exibir.Location = new System.Drawing.Point(966, 619);
+            this.btn_Exibir.Location = new System.Drawing.Point(990, 659);
             this.btn_Exibir.Name = "btn_Exibir";
             this.btn_Exibir.Size = new System.Drawing.Size(75, 23);
             this.btn_Exibir.TabIndex = 2;
@@ -101,7 +101,7 @@
             // 
             this.btn_Cancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Cancelar.Location = new System.Drawing.Point(885, 619);
+            this.btn_Cancelar.Location = new System.Drawing.Point(909, 659);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(75, 23);
             this.btn_Cancelar.TabIndex = 3;
@@ -171,7 +171,7 @@
             // 
             this.lbl_NumeroDePaginas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbl_NumeroDePaginas.AutoSize = true;
-            this.lbl_NumeroDePaginas.Location = new System.Drawing.Point(315, 596);
+            this.lbl_NumeroDePaginas.Location = new System.Drawing.Point(327, 636);
             this.lbl_NumeroDePaginas.Name = "lbl_NumeroDePaginas";
             this.lbl_NumeroDePaginas.Size = new System.Drawing.Size(83, 13);
             this.lbl_NumeroDePaginas.TabIndex = 5;
@@ -181,7 +181,7 @@
             // 
             this.btn_Anterior.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_Anterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Anterior.Location = new System.Drawing.Point(278, 619);
+            this.btn_Anterior.Location = new System.Drawing.Point(290, 659);
             this.btn_Anterior.Name = "btn_Anterior";
             this.btn_Anterior.Size = new System.Drawing.Size(75, 23);
             this.btn_Anterior.TabIndex = 6;
@@ -192,7 +192,7 @@
             // 
             this.btn_Proximo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_Proximo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Proximo.Location = new System.Drawing.Point(359, 619);
+            this.btn_Proximo.Location = new System.Drawing.Point(371, 659);
             this.btn_Proximo.Name = "btn_Proximo";
             this.btn_Proximo.Size = new System.Drawing.Size(75, 23);
             this.btn_Proximo.TabIndex = 7;
@@ -203,7 +203,7 @@
             // 
             this.btn_Ir.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_Ir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Ir.Location = new System.Drawing.Point(527, 618);
+            this.btn_Ir.Location = new System.Drawing.Point(539, 658);
             this.btn_Ir.Name = "btn_Ir";
             this.btn_Ir.Size = new System.Drawing.Size(75, 23);
             this.btn_Ir.TabIndex = 8;
@@ -214,7 +214,7 @@
             // txt_Ir
             // 
             this.txt_Ir.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.txt_Ir.Location = new System.Drawing.Point(483, 620);
+            this.txt_Ir.Location = new System.Drawing.Point(495, 660);
             this.txt_Ir.Name = "txt_Ir";
             this.txt_Ir.Size = new System.Drawing.Size(38, 20);
             this.txt_Ir.TabIndex = 9;
@@ -224,7 +224,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1130, 654);
+            this.ClientSize = new System.Drawing.Size(1154, 694);
             this.Controls.Add(this.txt_Ir);
             this.Controls.Add(this.btn_Ir);
             this.Controls.Add(this.btn_Proximo);
