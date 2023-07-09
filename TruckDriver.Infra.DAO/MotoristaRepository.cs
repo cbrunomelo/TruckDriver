@@ -26,7 +26,7 @@ namespace TruckDriver.Infra.ADO
         {            
             string query = "SELECT Nome, Sobrenome, Cpf, Cnh, Telefone FROM Motorista ";
             if (filtroNome != "")
-                query += "where nome = @filtroNome ";
+                query += "Where LOWER(nome) = LOWER(@filtroNome) ";
 
             query += "LIMIT @Take OFFSET @Skip";
 
@@ -67,7 +67,7 @@ namespace TruckDriver.Infra.ADO
             string query = "SELECT COUNT(*) FROM Motorista ";
 
             if (!string.IsNullOrEmpty(filtroNome))
-                query += "Where nome = @filtroNome";
+                query += "Where LOWER(nome) = LOWER(@filtroNome)";
 
 
 
