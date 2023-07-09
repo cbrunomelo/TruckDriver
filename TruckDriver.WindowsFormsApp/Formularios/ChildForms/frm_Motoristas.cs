@@ -84,9 +84,8 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
         {
             int IrParaPagina = Convert.ToInt32(txt_Ir.Text);
             int skip = (IrParaPagina - 1) * _NumeroDeRegistroPorPagina;
-            _PaginaAtual = IrParaPagina;
-            int numeroDigitado = Convert.ToInt32(txt_Ir.Text);
-            if (numeroDigitado > _UltimaPagina)
+            _PaginaAtual = IrParaPagina;            
+            if (IrParaPagina > _UltimaPagina)
                 return;
             UpdateGrid(skip, _FiltroNomeAtual, _FiltroStatusAtual);
             
@@ -106,5 +105,17 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
             UpdateGrid(0, filtroNome, _FiltroStatusAtual);
             
         }
+
+        private void btn_LimparFiltro_Click(object sender, EventArgs e)
+        {
+            _FiltroNomeAtual = string.Empty;
+            txt_BuscarPorNome.Text = string.Empty;
+            txt_Ir.Text = string.Empty;
+            _PaginaAtual = 1;
+            _UltimaPagina = (_query.QuantidadeDeMotoristas() / _NumeroDeRegistroPorPagina) + 1;            
+            UpdateGrid();
+        }
+
+        
     }
 }
