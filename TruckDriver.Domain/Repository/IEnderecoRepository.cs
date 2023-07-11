@@ -5,8 +5,7 @@ using TruckDriver.Domain.Entitys;
 
 namespace TruckDriver.Domain.Repository
 {
-    public interface IEnderecoRepository
+    public interface IEnderecoRepository : IRepository<Endereco>
     {
-        void Creat(Endereco endereco);
     }
 }

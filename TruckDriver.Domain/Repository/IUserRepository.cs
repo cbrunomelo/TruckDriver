@@ -6,8 +6,8 @@ using TruckDriver.Domain.Entitys;
 
 namespace TruckDriver.Domain.Repository
 {
-    public interface IUserRepository : IRepository
+    public interface IUserRepository : IRepository<User>
     {
-        void Creat(User user);
+        
     }
 }

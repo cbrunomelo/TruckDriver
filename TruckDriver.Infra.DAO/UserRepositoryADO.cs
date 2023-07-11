@@ -23,7 +23,7 @@ namespace TruckDriver.Infra.DAO
 
     }
         
-        public  User GetUserByName(string name)
+        public  User GetByName(string name)
         {
             string sql = "SELECT id, name, password FROM user WHERE name = @name";
 

@@ -8,7 +8,7 @@ using TruckDriver.Infra.DAO;
 
 namespace TruckDriver.Infra.ADO
 {
-    public class RepositoryBase<TEntity> : IRepository where TEntity : Entity
+    public class RepositoryBase<TEntity> : IRepository<TEntity> where TEntity : Entity
     {
         public readonly string connectionString = ConnectionString.Get();
 
