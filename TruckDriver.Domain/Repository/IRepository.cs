@@ -5,10 +5,8 @@ using TruckDriver.Domain.Entitys;
 
 namespace TruckDriver.Domain.Repository
 {
-    public interface IRepository
+    public interface IRepository<TEntity>
     {
-        
-
-        
+        int Creat(TEntity entity);
     }
 }

@@ -5,8 +5,7 @@ using TruckDriver.Domain.Entitys;
 
 namespace TruckDriver.Domain.Repository
 {
-    public interface IMotoristaRepository : IRepository
-    {
-        int Creat(Motorista motorista);
+    public interface IMotoristaRepository : IRepository<Motorista>
+    {        
     }
 }

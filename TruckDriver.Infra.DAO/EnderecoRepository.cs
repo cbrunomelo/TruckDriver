@@ -13,9 +13,7 @@ namespace TruckDriver.Infra.ADO
         {
             _repositoryBase = new RepositoryBase<Endereco>();
         }
-        public void Creat(Endereco endereco)
-        {
-            _repositoryBase.Creat(endereco);
-        }
+        public int Creat(Endereco endereco) => _repositoryBase.Creat(endereco);
+        
     }
 }

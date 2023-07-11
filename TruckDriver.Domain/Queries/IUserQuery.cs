@@ -8,7 +8,7 @@ namespace TruckDriver.Domain.Queries
     public interface IUserQuery
     {
 
-        User GetUserByName(string name);
+        User GetByName(string name);
 
     }
 

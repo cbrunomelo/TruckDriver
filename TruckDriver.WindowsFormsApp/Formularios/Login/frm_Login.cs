@@ -55,7 +55,7 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
             string nome = txtUsuario.Text == txtUsuario.DefaultPlaceHolder ? string.Empty : txtUsuario.Text;
             string senha = txtSenha.Text == txtSenha.DefaultPlaceHolder ? string.Empty : txtSenha.Text;
 
-            User user = _userQuery.GetUserByName(nome);            
+            User user = _userQuery.GetByName(nome);            
 
             if (user != null && user.VerifyPassword(senha))
             {

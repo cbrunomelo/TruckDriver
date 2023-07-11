@@ -45,7 +45,7 @@ namespace TruckDriver.Domain.Handlers
 
         public ICommandResult Handle(string name, string password) 
         {
-            User user = _userquery.GetUserByName(name);
+            User user = _userquery.GetByName(name);
 
             if(user == null)
                 return new GenericCommandResult(false, "Usuario ou senha invalida", null);

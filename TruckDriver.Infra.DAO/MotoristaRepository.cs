@@ -22,7 +22,7 @@ namespace TruckDriver.Infra.ADO
             return _repository.Creat(motorista);
         }
 
-        public DataTable GetMotoristas(int skip, int take, string filtroNome , string filtroStatus)
+        public DataTable GetMotoristas(int skip, int take, string filtroNome, string filtroStatus)
         {            
             string query = "SELECT Nome, Sobrenome, Cpf, Cnh, Telefone FROM Motorista ";
             if (filtroNome != "")
@@ -59,10 +59,9 @@ namespace TruckDriver.Infra.ADO
 
         public DataTable GetMotoristas() => GetMotoristas(string.Empty, string.Empty);
 
-
         public int QuantidadeDeMotoristas() => QuantidadeDeMotoristas(string.Empty, string.Empty);
 
-        public int QuantidadeDeMotoristas(string filtroNome = "", string filtroStatus = "")
+        public int QuantidadeDeMotoristas(string filtroNome, string filtroStatus)
         {
             string query = "SELECT COUNT(*) FROM Motorista ";
 
