@@ -17,11 +17,9 @@ namespace TruckDriver.Infra.DAO
             this.repositoryBase = repositoryBase;
         }
 
-        public void Creat(User user)
-        {
-            repositoryBase.Creat(user); 
+        public int Creat(User user) =>  repositoryBase.Creat(user); 
 
-    }
+    
         
         public  User GetByName(string name)
         {
