@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TruckDriver.Domain", "Truck
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TruckDriver.Infra.ADO", "TruckDriver.Infra.DAO\TruckDriver.Infra.ADO.csproj", "{9B7B9F68-98A6-480D-B950-A7E6291FB28C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TruckDriver.Domain.Tests", "TruckDriver.Domain.Tests\TruckDriver.Domain.Tests.csproj", "{761C4DC4-C749-4B4B-BDE4-3C65531A7599}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3BD6F952-4408-4A38-BD2A-969367C6E2D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +31,16 @@ Global
 		{9B7B9F68-98A6-480D-B950-A7E6291FB28C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B7B9F68-98A6-480D-B950-A7E6291FB28C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B7B9F68-98A6-480D-B950-A7E6291FB28C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{761C4DC4-C749-4B4B-BDE4-3C65531A7599}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{761C4DC4-C749-4B4B-BDE4-3C65531A7599}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{761C4DC4-C749-4B4B-BDE4-3C65531A7599}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{761C4DC4-C749-4B4B-BDE4-3C65531A7599}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{761C4DC4-C749-4B4B-BDE4-3C65531A7599} = {3BD6F952-4408-4A38-BD2A-969367C6E2D5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F6B32FAE-66AD-4C34-94AA-EED6AF862DAA}

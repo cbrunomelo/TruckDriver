@@ -8,6 +8,8 @@ using TruckDriver.Domain.Commands.Contracts;
 using TruckDriver.Domain.Commands.EnderecoCommands;
 using TruckDriver.Domain.Commands.EnderecoCommands.Validations;
 using TruckDriver.Domain.Entitys;
+using TruckDriver.Domain.Extensions;
+using TruckDriver.Domain.MessageConstants;
 using TruckDriver.Domain.Repository;
 
 namespace TruckDriver.Domain.Handlers
@@ -27,13 +29,13 @@ namespace TruckDriver.Domain.Handlers
             ValidationResult result = validator.Validate(command);
 
             if (!result.IsValid)
-                return new GenericCommandResult(false, "Nao foi possivel criar novo endereço", result.Errors);
+                return new GenericCommandResult(false, MessageConstant.UNABLE_TO_CREATE, result.ToList());
 
             Endereco endereco = new Endereco(command.Fk_motorista_id, command.Cep, command.logradouro, command.complemento, command.bairro, command.cidade, command.estado);
 
             _repository.Creat(endereco);
 
-            return new GenericCommandResult(true, "Usuario criado com sucesso", result.Errors);
+            return new GenericCommandResult(true, MessageConstant.CREATED_SUCCESSFULLY);
         }
     }
 }

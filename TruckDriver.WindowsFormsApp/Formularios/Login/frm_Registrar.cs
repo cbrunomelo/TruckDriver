@@ -60,8 +60,8 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
 
             if (!result.Success)
             {
-
-                AtualizaControlles((List<ValidationFailure>)result.Data);
+                
+                AtualizaControlles(result.Erros);
                 return;
             }
 
@@ -87,7 +87,7 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
             return new CreateUserCommand(nome, senha, Repetesenha);
         }
 
-        private void AtualizaControlles(List<ValidationFailure> erros)
+        private void AtualizaControlles(IEnumerable<String> erros)
         {            
             label1.Visible = true;
             picLogo.Visible= false;
@@ -95,7 +95,7 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
             
             foreach(var erro in erros)
             {
-                label1.Text += erro.ErrorMessage;
+                label1.Text += erro;
                 label1.Text += "\n";
             }
         }
