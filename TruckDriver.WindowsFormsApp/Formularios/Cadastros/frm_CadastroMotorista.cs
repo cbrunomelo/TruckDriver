@@ -20,9 +20,12 @@ namespace WindowsFormsApp1.Formularios.Cadastros
         {
             InitializeComponent();
             AtualizarControles();
-            _handler = new MotoristaHandler(new MotoristaRepository());
+
+
+
             _enderecoHandler = new EnderecoHandler(new EnderecoRepository());
 
+            _handler = new MotoristaHandler(new MotoristaRepository(), _enderecoHandler);
         }
 
         private void btn_Cancelar_Click(object sender, EventArgs e)
@@ -52,6 +55,16 @@ namespace WindowsFormsApp1.Formularios.Cadastros
             command.telefone = mtxt_Celular.Text;
             command.cpf = mtxt_CPF.Text;
 
+            command.enderecoCommand = new CreateEnderecoCommand()
+            {
+               bairro = txt_Bairro.Text,
+                Cep = mtxt_CEP.Text,
+                logradouro = txt_Logradouro.Text,
+                complemento = txt_Complemento.Text,
+                cidade = txt_Cidade.Text,
+                estado = txt_estado.Text
+            };
+
 
             GenericCommandResult result = (GenericCommandResult)_handler.Handle(command);
 
@@ -66,24 +79,9 @@ namespace WindowsFormsApp1.Formularios.Cadastros
                 MessageBox.Show($"Nao foi possivel criar um novo motorista:\n{erros}", "Erro");
                 return;
             }
-            else
-            {
-                CreateEnderecoCommand createEnderecoCommand = new CreateEnderecoCommand();
 
-                createEnderecoCommand.bairro = txt_Bairro.Text;
-                createEnderecoCommand.Cep = mtxt_CEP.Text;
-                createEnderecoCommand.logradouro = txt_Logradouro.Text;
-                createEnderecoCommand.complemento = txt_Complemento.Text;
-                createEnderecoCommand.cidade = txt_Cidade.Text;
-                createEnderecoCommand.estado = txt_estado.Text;
-                createEnderecoCommand.Fk_motorista_id = (int)result.Data;
-
-                GenericCommandResult enderecoCommandresult = (GenericCommandResult)_enderecoHandler.Handle(createEnderecoCommand);
-
-
-
-                MessageBox.Show("Motorista Criado com sucesso", "Sucesso");
-            }
+            MessageBox.Show("Motorista Criado com sucesso", "Sucesso");
+            
 
         }
 

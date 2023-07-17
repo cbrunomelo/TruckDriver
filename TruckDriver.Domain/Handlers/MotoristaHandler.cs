@@ -1,8 +1,5 @@
 ﻿using FluentValidation.Results;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using TruckDriver.Domain.Commands;
 using TruckDriver.Domain.Commands.Contracts;
 using TruckDriver.Domain.Commands.MotoristaCommands;
@@ -17,10 +14,12 @@ namespace TruckDriver.Domain.Handlers
     public class MotoristaHandler
     {
         private IMotoristaRepository _repository;
+        private EnderecoHandler _enderecoHandler;
 
-        public MotoristaHandler(IMotoristaRepository repository)
+        public MotoristaHandler(IMotoristaRepository repository, EnderecoHandler enderecoHandler)
         {
             _repository = repository;
+            _enderecoHandler = enderecoHandler;
         }
 
         public ICommandResult Handle(CreateMotoristaCommand command)
@@ -31,12 +30,18 @@ namespace TruckDriver.Domain.Handlers
             if (!result.IsValid)
                 return new GenericCommandResult(false, MessageConstant.UNABLE_TO_CREATE, result.ToList());
 
-            Motorista motorista = new Motorista(command.Name, command.Sobrenome, command.cpf, command.cnh, command.telefone);
+            var resultEndereco = (GenericCommandResult)_enderecoHandler.Handle(command.enderecoCommand);
+            if (!resultEndereco.Success)
+                return new GenericCommandResult(false, MessageConstant.UNABLE_TO_CREATE, resultEndereco.Erros);
+
+            int enderecoId = resultEndereco.Id;
+
+            Motorista motorista = new Motorista(command.Name, command.Sobrenome, command.cpf, command.cnh, command.telefone, enderecoId);
 
             int id = _repository.Creat(motorista);
 
-            return new GenericCommandResult(true, MessageConstant.CREATED_SUCCESSFULLY,string.Empty ,id);
-            
-       }
+            return new GenericCommandResult(true, MessageConstant.CREATED_SUCCESSFULLY, id);
+
+        }
     }
 }

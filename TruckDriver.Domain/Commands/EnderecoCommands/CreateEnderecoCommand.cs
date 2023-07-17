@@ -9,8 +9,6 @@ namespace TruckDriver.Domain.Commands.EnderecoCommands
         public CreateEnderecoCommand() { }
 
 
-        public int Fk_motorista_id;
-
         public string Cep;
 
         public string logradouro;

@@ -23,8 +23,24 @@ namespace TruckDriver.Domain.Commands
             Erros = new[] {erro};
         }
 
+        public GenericCommandResult(bool success, string message, int id)
+        {
+            Id = id;
+            Success = success;
+            Message = message;
+            Data = null;
+            Erros = null;
+        }
+
+        public GenericCommandResult(bool success, string message, object data)
+        {
+            Success = success;
+            Message = message;
+            Data = data;
+        }
 
 
+        public int Id { get; set; }
         public bool Success { get; set; }
         public string Message { get; set; }
         public object Data { get; set; }

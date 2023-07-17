@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using TruckDriver.Domain.Commands.EnderecoCommands;
 
 namespace TruckDriver.Domain.Commands.MotoristaCommands
 {
@@ -19,6 +20,8 @@ namespace TruckDriver.Domain.Commands.MotoristaCommands
         }
 
         public string Name { get; set; }
+
+        public CreateEnderecoCommand enderecoCommand { get; set; }
 
         public string Sobrenome { get; set; }
 
