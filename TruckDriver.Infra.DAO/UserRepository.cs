@@ -9,10 +9,10 @@ using TruckDriver.Infra.ADO;
 
 namespace TruckDriver.Infra.DAO
 {
-    public class UserRepositoryADO : IUserRepository, IUserQuery
+    public class UserRepository : IUserRepository, IUserQuery
     {
         private RepositoryBase<User> repositoryBase;
-        public UserRepositoryADO(RepositoryBase<User> repositoryBase)
+        public UserRepository(RepositoryBase<User> repositoryBase)
         {
             this.repositoryBase = repositoryBase;
         }

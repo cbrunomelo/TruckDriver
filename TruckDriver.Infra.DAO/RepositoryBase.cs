@@ -43,7 +43,7 @@ namespace TruckDriver.Infra.ADO
 
                 foreach (var prop in entity.GetType().GetProperties())
                 {
-                    if (prop.Name == "TABLE_NAME" || (prop.Name.ToLower().EndsWith("id") && !prop.Name.ToLower().Contains("fk")))
+                    if (PropriedadeDeClassesASeremIgnoradas(prop.Name))
                         continue;
                     propNames += prop.Name + ",";
                     values += $"@valor{i}, ";
@@ -61,7 +61,7 @@ namespace TruckDriver.Infra.ADO
                 i = 1;
                 foreach (var prop in entity.GetType().GetProperties())
                 {
-                    if (prop.Name == "TABLE_NAME" || (prop.Name.ToLower().EndsWith("id") && !prop.Name.ToLower().Contains("fk")))
+                    if (PropriedadeDeClassesASeremIgnoradas(prop.Name))
                         continue;
                     command.Parameters.AddWithValue($"valor{i}", prop.GetValue(entity));
                     i++;
@@ -75,6 +75,20 @@ namespace TruckDriver.Infra.ADO
                 return (int)idInserido;
 
             }
+        }
+
+        private bool PropriedadeDeClassesASeremIgnoradas(string str)
+        {
+            if (str == "TABLE_NAME")
+                return true;
+
+            if (str.EndsWith("id", StringComparison.OrdinalIgnoreCase) && !str.StartsWith("fk", StringComparison.OrdinalIgnoreCase))
+                return true;
+
+            if (str == "Coleta_Endereco" || str == "Destino_Endereco")
+                return true;
+
+            return false;
         }
     }
 }

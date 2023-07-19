@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace TruckDriver.Domain.Entitys.PedidosState
+{
+    public class PedidoEmTransito : IPedidoStatus
+    {
+        public IPedidoStatus AvancarStatus()
+        {
+            return new PedidoEntregue();
+        }
+
+
+        public IPedidoStatus VoltarStatus()
+        {
+            return new PedidoPendente();
+        }
+        public EStatus GetStatus()
+        {
+            return EStatus.EmTransito;
+        }
+    }
+}

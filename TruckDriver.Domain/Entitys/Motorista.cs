@@ -8,13 +8,14 @@ namespace TruckDriver.Domain.Entitys
     {
         public override string TABLE_NAME { get => "Motorista"; set => base.TABLE_NAME = value; }
 
-        public Motorista(string name, string sobrenome, string cpf, string cnh, string telefone)
+        public Motorista(string name, string sobrenome, string cpf, string cnh, string telefone, int Fk_enderecoId)
         {            
             Nome = name;
             Sobrenome = sobrenome;
             this.cpf = cpf;
             this.cnh = cnh;
             this.telefone = telefone;
+            this.Fk_enderecoId = Fk_enderecoId;
         }
 
         public Motorista()
@@ -33,5 +34,7 @@ namespace TruckDriver.Domain.Entitys
         public string cnh { get; set; }
 
         public string telefone { get; set; }
+
+        public int Fk_enderecoId { get; set; }
     }
 }

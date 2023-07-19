@@ -31,11 +31,11 @@ namespace TruckDriver.Domain.Handlers
             if (!result.IsValid)
                 return new GenericCommandResult(false, MessageConstant.UNABLE_TO_CREATE, result.ToList());
 
-            Endereco endereco = new Endereco(command.Fk_motorista_id, command.Cep, command.logradouro, command.complemento, command.bairro, command.cidade, command.estado);
+            Endereco endereco = new Endereco(command.Cep, command.logradouro, command.complemento, command.bairro, command.cidade, command.estado);
 
-            _repository.Creat(endereco);
+            endereco.Id = _repository.Creat(endereco);
 
-            return new GenericCommandResult(true, MessageConstant.CREATED_SUCCESSFULLY);
+            return new GenericCommandResult(true, MessageConstant.CREATED_SUCCESSFULLY, endereco);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace TruckDriver.WindowsFormsApp.Repository
 {
     public static class HandlerInstances
     {
-        public static IUserRepository GetUserRepo() => new UserRepositoryADO(new RepositoryBase<User>());
+        public static IUserRepository GetUserRepo() => new UserRepository(new RepositoryBase<User>());
         
         public static UserHandler GetUserHandler() => new UserHandler(GetUserRepo());
 

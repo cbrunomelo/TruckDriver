@@ -18,6 +18,9 @@ namespace TruckDriver.Domain.Commands.MotoristaCommands.Validations
                     context.AddFailure("Cpf inválido");
                 }
             });
+
+            RuleFor(x => x.enderecoCommand).Must(x => x != null).WithMessage("Endereco nao pode ser vazio");
+
         }
     }
 }
