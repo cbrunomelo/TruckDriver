@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using TruckDriver.Domain.Commands.EnderecoCommands;
 using TruckDriver.Domain.Entitys;
-using TruckDriver.Domain.Entitys.PedidosState;
 
 namespace TruckDriver.Domain.Commands.PedidosCommands
 {

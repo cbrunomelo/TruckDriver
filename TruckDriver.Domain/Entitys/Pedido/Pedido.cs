@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using TruckDriver.Domain.Entitys.PedidosState;
 using TruckDriver.Domain.Services;
 
@@ -6,6 +7,8 @@ namespace TruckDriver.Domain.Entitys
 {
     public class Pedido : Entity
     {
+        public override string TABLE_NAME { get => "Pedido"; set => base.TABLE_NAME = value; }
+        public const int DISTANCIA_MINIMA_KM = 100;
         private const float VALOR_KM = 2.5f;
         private IPedidoStatus _status;
         private ICepService _distancecalculator;
@@ -41,7 +44,7 @@ namespace TruckDriver.Domain.Entitys
 
         public float Preco { get; private set; }
 
-        public int Coleta_EnderecoId
+        public int Fk_Coleta_EnderecoId
         {
             get
             {
@@ -50,7 +53,7 @@ namespace TruckDriver.Domain.Entitys
             private set { }
         }
 
-        public int Destino_EnderecoId
+        public int Fk_Destino_EnderecoId
         {
             get
             {
@@ -89,11 +92,10 @@ namespace TruckDriver.Domain.Entitys
         private void PreencherValores()
         {
             DistanciaKM = _distancecalculator.CalcularDistancia(Coleta_Endereco.Cep, Destino_Endereco.Cep);
-            CriadoEm = DateTime.Now;
+            CriadoEm = UltimaAtualizacao = DateTime.Now;
             Previsao = CalcularPrevisao();
             Preco = CalcularPreco();
         }
-
 
     }
 }

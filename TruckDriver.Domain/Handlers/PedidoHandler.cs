@@ -7,10 +7,12 @@ using TruckDriver.Domain.Commands.Contracts;
 using TruckDriver.Domain.Commands.PedidosCommands;
 using TruckDriver.Domain.Commands.PedidosCommands.Validations;
 using TruckDriver.Domain.Entitys;
+using TruckDriver.Domain;
 using TruckDriver.Domain.Extensions;
 using TruckDriver.Domain.MessageConstants;
 using TruckDriver.Domain.Repository;
 using TruckDriver.Domain.Services;
+using TruckDriver.Domain.Entitys.Validation;
 
 namespace TruckDriver.Domain.Handlers
 {
@@ -18,7 +20,7 @@ namespace TruckDriver.Domain.Handlers
     {
         private IPedidoRepository _repository;
         private ICepService _cepDistanceCalculator;
-        private EnderecoHandler _enderecoHandler;
+        private EnderecoHandler _enderecoHandler;        
 
         public PedidoHandler(IPedidoRepository reposotory, ICepService cepDistanceCalculator, EnderecoHandler enderecoHandler)
         {
@@ -47,10 +49,16 @@ namespace TruckDriver.Domain.Handlers
                 return new GenericCommandResult(false, MessageConstant.UNABLE_TO_CREATE, resultEnderecoEntrega.Erros);
 
 
+            Pedido pedido = new Pedido((Endereco)resultEnderecoColeta.Data, (Endereco)resultEnderecoEntrega.Data, _cepDistanceCalculator);
 
-            Pedido pedido = new Pedido((Endereco)resultEnderecoEntrega.Data, (Endereco)resultEnderecoEntrega.Data, _cepDistanceCalculator);
+            PedidoValidation pedidoValidation = new PedidoValidation();
+            ValidationResult resultPedido = pedidoValidation.Validate(pedido);
 
-            int id = _repository.Creat(pedido);
+            if (!resultPedido.IsValid)
+                return new GenericCommandResult(false, MessageConstant.UNABLE_TO_CREATE, resultPedido.ToList());
+            
+
+            pedido.Id = _repository.Creat(pedido);
 
             return new GenericCommandResult(true, MessageConstant.CREATED_SUCCESSFULLY, pedido);
 

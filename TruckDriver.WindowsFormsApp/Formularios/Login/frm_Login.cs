@@ -43,7 +43,7 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
 
             ButtonsNames("Entrar", "Registrar");
 
-            _userQuery = new UserRepositoryADO(new RepositoryBase<User>() );
+            _userQuery = new UserRepository(new RepositoryBase<User>() );
 
         }
 

@@ -20,8 +20,8 @@ namespace TruckDriver.Domain.Entitys.PedidosState
         {
             return EStatus.Pendente;
         }
-    
-        
+
+
 
     }
 }

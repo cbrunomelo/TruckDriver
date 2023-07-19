@@ -1,4 +1,5 @@
-﻿using System.Net.NetworkInformation;
+﻿using System.Net;
+using System.Net.NetworkInformation;
 
 namespace TruckDriver.Domain.MessageConstants
 {
@@ -17,5 +18,11 @@ namespace TruckDriver.Domain.MessageConstants
         public static string PASSWORDS_DO_NOT_MATCH = "As senhas digitadas não são iguais";
 
         public static string USER_AUTHENTICATED = "Usuario autenticado";
+
+        public static string DISTANCE_MINIMUM = "Distância de ";
+
+        public static string DELIVERY_ADDRESS_CANNOT_BE_EMPTY = "O endereço de coleta não pode ser nulo";
+
+        public static string PICKUP_ADDRESS_CANNOT_BE_EMPTY = "O endereço de coleta não pode ser nulo";
     }
 }
