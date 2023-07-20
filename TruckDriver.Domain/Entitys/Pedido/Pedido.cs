@@ -10,15 +10,15 @@ namespace TruckDriver.Domain.Entitys
         public override string TABLE_NAME { get => "Pedido"; set => base.TABLE_NAME = value; }
         public const int DISTANCIA_MINIMA_KM = 100;
         private const float VALOR_KM = 2.5f;
-        private IPedidoStatus _status;
+        private IPedidoStatus _statusManager;
         private ICepService _distancecalculator;
         public Pedido(Endereco coleta, Endereco Destino, ICepService distancecalculator)
         {
             Coleta_Endereco = coleta;
             Destino_Endereco = Destino;
             _distancecalculator = distancecalculator;
-            _status = new PedidoPendente();
-            Status = _status.GetStatus();
+            _statusManager = new PedidoPendente();
+            _status = _statusManager.GetStatus();
             PreencherValores();
 
 
@@ -26,15 +26,15 @@ namespace TruckDriver.Domain.Entitys
 
         public void AvancarStatus()
         {
-            _status = _status.AvancarStatus();
-            Status = _status.GetStatus();
+            _statusManager = _statusManager.AvancarStatus();
+            _status = _statusManager.GetStatus();
             UltimaAtualizacao = DateTime.Now;
         }
 
         public void VoltarStatus()
         {
-            _status = _status.VoltarStatus();
-            Status = _status.GetStatus();
+            _statusManager = _statusManager.VoltarStatus();
+            _status = _statusManager.GetStatus();
             UltimaAtualizacao = DateTime.Now;
 
         }
@@ -66,7 +66,9 @@ namespace TruckDriver.Domain.Entitys
 
         public Endereco Destino_Endereco { get; private set; }
 
-        public EStatus Status { get; private set; }
+        private EStatus _status { get; set; }
+
+        public string Status { get => _status.ToString(); }
 
         public int Id { get; set; }
 

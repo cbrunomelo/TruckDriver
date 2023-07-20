@@ -11,7 +11,7 @@ namespace TruckDriver.Infra.ADO
 {
     public class MotoristaRepository : IMotoristaRepository, IMotoristaQuery
     {
-        private readonly RepositoryBase<Motorista> _repository;        
+        private readonly RepositoryBase<Motorista> _repository;
         public MotoristaRepository()
         {
             _repository = new RepositoryBase<Motorista>();
@@ -23,8 +23,8 @@ namespace TruckDriver.Infra.ADO
         }
 
         public DataTable GetMotoristas(int skip, int take, string filtroNome, string filtroStatus)
-        {            
-            string query = "SELECT Nome, Sobrenome, Cpf, Cnh, Telefone FROM Motorista ";
+        {
+            string query = "SELECT Nome, Sobrenome, Cpf, Cnh, Telefone, Status FROM Motorista ";
             if (filtroNome != "")
                 query += "Where LOWER(nome) = LOWER(@filtroNome) ";
 

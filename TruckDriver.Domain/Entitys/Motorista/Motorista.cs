@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TruckDriver.Domain.Entitys.MotoristaState;
 
 namespace TruckDriver.Domain.Entitys
 {
@@ -16,25 +17,25 @@ namespace TruckDriver.Domain.Entitys
             this.cnh = cnh;
             this.telefone = telefone;
             this.Fk_enderecoId = Fk_enderecoId;
+            _status = EStatus.DISPONIVEL;
         }
 
-        public Motorista()
-        {
-            
-        }
+        public int Id { get; private set; } = 0;
 
-        public int Id { get; set; } = 0;
+        public string Nome { get; private set; }
 
-        public string Nome { get; set; }
+        public string Sobrenome { get; private set; }
 
-        public string Sobrenome { get; set; }
+        public string cpf { get; private set; }
 
-        public string cpf { get; set; }
+        public string cnh { get; private set; }
 
-        public string cnh { get; set; }
+        public string telefone { get; private set; }
 
-        public string telefone { get; set; }
+        public int Fk_enderecoId { get; private set; }
 
-        public int Fk_enderecoId { get; set; }
+        private EStatus _status { get; set; }
+
+        public string Status { get => _status.ToString(); }
     }
 }
