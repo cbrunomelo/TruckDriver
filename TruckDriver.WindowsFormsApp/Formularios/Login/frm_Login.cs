@@ -1,24 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Threading;
-using TruckDriver.Domain.Commands.UserCommands;
-using TruckDriver.Domain.Handlers;
-using System.Runtime.InteropServices;
-using TruckDriver.Domain.Commands.Contracts;
-using TruckDriver.Domain.Commands;
-using FluentValidation.Results;
-using TruckDriver.Infra.DAO;
+using System.Windows.Forms;
 using TruckDriver.Domain.Entitys;
-using TruckDriver.WindowsFormsApp.Repository;
 using TruckDriver.Domain.Queries;
 using TruckDriver.Infra.ADO;
+using TruckDriver.Infra.DAO;
 
 namespace TruckDriver.WindowsFormsApp.Formularios.Login
 {
@@ -43,7 +29,7 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
 
             ButtonsNames("Entrar", "Registrar");
 
-            _userQuery = new UserRepository(new RepositoryBase<User>() );
+            _userQuery = new UserRepository();
 
         }
 
@@ -55,7 +41,7 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
             string nome = txtUsuario.Text == txtUsuario.DefaultPlaceHolder ? string.Empty : txtUsuario.Text;
             string senha = txtSenha.Text == txtSenha.DefaultPlaceHolder ? string.Empty : txtSenha.Text;
 
-            User user = _userQuery.GetByName(nome);            
+            User user = _userQuery.GetByName(nome);
 
             if (user != null && user.VerifyPassword(senha))
             {
@@ -79,11 +65,11 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
         protected override void btnNone_Click(object sender, EventArgs e)
         {
             frm_Registrar frm = new frm_Registrar();
-            
+
             frm.ShowDialog();
 
-            lblMessage.Text = frm.ReturnMessage;            
-            lblMessage.Visible=true;
+            lblMessage.Text = frm.ReturnMessage;
+            lblMessage.Visible = true;
         }
 
 

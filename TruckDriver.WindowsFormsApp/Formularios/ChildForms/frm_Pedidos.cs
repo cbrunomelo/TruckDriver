@@ -1,10 +1,8 @@
 ﻿using System;
 using TruckDriver.Domain.Commands.EnderecoCommands;
 using TruckDriver.Domain.Commands.PedidosCommands;
-using TruckDriver.Domain.Entitys;
 using TruckDriver.Domain.Handlers;
-using TruckDriver.Infra.ADO;
-using TruckDriver.Services.CepService;
+using TruckDriver.WindowsFormsApp.Factory;
 
 namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
 {
@@ -16,7 +14,7 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
         {
             InitializeComponent();
 
-            _pedidoHandler = new PedidoHandler(new PedidoRepository(new RepositoryBase<Pedido>()), new CepService(), new EnderecoHandler(new EnderecoRepository()));
+            _pedidoHandler = HandlerInstances.GetPedidoHandler();
 
         }
 
