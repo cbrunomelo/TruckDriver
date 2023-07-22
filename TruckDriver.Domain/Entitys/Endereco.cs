@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TruckDriver.Domain.Entitys
 {
-    public class Endereco : Entity
+    public sealed class Endereco : Entity
     {
         public override string TABLE_NAME { get => "Endereco"; set => base.TABLE_NAME = value; }
 

@@ -5,12 +5,12 @@ using TruckDriver.Domain.Entitys.MotoristaState;
 
 namespace TruckDriver.Domain.Entitys
 {
-    public class Motorista : Entity
+    public sealed class Motorista : Entity
     {
         public override string TABLE_NAME { get => "Motorista"; set => base.TABLE_NAME = value; }
 
         public Motorista(string name, string sobrenome, string cpf, string cnh, string telefone, int Fk_enderecoId)
-        {            
+        {
             Nome = name;
             Sobrenome = sobrenome;
             this.cpf = cpf;
@@ -33,6 +33,8 @@ namespace TruckDriver.Domain.Entitys
         public string telefone { get; private set; }
 
         public int Fk_enderecoId { get; private set; }
+
+        private IEnumerable<Pedido> _pedidos { get; set; }
 
         private EStatus _status { get; set; }
 

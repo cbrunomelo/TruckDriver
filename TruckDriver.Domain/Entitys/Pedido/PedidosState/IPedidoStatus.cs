@@ -8,7 +8,6 @@ namespace TruckDriver.Domain.Entitys.PedidosState
     {
         IPedidoStatus AvancarStatus();
         IPedidoStatus VoltarStatus();
-
         EStatus GetStatus();
 
     }

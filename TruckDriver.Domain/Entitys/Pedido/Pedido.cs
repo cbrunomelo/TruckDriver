@@ -5,7 +5,7 @@ using TruckDriver.Domain.Services;
 
 namespace TruckDriver.Domain.Entitys
 {
-    public class Pedido : Entity
+    public sealed class Pedido : Entity
     {
         public override string TABLE_NAME { get => "Pedido"; set => base.TABLE_NAME = value; }
         public const int DISTANCIA_MINIMA_KM = 100;
@@ -66,6 +66,15 @@ namespace TruckDriver.Domain.Entitys
 
         public Endereco Destino_Endereco { get; private set; }
 
+        public int? Fk_MotoristaId
+        {
+            get { return Motorista?.Id; }
+            private set {  }
+        }
+
+        private Motorista Motorista { get; set; }
+
+
         private EStatus _status { get; set; }
 
         public string Status { get => _status.ToString(); }
@@ -97,6 +106,12 @@ namespace TruckDriver.Domain.Entitys
             CriadoEm = UltimaAtualizacao = DateTime.Now;
             Previsao = CalcularPrevisao();
             Preco = CalcularPreco();
+        }
+
+        public void SetMotorista(Motorista motorista)
+        {
+            Motorista = motorista;
+            AvancarStatus();
         }
 
     }

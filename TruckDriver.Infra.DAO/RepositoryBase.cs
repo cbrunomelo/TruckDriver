@@ -63,7 +63,7 @@ namespace TruckDriver.Infra.ADO
                 {
                     if (PropriedadeDeClassesASeremIgnoradas(prop.Name))
                         continue;
-                    command.Parameters.AddWithValue($"valor{i}", prop.GetValue(entity));
+                    command.Parameters.AddWithValue($"valor{i}", prop.GetValue(entity) ?? DBNull.Value);
                     i++;
                 }
 
