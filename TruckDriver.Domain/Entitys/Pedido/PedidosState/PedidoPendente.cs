@@ -8,7 +8,7 @@ namespace TruckDriver.Domain.Entitys.PedidosState
     {
         public IPedidoStatus AvancarStatus()
         {
-            return new PedidoEmTransito();
+            return new PedidoAguardandoColeta();
         }
 
         public IPedidoStatus VoltarStatus()

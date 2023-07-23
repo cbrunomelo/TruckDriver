@@ -8,6 +8,7 @@ namespace TruckDriver.Domain.Entitys.PedidosState
     public enum EStatus
     {
         Pendente,
+        AguardandoColeta,
         EmTransito,
         Entregue
     }

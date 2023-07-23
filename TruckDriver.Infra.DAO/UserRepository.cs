@@ -12,9 +12,9 @@ namespace TruckDriver.Infra.DAO
     public class UserRepository : IUserRepository, IUserQuery
     {
         private RepositoryBase<User> repositoryBase;
-        public UserRepository(RepositoryBase<User> repositoryBase)
+        public UserRepository()
         {
-            this.repositoryBase = repositoryBase;
+            this.repositoryBase = new RepositoryBase<User>();
         }
 
         public int Creat(User user) =>  repositoryBase.Creat(user); 

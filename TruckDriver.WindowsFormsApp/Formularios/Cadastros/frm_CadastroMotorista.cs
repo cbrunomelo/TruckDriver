@@ -6,26 +6,21 @@ using TruckDriver.Domain.Commands;
 using TruckDriver.Domain.Commands.EnderecoCommands;
 using TruckDriver.Domain.Commands.MotoristaCommands;
 using TruckDriver.Domain.Handlers;
-using TruckDriver.Infra.ADO;
+using TruckDriver.WindowsFormsApp.Factory;
 using TruckDriver.WindowsFormsApp.Services;
 
 namespace WindowsFormsApp1.Formularios.Cadastros
 {
     public partial class frm_CadastroMotorista : Form
     {
-        private readonly MotoristaHandler _handler;
-        private readonly EnderecoHandler _enderecoHandler;
+        private readonly MotoristaHandler _motoristaHandler;
 
         public frm_CadastroMotorista()
         {
             InitializeComponent();
             AtualizarControles();
 
-
-
-            _enderecoHandler = new EnderecoHandler(new EnderecoRepository());
-
-            _handler = new MotoristaHandler(new MotoristaRepository(), _enderecoHandler);
+            _motoristaHandler = HandlerInstances.GetMotoristaHandler();
         }
 
         private void btn_Cancelar_Click(object sender, EventArgs e)
@@ -57,7 +52,7 @@ namespace WindowsFormsApp1.Formularios.Cadastros
 
             command.enderecoCommand = new CreateEnderecoCommand()
             {
-               bairro = txt_Bairro.Text,
+                bairro = txt_Bairro.Text,
                 Cep = mtxt_CEP.Text,
                 logradouro = txt_Logradouro.Text,
                 complemento = txt_Complemento.Text,
@@ -66,7 +61,7 @@ namespace WindowsFormsApp1.Formularios.Cadastros
             };
 
 
-            GenericCommandResult result = (GenericCommandResult)_handler.Handle(command);
+            GenericCommandResult result = (GenericCommandResult)_motoristaHandler.Handle(command);
 
 
             if (!result.Success)
@@ -81,7 +76,7 @@ namespace WindowsFormsApp1.Formularios.Cadastros
             }
 
             MessageBox.Show("Motorista Criado com sucesso", "Sucesso");
-            
+
 
         }
 

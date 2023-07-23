@@ -9,9 +9,9 @@ namespace TruckDriver.Infra.ADO
     public class PedidoRepository : IPedidoRepository
     {
         private readonly RepositoryBase<Pedido> _repositoryBase;
-        public PedidoRepository(RepositoryBase<Pedido> repositoryBase)
+        public PedidoRepository()
         {
-            _repositoryBase = repositoryBase;
+            _repositoryBase = new RepositoryBase<Pedido>();
             
         }
         public int Creat(Pedido entity)

@@ -1,18 +1,9 @@
-﻿using FluentValidation.Results;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using TruckDriver.Domain.Commands.UserCommands;
 using TruckDriver.Domain.Commands;
+using TruckDriver.Domain.Commands.UserCommands;
 using TruckDriver.Domain.Handlers;
-using TruckDriver.Infra.DAO;
-using TruckDriver.WindowsFormsApp.Repository;
+using TruckDriver.WindowsFormsApp.Factory;
 
 namespace TruckDriver.WindowsFormsApp.Formularios.Login
 {
@@ -60,7 +51,7 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
 
             if (!result.Success)
             {
-                
+
                 AtualizaControlles(result.Erros);
                 return;
             }
@@ -88,12 +79,12 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
         }
 
         private void AtualizaControlles(IEnumerable<String> erros)
-        {            
+        {
             label1.Visible = true;
-            picLogo.Visible= false;
+            picLogo.Visible = false;
             label1.Text = string.Empty;
-            
-            foreach(var erro in erros)
+
+            foreach (var erro in erros)
             {
                 label1.Text += erro;
                 label1.Text += "\n";
