@@ -82,14 +82,10 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
 
         private void btn_Ir_Click(object sender, EventArgs e)
         {
-            int IrParaPagina = Convert.ToInt32(txt_Ir.Text);
-            int skip = (IrParaPagina - 1) * _NumeroDeRegistroPorPagina;
-            _PaginaAtual = IrParaPagina;            
-            if (IrParaPagina > _UltimaPagina)
-                return;
-            UpdateGrid(skip, _FiltroNomeAtual, _FiltroStatusAtual);
-            
+            IrParaPagina(Convert.ToInt32(txt_Ir.Text));
+
         }
+
 
         private void bnt_filtrar_Click(object sender, EventArgs e)
         {            
@@ -116,6 +112,24 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
             UpdateGrid();
         }
 
-        
+        private void btn_Proximo_Click(object sender, EventArgs e)
+        {
+            IrParaPagina(_PaginaAtual + 1);
+        }
+
+        private void btn_Anterior_Click(object sender, EventArgs e)
+        {
+            IrParaPagina(_PaginaAtual - 1);
+        }
+
+        private void IrParaPagina(int IrParaPagina)
+        {
+            if (IrParaPagina > _UltimaPagina || IrParaPagina < 1)
+                return;
+            int skip = (IrParaPagina - 1) * _NumeroDeRegistroPorPagina;
+            _PaginaAtual = IrParaPagina;
+            UpdateGrid(skip, _FiltroNomeAtual, _FiltroStatusAtual);
+        }
+
     }
 }
