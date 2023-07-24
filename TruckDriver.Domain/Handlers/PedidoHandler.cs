@@ -13,10 +13,11 @@ using TruckDriver.Domain.MessageConstants;
 using TruckDriver.Domain.Repository;
 using TruckDriver.Domain.Services;
 using TruckDriver.Domain.Entitys.Validation;
+using TruckDriver.Domain.Handlers.Contracts;
 
 namespace TruckDriver.Domain.Handlers
 {
-    public class PedidoHandler
+    public class PedidoHandler : IPedidoHandle
     {
         private IPedidoRepository _repository;
         private ICepService _cepDistanceCalculator;
@@ -64,5 +65,14 @@ namespace TruckDriver.Domain.Handlers
 
         }
 
+        public ICommandResult Handle(UpdatePedidoCommand command)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ICommandResult Handle(DeletePedidoCommand command)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

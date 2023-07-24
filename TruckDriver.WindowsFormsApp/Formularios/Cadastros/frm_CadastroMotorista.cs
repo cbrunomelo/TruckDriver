@@ -52,12 +52,12 @@ namespace WindowsFormsApp1.Formularios.Cadastros
 
             command.enderecoCommand = new CreateEnderecoCommand()
             {
-                bairro = txt_Bairro.Text,
+                Bairro = txt_Bairro.Text,
                 Cep = mtxt_CEP.Text,
-                logradouro = txt_Logradouro.Text,
-                complemento = txt_Complemento.Text,
-                cidade = txt_Cidade.Text,
-                estado = txt_estado.Text
+                Logradouro = txt_Logradouro.Text,
+                Complemento = txt_Complemento.Text,
+                Cidade = txt_Cidade.Text,
+                Estado = txt_estado.Text
             };
 
 
