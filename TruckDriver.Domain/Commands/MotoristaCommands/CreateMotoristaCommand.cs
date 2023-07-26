@@ -1,9 +1,10 @@
 ﻿using System.Linq;
+using TruckDriver.Domain.Commands.Contracts;
 using TruckDriver.Domain.Commands.EnderecoCommands;
 
 namespace TruckDriver.Domain.Commands.MotoristaCommands
 {
-    public class CreateMotoristaCommand
+    public class CreateMotoristaCommand : ICommand
     {
         public CreateMotoristaCommand()
         {

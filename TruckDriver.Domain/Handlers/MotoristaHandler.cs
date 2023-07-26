@@ -6,12 +6,13 @@ using TruckDriver.Domain.Commands.MotoristaCommands;
 using TruckDriver.Domain.Commands.MotoristaCommands.Validations;
 using TruckDriver.Domain.Entitys;
 using TruckDriver.Domain.Extensions;
+using TruckDriver.Domain.Handlers.Contracts;
 using TruckDriver.Domain.MessageConstants;
 using TruckDriver.Domain.Repository;
 
 namespace TruckDriver.Domain.Handlers
 {
-    public class MotoristaHandler
+    public class MotoristaHandler : IMotoristaHandle
     {
         private IMotoristaRepository _repository;
         private EnderecoHandler _enderecoHandler;
@@ -42,6 +43,16 @@ namespace TruckDriver.Domain.Handlers
 
             return new GenericCommandResult(true, MessageConstant.CREATED_SUCCESSFULLY, id);
 
+        }
+
+        public ICommandResult Handle(UpdateMotoristaCommand command)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public ICommandResult Handle(DeleteMotoristaCommand command)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

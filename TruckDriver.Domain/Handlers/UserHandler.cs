@@ -8,13 +8,14 @@ using TruckDriver.Domain.Commands.UserCommands;
 using TruckDriver.Domain.Commands.UserCommands.Validations;
 using TruckDriver.Domain.Entitys;
 using TruckDriver.Domain.Extensions;
+using TruckDriver.Domain.Handlers.Contracts;
 using TruckDriver.Domain.MessageConstants;
 using TruckDriver.Domain.Queries;
 using TruckDriver.Domain.Repository;
 
 namespace TruckDriver.Domain.Handlers
 {
-    public class UserHandler
+    public class UserHandler : IUserHandle
     {
         private readonly IUserRepository _repository;
         private readonly IUserQuery _userquery;
@@ -59,6 +60,16 @@ namespace TruckDriver.Domain.Handlers
             return new GenericCommandResult(false, MessageConstant.INVALID_USER_OR_PASSWORD);
 
             
+        }
+
+        public ICommandResult Handle(UpdateUserCommand command)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ICommandResult Handle(DeleteUserCommand command)
+        {
+            throw new NotImplementedException();
         }
     }
 }

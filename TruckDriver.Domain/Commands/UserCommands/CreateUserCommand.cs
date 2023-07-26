@@ -1,6 +1,10 @@
-﻿namespace TruckDriver.Domain.Commands.UserCommands
+﻿
+
+using TruckDriver.Domain.Commands.Contracts;
+
+namespace TruckDriver.Domain.Commands.UserCommands
 {
-    public class CreateUserCommand
+    public class CreateUserCommand : ICommand
     {
 
 

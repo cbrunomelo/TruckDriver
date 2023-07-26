@@ -1,24 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TruckDriver.Domain.Commands.Contracts;
 
 namespace TruckDriver.Domain.Commands.EnderecoCommands
 {
-    public class CreateEnderecoCommand
+    public class CreateEnderecoCommand : ICommand
     {
         public CreateEnderecoCommand() { }
 
 
         public string Cep;
 
-        public string logradouro;
+        public string Logradouro;
 
-        public string complemento;
+        public string Complemento;
 
-        public string bairro;
+        public string Bairro;
 
-        public string cidade;
+        public string Cidade;
 
-        public string estado;
+        public string Estado;
     }
 }
