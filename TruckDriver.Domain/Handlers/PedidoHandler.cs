@@ -21,9 +21,9 @@ namespace TruckDriver.Domain.Handlers
     {
         private IPedidoRepository _repository;
         private ICepService _cepDistanceCalculator;
-        private EnderecoHandler _enderecoHandler;        
+        private IEnderecoHandle _enderecoHandler;        
 
-        public PedidoHandler(IPedidoRepository reposotory, ICepService cepDistanceCalculator, EnderecoHandler enderecoHandler)
+        public PedidoHandler(IPedidoRepository reposotory, ICepService cepDistanceCalculator, IEnderecoHandle enderecoHandler)
         {
             _repository = reposotory;
             _cepDistanceCalculator = cepDistanceCalculator;
