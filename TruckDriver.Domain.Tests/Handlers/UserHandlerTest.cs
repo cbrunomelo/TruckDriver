@@ -12,7 +12,7 @@ namespace TruckDriver.Domain.Tests.Handlers
     {
         private readonly Mock<IUserRepository> _UserRepositoryMock = new();
 
-        private UserHandler GetHandler() => new UserHandler(_UserRepositoryMock.Object);    
+        private UserHandler GetHandler() => new UserHandler(_UserRepositoryMock.Object, null);    
 
         [Fact]
         public void CreateUserCommand_WithValidData_ReturnsSucess()

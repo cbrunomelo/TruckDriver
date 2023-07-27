@@ -15,19 +15,20 @@ using TruckDriver.Domain.Repository;
 
 namespace TruckDriver.Domain.Handlers
 {
-    public class UserHandler : IUserHandle
+    public class UserHandler : IUserHandle, IUserQuery
     {
         private readonly IUserRepository _repository;
         private readonly IUserQuery _userquery;
-        public UserHandler(IUserRepository repository)
+        public UserHandler(IUserRepository repository, IUserQuery userquery)
         {
-            _repository = repository;            
+            _repository = repository;
+            _userquery = userquery;
 
         }
 
-        public UserHandler(IUserQuery userquery)
+        public User GetByName(string name)
         {
-            _userquery = userquery;
+            throw new NotImplementedException();
         }
 
         public ICommandResult Handle(CreateUserCommand command) 

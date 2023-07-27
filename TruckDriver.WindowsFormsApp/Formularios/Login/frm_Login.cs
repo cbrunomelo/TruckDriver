@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Threading;
 using System.Windows.Forms;
 using TruckDriver.Domain.Entitys;
 using TruckDriver.Domain.Queries;
-using TruckDriver.Infra.ADO;
-using TruckDriver.Infra.DAO;
+using TruckDriver.WindowsFormsApp.Services;
 
 namespace TruckDriver.WindowsFormsApp.Formularios.Login
 {
@@ -15,6 +15,8 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
         private readonly IUserQuery _userQuery;
         public frm_Login()
         {
+            _userQuery = AppContainer.ServiceProvider.GetService<IUserQuery>();
+
             InitializeComponent();
             pnlSenha
                 .LoadConfControls()
@@ -29,7 +31,6 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
 
             ButtonsNames("Entrar", "Registrar");
 
-            _userQuery = new UserRepository();
 
         }
 

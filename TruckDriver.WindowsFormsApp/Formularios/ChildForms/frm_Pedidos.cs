@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using TruckDriver.Domain.Commands.EnderecoCommands;
-using TruckDriver.Domain.Commands.PedidosCommands;
-using TruckDriver.Domain.Handlers;
 using TruckDriver.Domain.Queries;
 using TruckDriver.Infra.ADO;
-using TruckDriver.WindowsFormsApp.Factory;
 using WindowsFormsApp1.Formularios.Cadastros;
 
 namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms

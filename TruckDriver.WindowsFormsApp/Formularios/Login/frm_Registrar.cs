@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using TruckDriver.Domain.Commands;
 using TruckDriver.Domain.Commands.UserCommands;
 using TruckDriver.Domain.Handlers;
-using TruckDriver.WindowsFormsApp.Factory;
+using TruckDriver.Domain.Handlers.Contracts;
+using TruckDriver.WindowsFormsApp.Services;
 
 namespace TruckDriver.WindowsFormsApp.Formularios.Login
 {
@@ -12,7 +14,7 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
         public const string SUCESS_MESSAGE = "Usuario registrado com sucesso";
         public string ReturnMessage;
 
-        private UserHandler _handler;
+        private IUserHandle _handler;
         public frm_Registrar()
         {
             InitializeComponent();
@@ -35,7 +37,7 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
 
             ButtonsNames("Registrar", "Voltar");
 
-            _handler = HandlerInstances.GetUserHandler();
+            _handler = AppContainer.ServiceProvider.GetService<IUserHandle>();
 
 
         }
