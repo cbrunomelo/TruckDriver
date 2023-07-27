@@ -1,5 +1,6 @@
 ﻿using Moq;
 using TruckDriver.Domain.Commands;
+using TruckDriver.Domain.Commands.Contracts;
 using TruckDriver.Domain.Commands.UserCommands;
 using TruckDriver.Domain.Entitys;
 using TruckDriver.Domain.Handlers;
@@ -15,7 +16,7 @@ namespace TruckDriver.Domain.Tests.Handlers
         private UserHandler GetHandler() => new UserHandler(_UserRepositoryMock.Object, null);    
 
         [Fact]
-        public void CreateUserCommand_WithValidData_ReturnsSucess()
+        public async void CreateUserCommand_WithValidData_ReturnsSucess()
         {
             //arrange
 
@@ -31,7 +32,7 @@ namespace TruckDriver.Domain.Tests.Handlers
             var _handler = GetHandler();
 
             //act
-            GenericCommandResult result = (GenericCommandResult)_handler.Handle(validCommand);
+            ICommandResult result = await _handler.Handle(validCommand);
 
 
             //assert
@@ -44,7 +45,7 @@ namespace TruckDriver.Domain.Tests.Handlers
         [Theory]
         [MemberData(nameof(InvalidCreateUserCommand.MemberData), MemberType = typeof(InvalidCreateUserCommand))]
         
-        public void CreateUserCommand_WithInvalidData_ReturnsError(CreateUserCommand command, string expectedMessage, IEnumerable<String> expectedError)
+        public async void CreateUserCommand_WithInvalidData_ReturnsError(CreateUserCommand command, string expectedMessage, IEnumerable<String> expectedError)
         {
             //arrange
 
@@ -54,7 +55,7 @@ namespace TruckDriver.Domain.Tests.Handlers
             var _handler = GetHandler();
 
             //act
-            GenericCommandResult result = (GenericCommandResult)_handler.Handle(command);
+            ICommandResult result = await _handler.Handle(command);
 
             //assert
             

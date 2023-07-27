@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using TruckDriver.Domain.Handlers;
 using TruckDriver.Domain.Handlers.Contracts;
 using TruckDriver.Domain.Queries;

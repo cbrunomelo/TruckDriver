@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using TruckDriver.Domain.Commands;
+using TruckDriver.Domain.Commands.Contracts;
 using TruckDriver.Domain.Commands.UserCommands;
 using TruckDriver.Domain.Handlers;
 using TruckDriver.Domain.Handlers.Contracts;
@@ -43,13 +44,13 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Login
         }
 
 
-        protected override void btnBlue_Click(object sender, EventArgs e)
+        protected override async void btnBlue_Click(object sender, EventArgs e)
         {
             base.btnBlue_Click(sender, e);
 
             CreateUserCommand user = BindCommand();
 
-            GenericCommandResult result = (GenericCommandResult)_handler.Handle(user);
+            ICommandResult result = await _handler.Handle(user);
 
             if (!result.Success)
             {

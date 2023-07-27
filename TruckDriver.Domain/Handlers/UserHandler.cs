@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using TruckDriver.Domain.Commands;
 using TruckDriver.Domain.Commands.Contracts;
 using TruckDriver.Domain.Commands.UserCommands;
@@ -31,7 +32,7 @@ namespace TruckDriver.Domain.Handlers
             throw new NotImplementedException();
         }
 
-        public ICommandResult Handle(CreateUserCommand command) 
+        public async Task<ICommandResult> Handle(CreateUserCommand command) 
         {
             CreatUserValidation validator = new CreatUserValidation();
             ValidationResult result = validator.Validate(command);
@@ -47,7 +48,7 @@ namespace TruckDriver.Domain.Handlers
 
         }
 
-        public ICommandResult Handle(string name, string password) 
+        public async Task<ICommandResult> Handle(string name, string password) 
         {
             User user = _userquery.GetByName(name);
 
@@ -63,12 +64,12 @@ namespace TruckDriver.Domain.Handlers
             
         }
 
-        public ICommandResult Handle(UpdateUserCommand command)
+        public async Task<ICommandResult> Handle(UpdateUserCommand command)
         {
             throw new NotImplementedException();
         }
 
-        public ICommandResult Handle(DeleteUserCommand command)
+        public async Task<ICommandResult> Handle(DeleteUserCommand command)
         {
             throw new NotImplementedException();
         }
