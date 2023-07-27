@@ -1,11 +1,15 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
+using TruckDriver.Domain.Queries;
+using TruckDriver.Infra.DAO;
 using TruckDriver.WindowsFormsApp.Controls;
 using TruckDriver.WindowsFormsApp.Formularios.ChildForms;
 using TruckDriver.WindowsFormsApp.Formularios.Login;
+using TruckDriver.WindowsFormsApp.Services;
 
 namespace TruckDriver.WindowsFormsApp.Formularios
 {
@@ -140,9 +144,11 @@ namespace TruckDriver.WindowsFormsApp.Formularios
                 .SelectThemeColor(9);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
+
+            
             t1 = new Thread(() => Application.Run(new frm_Login()));
             t1.SetApartmentState(ApartmentState.STA);
             t1.Start();

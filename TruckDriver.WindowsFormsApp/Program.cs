@@ -1,10 +1,14 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TruckDriver.Domain.Queries;
+using TruckDriver.IoC;
 using TruckDriver.WindowsFormsApp.Formularios;
 using TruckDriver.WindowsFormsApp.Formularios.Login;
+using TruckDriver.WindowsFormsApp.Services;
 
 namespace TruckDriver.WindowsFormsApp
 {
@@ -18,7 +22,10 @@ namespace TruckDriver.WindowsFormsApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            AppContainer.ConfigureContainer();
+
             Application.Run(new frm_Login());
+
         }
     }
 }

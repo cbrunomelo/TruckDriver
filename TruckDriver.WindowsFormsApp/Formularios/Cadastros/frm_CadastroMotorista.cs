@@ -1,4 +1,5 @@
 ﻿using FluentValidation.Results;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -6,21 +7,21 @@ using TruckDriver.Domain.Commands;
 using TruckDriver.Domain.Commands.EnderecoCommands;
 using TruckDriver.Domain.Commands.MotoristaCommands;
 using TruckDriver.Domain.Handlers;
-using TruckDriver.WindowsFormsApp.Factory;
+using TruckDriver.Domain.Handlers.Contracts;
 using TruckDriver.WindowsFormsApp.Services;
 
 namespace WindowsFormsApp1.Formularios.Cadastros
 {
     public partial class frm_CadastroMotorista : Form
     {
-        private readonly MotoristaHandler _motoristaHandler;
+        private readonly IMotoristaHandle _motoristaHandler;
 
         public frm_CadastroMotorista()
         {
             InitializeComponent();
             AtualizarControles();
 
-            _motoristaHandler = HandlerInstances.GetMotoristaHandler();
+            _motoristaHandler = AppContainer.ServiceProvider.GetService<IMotoristaHandle>();    
         }
 
         private void btn_Cancelar_Click(object sender, EventArgs e)

@@ -59,6 +59,12 @@
     <Reference Include="Microsoft.Data.Sqlite, Version=5.0.17.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Data.Sqlite.Core.5.0.17\lib\netstandard2.0\Microsoft.Data.Sqlite.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.2.1.1\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -191,7 +197,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Controls\ThemeColor.cs" />
-    <Compile Include="Factory\HandlerInstances.cs" />
+    <Compile Include="Services\AppContainer.cs" />
     <Compile Include="Services\CepAutocomplete.cs" />
     <EmbeddedResource Include="Formularios\Cadastros\frm_CadastroMotorista.resx">
       <DependentUpon>frm_CadastroMotorista.cs</DependentUpon>
@@ -302,6 +308,10 @@
     <ProjectReference Include="..\TruckDriver.Infra.DAO\TruckDriver.Infra.ADO.csproj">
       <Project>{9b7b9f68-98a6-480d-b950-a7e6291fb28c}</Project>
       <Name>TruckDriver.Infra.ADO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TruckDriver.IoC\TruckDriver.IoC.csproj">
+      <Project>{9657b7d9-8252-4841-b13f-ca4881e0516f}</Project>
+      <Name>TruckDriver.IoC</Name>
     </ProjectReference>
     <ProjectReference Include="..\TruckDriver.Services\TruckDriver.Services.csproj">
       <Project>{2251b3cf-c30c-48a4-92ef-796ec8d01925}</Project>
