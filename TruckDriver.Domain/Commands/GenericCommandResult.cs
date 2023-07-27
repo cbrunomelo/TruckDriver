@@ -44,6 +44,6 @@ namespace TruckDriver.Domain.Commands
         public bool Success { get; set; }
         public string Message { get; set; }
         public object Data { get; set; }
-        public IEnumerable<string> Erros { get; set; } 
+        public IEnumerable<string> Erros { get; set; }
     }
 }

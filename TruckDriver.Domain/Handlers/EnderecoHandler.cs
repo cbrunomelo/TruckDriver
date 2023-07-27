@@ -1,4 +1,5 @@
 ﻿using FluentValidation.Results;
+using System.Threading.Tasks;
 using TruckDriver.Domain.Commands;
 using TruckDriver.Domain.Commands.Contracts;
 using TruckDriver.Domain.Commands.EnderecoCommands;
@@ -20,7 +21,7 @@ namespace TruckDriver.Domain.Handlers
             _repository = repository;
         }
 
-        public ICommandResult Handle(CreateEnderecoCommand command)
+        public async Task<ICommandResult> Handle(CreateEnderecoCommand command)
         {
             CreateEnderecoValidation validator = new CreateEnderecoValidation();
             ValidationResult result = validator.Validate(command);
@@ -35,12 +36,12 @@ namespace TruckDriver.Domain.Handlers
             return new GenericCommandResult(true, MessageConstant.CREATED_SUCCESSFULLY, endereco);
         }
 
-        public ICommandResult Handle(UpdateEnderecoCommand command)
+        public Task<ICommandResult> Handle(UpdateEnderecoCommand command)
         {
             throw new System.NotImplementedException();
         }
 
-        public ICommandResult Handle(DeleteEnderecoCommand command)
+        public Task<ICommandResult> Handle(DeleteEnderecoCommand command)
         {
             throw new System.NotImplementedException();
         }

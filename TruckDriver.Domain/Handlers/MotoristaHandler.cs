@@ -1,5 +1,6 @@
 ﻿using FluentValidation.Results;
 using System.Linq;
+using System.Threading.Tasks;
 using TruckDriver.Domain.Commands;
 using TruckDriver.Domain.Commands.Contracts;
 using TruckDriver.Domain.Commands.MotoristaCommands;
@@ -23,7 +24,7 @@ namespace TruckDriver.Domain.Handlers
             _enderecoHandler = enderecoHandler;
         }
 
-        public ICommandResult Handle(CreateMotoristaCommand command)
+        public async Task<ICommandResult> Handle(CreateMotoristaCommand command)
         {
             CreateMotoristaValidation validator = new CreateMotoristaValidation();
             ValidationResult result = validator.Validate(command);
@@ -31,7 +32,7 @@ namespace TruckDriver.Domain.Handlers
             if (!result.IsValid)
                 return new GenericCommandResult(false, MessageConstant.UNABLE_TO_CREATE, result.ToList());
 
-            var resultEndereco = (GenericCommandResult)_enderecoHandler.Handle(command.enderecoCommand);
+            var resultEndereco = await _enderecoHandler.Handle(command.enderecoCommand);
             if (!resultEndereco.Success)
                 return new GenericCommandResult(false, MessageConstant.UNABLE_TO_CREATE, resultEndereco.Erros);
 
@@ -45,12 +46,12 @@ namespace TruckDriver.Domain.Handlers
 
         }
 
-        public ICommandResult Handle(UpdateMotoristaCommand command)
+        public async Task<ICommandResult> Handle(UpdateMotoristaCommand command)
         {
             throw new System.NotImplementedException();
         }
 
-        public ICommandResult Handle(DeleteMotoristaCommand command)
+        public async Task<ICommandResult> Handle(DeleteMotoristaCommand command)
         {
             throw new System.NotImplementedException();
         }

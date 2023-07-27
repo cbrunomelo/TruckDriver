@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using TruckDriver.Domain.Commands;
+using TruckDriver.Domain.Commands.Contracts;
 using TruckDriver.Domain.Commands.EnderecoCommands;
 using TruckDriver.Domain.Commands.MotoristaCommands;
 using TruckDriver.Domain.Handlers;
@@ -41,7 +42,7 @@ namespace WindowsFormsApp1.Formularios.Cadastros
 
         }
 
-        private void btn_Cadastrar_Click(object sender, EventArgs e)
+        private async void btn_Cadastrar_Click(object sender, EventArgs e)
         {
             CreateMotoristaCommand command = new CreateMotoristaCommand();
 
@@ -62,7 +63,7 @@ namespace WindowsFormsApp1.Formularios.Cadastros
             };
 
 
-            GenericCommandResult result = (GenericCommandResult)_motoristaHandler.Handle(command);
+            ICommandResult result = await _motoristaHandler.Handle(command);
 
 
             if (!result.Success)

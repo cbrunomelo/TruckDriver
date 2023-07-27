@@ -14,6 +14,7 @@ using TruckDriver.Domain.Repository;
 using TruckDriver.Domain.Services;
 using TruckDriver.Domain.Entitys.Validation;
 using TruckDriver.Domain.Handlers.Contracts;
+using System.Threading.Tasks;
 
 namespace TruckDriver.Domain.Handlers
 {
@@ -32,7 +33,7 @@ namespace TruckDriver.Domain.Handlers
         }
 
 
-        public ICommandResult Handle(CreatePedidoCommand command)
+        public async Task<ICommandResult> Handle(CreatePedidoCommand command)
         {
             CreatePedidoCommandValidation validator = new CreatePedidoCommandValidation();
             ValidationResult result = validator.Validate(command);
@@ -40,12 +41,15 @@ namespace TruckDriver.Domain.Handlers
             if (!result.IsValid)
                 return new GenericCommandResult(false, MessageConstant.UNABLE_TO_CREATE, result.ToList());
 
-            
-            var resultEnderecoColeta = (GenericCommandResult)_enderecoHandler.Handle(command.Endereco_coleta);
+            var resultEnderecoColetaTask = _enderecoHandler.Handle(command.Endereco_coleta);
+            var resultEnderecoEntregaTask = _enderecoHandler.Handle(command.Endereco_entrega);
+
+
+            var resultEnderecoColeta = await resultEnderecoColetaTask;
             if (!resultEnderecoColeta.Success)
                 return new GenericCommandResult(false, MessageConstant.UNABLE_TO_CREATE, resultEnderecoColeta.Erros);
 
-            var resultEnderecoEntrega = (GenericCommandResult)_enderecoHandler.Handle(command.Endereco_entrega);
+            var resultEnderecoEntrega = await resultEnderecoEntregaTask;
             if (!resultEnderecoEntrega.Success)
                 return new GenericCommandResult(false, MessageConstant.UNABLE_TO_CREATE, resultEnderecoEntrega.Erros);
 
@@ -65,12 +69,12 @@ namespace TruckDriver.Domain.Handlers
 
         }
 
-        public ICommandResult Handle(UpdatePedidoCommand command)
+        public async Task<ICommandResult> Handle(UpdatePedidoCommand command)
         {
             throw new NotImplementedException();
         }
 
-        public ICommandResult Handle(DeletePedidoCommand command)
+        public async Task<ICommandResult> Handle(DeletePedidoCommand command)
         {
             throw new NotImplementedException();
         }
