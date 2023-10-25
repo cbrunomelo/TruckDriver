@@ -2,6 +2,7 @@
 using System.Drawing.Text;
 using System.Windows.Forms;
 using TruckDriver.Domain.Queries;
+using TruckDriver.Domain.Services;
 using TruckDriver.Infra.ADO;
 using WindowsFormsApp1.Formularios.Cadastros;
 
