@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\TruckDriver.Domain\TruckDriver.Domain.csproj" />
     <ProjectReference Include="..\TruckDriver.Infra.DAO\TruckDriver.Infra.ADO.csproj" />
+    <ProjectReference Include="..\TruckDriver.Services\TruckDriver.Services.csproj" />
   </ItemGroup>
 
 </Project>

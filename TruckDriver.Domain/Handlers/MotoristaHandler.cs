@@ -16,9 +16,9 @@ namespace TruckDriver.Domain.Handlers
     public class MotoristaHandler : IMotoristaHandle
     {
         private IMotoristaRepository _repository;
-        private EnderecoHandler _enderecoHandler;
+        private IEnderecoHandle _enderecoHandler;
 
-        public MotoristaHandler(IMotoristaRepository repository, EnderecoHandler enderecoHandler)
+        public MotoristaHandler(IMotoristaRepository repository, IEnderecoHandle enderecoHandler)
         {
             _repository = repository;
             _enderecoHandler = enderecoHandler;

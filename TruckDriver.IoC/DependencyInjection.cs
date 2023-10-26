@@ -3,8 +3,10 @@ using TruckDriver.Domain.Handlers;
 using TruckDriver.Domain.Handlers.Contracts;
 using TruckDriver.Domain.Queries;
 using TruckDriver.Domain.Repository;
+using TruckDriver.Domain.Services;
 using TruckDriver.Infra.ADO;
 using TruckDriver.Infra.DAO;
+using TruckDriver.Services.CepService;
 
 namespace TruckDriver.IoC
 {
@@ -18,6 +20,10 @@ namespace TruckDriver.IoC
             services.AddScoped<IUserHandle, UserHandler>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IMotoristaHandle, MotoristaHandler>();
+            services.AddTransient<ICepService, CepService>();
+            services.AddScoped<IMotoristaRepository, MotoristaRepository>();
+            services.AddScoped<IEnderecoHandle, EnderecoHandler>();
+            
 
             return services;
         }

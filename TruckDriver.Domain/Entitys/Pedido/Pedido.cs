@@ -11,12 +11,12 @@ namespace TruckDriver.Domain.Entitys
         public const int DISTANCIA_MINIMA_KM = 100;
         private const float VALOR_KM = 2.5f;
         private IPedidoStatus _statusManager;
-        private ICepService _distancecalculator;
-        public Pedido(Endereco coleta, Endereco Destino, ICepService distancecalculator)
+        private ICepService _cepService;
+        public Pedido(Endereco coleta, Endereco Destino, ICepService cepService)
         {
             Coleta_Endereco = coleta;
             Destino_Endereco = Destino;
-            _distancecalculator = distancecalculator;
+            _cepService = cepService;
             _statusManager = new PedidoPendente();
             _status = _statusManager.GetStatus();
             PreencherValores();
@@ -40,9 +40,9 @@ namespace TruckDriver.Domain.Entitys
         }
 
 
-        public float DistanciaKM { get; private set; }
+        public double DistanciaKM { get; private set; }
 
-        public float Preco { get; private set; }
+        public double Preco { get; private set; }
 
         public int Fk_Coleta_EnderecoId
         {
@@ -95,14 +95,14 @@ namespace TruckDriver.Domain.Entitys
             return Previsao;
         }
 
-        private float CalcularPreco()
+        private double CalcularPreco()
         {
             return DistanciaKM * VALOR_KM;
         }
 
-        private void PreencherValores()
+        private async void PreencherValores()
         {
-            DistanciaKM = _distancecalculator.CalcularDistancia(Coleta_Endereco.Cep, Destino_Endereco.Cep);
+            DistanciaKM =await _cepService.CalcularDistancia(Coleta_Endereco, Destino_Endereco);
             CriadoEm = UltimaAtualizacao = DateTime.Now;
             Previsao = CalcularPrevisao();
             Preco = CalcularPreco();

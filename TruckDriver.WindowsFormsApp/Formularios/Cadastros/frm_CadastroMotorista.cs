@@ -7,8 +7,10 @@ using TruckDriver.Domain.Commands;
 using TruckDriver.Domain.Commands.Contracts;
 using TruckDriver.Domain.Commands.EnderecoCommands;
 using TruckDriver.Domain.Commands.MotoristaCommands;
+using TruckDriver.Domain.Entitys;
 using TruckDriver.Domain.Handlers;
 using TruckDriver.Domain.Handlers.Contracts;
+using TruckDriver.Domain.Services;
 using TruckDriver.WindowsFormsApp.Services;
 
 namespace WindowsFormsApp1.Formularios.Cadastros
@@ -16,13 +18,15 @@ namespace WindowsFormsApp1.Formularios.Cadastros
     public partial class frm_CadastroMotorista : Form
     {
         private readonly IMotoristaHandle _motoristaHandler;
+        private readonly ICepService _cepService;
 
         public frm_CadastroMotorista()
         {
             InitializeComponent();
             AtualizarControles();
 
-            _motoristaHandler = AppContainer.ServiceProvider.GetService<IMotoristaHandle>();    
+            _motoristaHandler = AppContainer.ServiceProvider.GetService<IMotoristaHandle>();
+            _cepService = AppContainer.ServiceProvider.GetService<ICepService>();
         }
 
         private void btn_Cancelar_Click(object sender, EventArgs e)
@@ -82,15 +86,17 @@ namespace WindowsFormsApp1.Formularios.Cadastros
 
         }
 
-        private void mtxt_CEP_Leave(object sender, EventArgs e)
+        private async void mtxt_CEP_Leave(object sender, EventArgs e)
         {
-            Dictionary<string, string> buscaCep = CepAutocomplete.BuscaCep(mtxt_CEP.Text);
+            if (mtxt_CEP.Text.Replace("-","").Trim() == string.Empty)
+                return;
+            
+            Endereco endereco = await _cepService.BuscaEnderecoPorCep(mtxt_CEP.Text);
 
-            txt_Logradouro.Text = buscaCep["logradouro"];
-            txt_Bairro.Text = buscaCep["bairro"];
-            txt_Cidade.Text = buscaCep["cidade"];
-            txt_estado.Text = buscaCep["estado"];
-
+            txt_Logradouro.Text = endereco.Logradouro;
+            txt_Bairro.Text = endereco.Bairro ;
+            txt_Cidade.Text = endereco.Cidade;
+            txt_estado.Text = endereco.Estado;
 
 
         }

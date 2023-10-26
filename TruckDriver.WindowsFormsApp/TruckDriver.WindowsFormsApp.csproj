@@ -198,7 +198,6 @@
     </Compile>
     <Compile Include="Controls\ThemeColor.cs" />
     <Compile Include="Services\AppContainer.cs" />
-    <Compile Include="Services\CepAutocomplete.cs" />
     <EmbeddedResource Include="Formularios\Cadastros\frm_CadastroMotorista.resx">
       <DependentUpon>frm_CadastroMotorista.cs</DependentUpon>
     </EmbeddedResource>
