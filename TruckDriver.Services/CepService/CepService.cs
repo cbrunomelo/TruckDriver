@@ -1,8 +1,10 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,39 +17,52 @@ namespace TruckDriver.Services.CepService
     public class CepService : ICepService
     {
 
-        public float CalcularDistancia(string cepOrigem, string cepDestino)
+        public async Task<double> CalcularDistancia(Endereco EnderecoColeta, Endereco EnderecoDestino)
         {
-            
-            //retornar o endereco dos ceps
+                        
+
+            var geolocalizacaoOrigem = BuscaGeolocalizacao(EnderecoColeta);
+            var geolocalizacaoDestino = BuscaGeolocalizacao(EnderecoDestino);
 
 
+            var distancia = CalcularDistanciaPelaGeolocalizacao(await geolocalizacaoOrigem, await geolocalizacaoDestino);
+
             
-            return 200;
+            return Math.Round(distancia, 2);
         }
 
 
-        public async Task<Endereco> BuscaCep(string CEP)
+        public async Task<Endereco> BuscaEnderecoPorCep(string CEP)
         {
-            CEP = CEP.Replace("-", "");
-
-            System.Net.HttpWebRequest requisicao = (HttpWebRequest)WebRequest.Create("https://viacep.com.br/ws/" + CEP + "/json/");
-            HttpWebResponse resposta = (HttpWebResponse)requisicao.GetResponse();
-
-            int cont;
-            byte[] buffer = new byte[1000];
-            StringBuilder sb = new StringBuilder();
-            string temp;
-            Stream stream = resposta.GetResponseStream();
-            do
+            EnderecoJson enderecoJason;
+            try
             {
-                cont = stream.Read(buffer, 0, buffer.Length);
-                temp = Encoding.UTF8.GetString(buffer, 0, cont).Trim();
-                sb.Append(temp);
+                CEP = CEP.Replace("-", "");
 
-            } while (cont > 0);
+                System.Net.HttpWebRequest requisicao = (HttpWebRequest)WebRequest.Create("https://viacep.com.br/ws/" + CEP + "/json/");
+                HttpWebResponse resposta = (HttpWebResponse)requisicao.GetResponse();
+
+                int cont;
+                byte[] buffer = new byte[1000];
+                StringBuilder sb = new StringBuilder();
+                string temp;
+                Stream stream = resposta.GetResponseStream();
+                do
+                {
+                    cont = stream.Read(buffer, 0, buffer.Length);
+                    temp = Encoding.UTF8.GetString(buffer, 0, cont).Trim();
+                    sb.Append(temp);
+
+                } while (cont > 0);
 
 
-            EnderecoJson enderecoJason = JsonConvert.DeserializeObject<EnderecoJson>(sb.ToString());
+                enderecoJason = JsonConvert.DeserializeObject<EnderecoJson>(sb.ToString());
+            }
+            catch(Exception)
+            {
+
+                return null;
+            }
 
 
             return new Endereco(enderecoJason.cep, enderecoJason.logradouro, enderecoJason.complemento, enderecoJason.bairro, enderecoJason.localidade, enderecoJason.uf);
@@ -55,27 +70,35 @@ namespace TruckDriver.Services.CepService
         }
 
 
-        private Geolocalizacao BuscaGeolocalizacao(Endereco endereco)
-        {            
+        private async Task<Geolocalizacao> BuscaGeolocalizacao(Endereco endereco)
+        {
+            
             string uriParametros = ContruirUriComParametro(endereco);
-            System.Net.HttpWebRequest requisicao = (HttpWebRequest)WebRequest.Create($"https://nominatim.openstreetmap.org/search?{uriParametros}&format=geojson");
-            HttpWebResponse resposta = (HttpWebResponse)requisicao.GetResponse();
+            string apiUrl = $"https://nominatim.openstreetmap.org/search?{uriParametros}&format=geojson";
+            string responseBody = string.Empty;
 
-            int cont;
-            byte[] buffer = new byte[1000];
-            StringBuilder sb = new StringBuilder();
-            string temp;
-            Stream stream = resposta.GetResponseStream();
-            do
+            using (HttpClient httpClient = new HttpClient())
             {
-                cont = stream.Read(buffer, 0, buffer.Length);
-                temp = Encoding.UTF8.GetString(buffer, 0, cont).Trim();
-                sb.Append(temp);
+                httpClient.DefaultRequestHeaders.Add("User-Agent", "MinhaApp/1.0"); 
+                try
+                {
+                    HttpResponseMessage response = await httpClient.GetAsync(apiUrl);
 
-            } while (cont > 0);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        responseBody = await response.Content.ReadAsStringAsync();
 
+                    }
 
-            GeolocationJson geolocationJson = JsonConvert.DeserializeObject<GeolocationJson>(sb.ToString());
+                }
+                catch (HttpRequestException e)
+                {
+                    Console.WriteLine($"Erro na requisição HTTP: {e.Message}");
+                }
+            }
+
+            GeolocationJson geolocationJson = JsonConvert.DeserializeObject<GeolocationJson>(responseBody);
+            
 
             if (geolocationJson.features.Count > 0)
             {               
@@ -85,10 +108,23 @@ namespace TruckDriver.Services.CepService
             return null;
         }
 
-        private float CalcularDistancia(Geolocalizacao geo1, Geolocalizacao geo2)
+        private double CalcularDistanciaPelaGeolocalizacao(Geolocalizacao geo1, Geolocalizacao geo2)
         {
 
-            return 0;
+            var radius = 6371; // Raio da Terra em quilômetros
+
+            var dLat = ParaRadianos(geo2.Latitude - geo1.Latitude);
+            var dLon = ParaRadianos(geo2.Longitude - geo1.Longitude);
+
+            var a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
+                    Math.Cos(ParaRadianos(geo1.Latitude)) * Math.Cos(ParaRadianos(geo2.Latitude)) *
+                    Math.Sin(dLon / 2) * Math.Sin(dLon / 2);
+
+            var c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+
+            var distance = radius * c; // Distância em quilômetros
+
+            return distance;
         }
 
         private static double ParaRadianos(double degrees)

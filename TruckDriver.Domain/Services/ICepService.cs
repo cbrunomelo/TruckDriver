@@ -7,9 +7,9 @@ namespace TruckDriver.Domain.Services
     public interface ICepService
     {
 
-        float CalcularDistancia(string cepOrigem, string cepDestino);
+        Task<double> CalcularDistancia(Endereco EnderecoColeta, Endereco EnderecoDestino);
 
-        Task<Endereco> BuscaCep(string CEP);
+        Task<Endereco> BuscaEnderecoPorCep(string CEP);
 
     }
 }

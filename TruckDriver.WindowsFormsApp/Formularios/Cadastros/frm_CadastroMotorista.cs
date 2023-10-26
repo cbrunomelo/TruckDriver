@@ -88,13 +88,15 @@ namespace WindowsFormsApp1.Formularios.Cadastros
 
         private async void mtxt_CEP_Leave(object sender, EventArgs e)
         {
-            Endereco endereco = await _cepService.BuscaCep(mtxt_CEP.Text);
+            if (mtxt_CEP.Text.Replace("-","").Trim() == string.Empty)
+                return;
+            
+            Endereco endereco = await _cepService.BuscaEnderecoPorCep(mtxt_CEP.Text);
 
             txt_Logradouro.Text = endereco.Logradouro;
             txt_Bairro.Text = endereco.Bairro ;
             txt_Cidade.Text = endereco.Cidade;
             txt_estado.Text = endereco.Estado;
-
 
 
         }
