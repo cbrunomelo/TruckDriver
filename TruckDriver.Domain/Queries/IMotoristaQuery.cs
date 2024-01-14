@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using TruckDriver.Domain.Entitys;
 
 namespace TruckDriver.Domain.Queries
 {
@@ -15,5 +16,7 @@ namespace TruckDriver.Domain.Queries
         int QuantidadeDeMotoristas();
 
         int QuantidadeDeMotoristas(string filtroNome, string filtroStatus);
+
+        Motorista GetById(int id);
     }
 }

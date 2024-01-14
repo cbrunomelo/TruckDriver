@@ -22,6 +22,39 @@ namespace TruckDriver.Infra.ADO
             return _repository.Creat(motorista);
         }
 
+        public Motorista GetById(int id)
+        {
+            string query = "SELECT id, nome, sobrenome, cpf, cnh, telefone, status, fk_enderecoid FROM Motorista WHERE Id = @Id";
+            using (SqliteConnection connection = new SqliteConnection(_repository.connectionString))
+            {
+                connection.Open();
+
+                SqliteCommand command = new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@Id", id);
+
+                using (SqliteDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return new Motorista(
+
+                                            reader.GetInt32(0),
+                                            reader.GetString(1),
+                                            reader.GetString(2),
+                                            reader.GetString(3),
+                                            reader.GetString(4),
+                                            reader.GetString(5),
+                                            reader.GetString(6),
+                                             (reader[7] == DBNull.Value) ? 0 : Convert.ToInt32(reader[7])
+                                            );
+                    }
+                    else
+                        return null;
+                }
+            }
+        }
+
         public DataTable GetMotoristas(int skip, int take, string filtroNome, string filtroStatus)
         {
             string query = "SELECT Nome, Sobrenome, Cpf, Cnh, Telefone, Status FROM Motorista ";
