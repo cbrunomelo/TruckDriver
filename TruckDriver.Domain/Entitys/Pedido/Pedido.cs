@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TruckDriver.Domain.Entitys.PedidosState;
+using TruckDriver.Domain.Queries;
 using TruckDriver.Domain.Services;
 
 namespace TruckDriver.Domain.Entitys
@@ -12,8 +13,13 @@ namespace TruckDriver.Domain.Entitys
         private const float VALOR_KM = 2.5f;
         private IPedidoStatus _statusManager;
         private ICepService _cepService;
-        public Pedido(Endereco coleta, Endereco Destino, ICepService cepService)
+        private IMotoristaQuery _motoristaquery;
+        private IEnderecoQuery _enderecoQuery;
+        public Pedido(Endereco coleta, Endereco Destino, ICepService cepService,
+            IMotoristaQuery motoristaquery, IEnderecoQuery enderecoQuery )
         {
+            _enderecoQuery = enderecoQuery;
+            _motoristaquery = motoristaquery;
             Coleta_Endereco = coleta;
             Destino_Endereco = Destino;
             _cepService = cepService;
@@ -22,6 +28,33 @@ namespace TruckDriver.Domain.Entitys
             PreencherValores();
 
 
+        }
+
+        private Pedido(int id, double distanciaKM, double preco, DateTime criadoEm, DateTime previsao,
+                       DateTime ultimaAtualizacao, EStatus status, int fk_Coleta_EnderecoId, int fk_Destino_EnderecoId,
+                       int fk_MotoristaId, IEnderecoQuery enderecoQuery, IMotoristaQuery motoristaquery)
+        {
+            Id = id;
+            DistanciaKM = distanciaKM;
+            Preco = preco;
+            CriadoEm = criadoEm;
+            Previsao = previsao;
+            UltimaAtualizacao = ultimaAtualizacao;
+            _status = status;
+            Fk_Coleta_EnderecoId = fk_Coleta_EnderecoId;
+            Fk_Destino_EnderecoId = fk_Destino_EnderecoId;
+            Fk_MotoristaId = fk_MotoristaId;
+            _enderecoQuery = enderecoQuery;
+            _motoristaquery = motoristaquery;
+        }
+
+        public static Pedido CarregarDoBanco(int id, double distanciaKM, double preco, DateTime criadoEm, DateTime previsao,
+            DateTime ultimaAtualizacao, EStatus status, int fk_Coleta_EnderecoId, int fk_Destino_EnderecoId, int fk_MotoristaId,
+            IEnderecoQuery enderecoquery, IMotoristaQuery motoristaQuery)
+        {            
+            Pedido pedido = new Pedido(id, distanciaKM, preco, criadoEm, previsao, ultimaAtualizacao, status, fk_Coleta_EnderecoId,
+                fk_Destino_EnderecoId, fk_MotoristaId, enderecoquery, motoristaQuery);
+            return pedido;
         }
 
         public void AvancarStatus()
@@ -44,35 +77,54 @@ namespace TruckDriver.Domain.Entitys
 
         public double Preco { get; private set; }
 
-        public int Fk_Coleta_EnderecoId
-        {
-            get
-            {
-                return Coleta_Endereco.Id;
-            }
-            private set { }
-        }
+        private int Fk_Coleta_EnderecoId;
 
-        public int Fk_Destino_EnderecoId
-        {
-            get
-            {
-                return Destino_Endereco.Id;
-            }
-            private set { }
-        }
+        private Endereco _coleta_Endereco;
+        public Endereco Coleta_Endereco
+                        { get
+                            {
+                             if (_coleta_Endereco is null & Fk_Coleta_EnderecoId != 0)
+                             {
+                                 _coleta_Endereco = LoadEndereco(Fk_Coleta_EnderecoId);
+                                 return _coleta_Endereco;
+                             }
+                             else return null;
+                            }
+                            private set => _coleta_Endereco = value;
+                           }
 
-        public Endereco Coleta_Endereco { get; private set; }
 
-        public Endereco Destino_Endereco { get; private set; }
+        private int Fk_Destino_EnderecoId;
 
-        public int? Fk_MotoristaId
-        {
-            get { return Motorista?.Id; }
-            private set {  }
-        }
+        private Endereco _destino_Endereco;
+        public Endereco Destino_Endereco 
+                    { get {
+                if (_destino_Endereco is null & Fk_Destino_EnderecoId != 0)
+                {
+                    _destino_Endereco = LoadEndereco(Fk_Destino_EnderecoId);
+                    return _destino_Endereco;
+                }
+                else return null;
+                            }
+            private set => _destino_Endereco = value;
+                    }
 
-        private Motorista Motorista { get; set; }
+      
+        private int Fk_MotoristaId { get; set; }
+
+        private Motorista _motorista;
+        public Motorista Motorista 
+                        {
+                            get
+                            {
+                             if (_motorista is null & Fk_MotoristaId != 0)
+                             {
+                                 _motorista = LoadMotorista();
+                                 return _motorista;
+                             }
+                                else return null;
+                            }
+                        }
 
 
         private EStatus _status { get; set; }
@@ -108,11 +160,18 @@ namespace TruckDriver.Domain.Entitys
             Preco = CalcularPreco();
         }
 
-        public void SetMotorista(Motorista motorista)
+
+        private Motorista LoadMotorista()
         {
-            Motorista = motorista;
-            AvancarStatus();
+            return _motoristaquery.GetById(Fk_MotoristaId);
+        }
+
+
+        private Endereco LoadEndereco(int endereco_id)
+        {
+            return _enderecoQuery.Get(endereco_id);
         }
 
     }
+
 }

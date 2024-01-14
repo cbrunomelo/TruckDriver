@@ -23,7 +23,20 @@ namespace TruckDriver.IoC
             services.AddTransient<ICepService, CepService>();
             services.AddScoped<IMotoristaRepository, MotoristaRepository>();
             services.AddScoped<IEnderecoHandle, EnderecoHandler>();
-            
+            services.AddScoped<IEnderecoQuery, EnderecoRepository>();
+            services.AddScoped<IPedidoQuery, PedidoRepository>();
+            services.AddScoped<IMotoristaQuery, MotoristaRepository>();
+
+            services.AddScoped<IPedidoQuery, PedidoRepository>(provider =>
+            {
+                // Resolução das dependências do construtor
+                var enderecoQuery = provider.GetRequiredService<IEnderecoQuery>();
+                var motoristaQuery = provider.GetRequiredService<IMotoristaQuery>();
+
+                // Criação e retorno da instância com as dependências
+                return new PedidoRepository(enderecoQuery, motoristaQuery);
+            });
+
 
             return services;
         }

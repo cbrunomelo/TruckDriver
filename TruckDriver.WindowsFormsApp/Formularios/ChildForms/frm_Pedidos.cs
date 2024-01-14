@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Windows.Forms;
 using TruckDriver.Domain.Queries;
 using TruckDriver.Infra.ADO;
+using TruckDriver.WindowsFormsApp.Services;
 using WindowsFormsApp1.Formularios.Cadastros;
 
 namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
@@ -15,11 +17,12 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
         private string _FiltroStatusAtual = string.Empty;
 
 
-        private IMotoristaQuery _query;
+        private IPedidoQuery _query;
+        
         public frm_Pedidos()
         {
             InitializeComponent();
-            _query = new MotoristaRepository();
+            _query = AppContainer.ServiceProvider.GetService<IPedidoQuery>();
             UpdateControls();
             UpdateGrid();
             AdjustColumnSize();
@@ -43,7 +46,7 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
 
             txt_BuscarPorNome.NotAllowNumbers();
 
-            _UltimaPagina = (_query.QuantidadeDeMotoristas() / _NumeroDeRegistroPorPagina) + 1;
+            _UltimaPagina = (_query.QuantidadeDePedidos() / _NumeroDeRegistroPorPagina) + 1;
 
 
 
@@ -51,12 +54,14 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
 
         private void UpdateGrid(int skip = 0, string filtroNome = "", string filtroStatus = "")
         {
-            dgv_Motoristas.DataSource = _query.GetMotoristas(skip, _NumeroDeRegistroPorPagina, filtroNome, filtroStatus);
-            dgv_Motoristas.Columns[0].HeaderText = "Nome";
-            dgv_Motoristas.Columns[1].HeaderText = "Sobrenome";
-            dgv_Motoristas.Columns[2].HeaderText = "Cpf";
-            dgv_Motoristas.Columns[3].HeaderText = "Cnh";
-            dgv_Motoristas.Columns[4].HeaderText = "Telefone";
+            dgv_Motoristas.DataSource = _query.Get(skip, _NumeroDeRegistroPorPagina, filtroNome, filtroStatus);
+            dgv_Motoristas.Columns[0].HeaderText = "Pedido";
+            dgv_Motoristas.Columns[1].HeaderText = "Distancia/KM";
+            dgv_Motoristas.Columns[2].HeaderText = "Preço";
+            dgv_Motoristas.Columns[3].HeaderText = "Data de Criação";
+            dgv_Motoristas.Columns[4].HeaderText = "Data de Previsão";
+            dgv_Motoristas.Columns[5].HeaderText = "Última Atualização";
+            dgv_Motoristas.Columns[6].HeaderText = "Status";
 
             lbl_NumeroDePaginas.Text = $"{_PaginaAtual} de {_UltimaPagina} Páginas";
         }
@@ -95,7 +100,7 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
             _PaginaAtual = 1;
             _FiltroNomeAtual = filtroNome;
 
-            _UltimaPagina = (_query.QuantidadeDeMotoristas(filtroNome, filtroStatus) / _NumeroDeRegistroPorPagina) + 1;
+            _UltimaPagina = (_query.QuantidadeDePedidos(filtroNome, filtroStatus) / _NumeroDeRegistroPorPagina) + 1;
 
             UpdateGrid(0, filtroNome, _FiltroStatusAtual);
 
@@ -107,7 +112,7 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
             txt_BuscarPorNome.Text = string.Empty;
             txt_Ir.Text = string.Empty;
             _PaginaAtual = 1;
-            _UltimaPagina = (_query.QuantidadeDeMotoristas() / _NumeroDeRegistroPorPagina) + 1;
+            _UltimaPagina = (_query.QuantidadeDePedidos() / _NumeroDeRegistroPorPagina) + 1;
             UpdateGrid();
         }
 

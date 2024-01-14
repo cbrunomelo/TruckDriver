@@ -20,6 +20,19 @@ namespace TruckDriver.Domain.Entitys
             _status = EStatus.DISPONIVEL;
         }
 
+        public Motorista(int id, string name, string sobrenome, string cpf, string cnh, string telefone,
+            string status,int Fk_enderecoId)
+        {
+            Id = id;
+            Nome = name;
+            Sobrenome = sobrenome;
+            this.cpf = cpf;
+            this.cnh = cnh;
+            this.telefone = telefone;
+            this.Fk_enderecoId = Fk_enderecoId;
+            _status = (EStatus)Enum.Parse(typeof(EStatus), status);
+        }
+
         public int Id { get; private set; } = 0;
 
         public string Nome { get; private set; }
