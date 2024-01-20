@@ -52,5 +52,12 @@ namespace TruckDriver.Domain.Entitys
         private EStatus _status { get; set; }
 
         public string Status { get => _status.ToString(); }
+
+
+        public override string ToString()
+        {
+            return Nome.ToString();
+        }
+
     }
 }

@@ -54,14 +54,10 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
 
         private void UpdateGrid(int skip = 0, string filtroNome = "", string filtroStatus = "")
         {
-            dgv_Motoristas.DataSource = _query.Get(skip, _NumeroDeRegistroPorPagina, filtroNome, filtroStatus);
-            dgv_Motoristas.Columns[0].HeaderText = "Pedido";
-            dgv_Motoristas.Columns[1].HeaderText = "Distancia/KM";
-            dgv_Motoristas.Columns[2].HeaderText = "Preço";
-            dgv_Motoristas.Columns[3].HeaderText = "Data de Criação";
-            dgv_Motoristas.Columns[4].HeaderText = "Data de Previsão";
-            dgv_Motoristas.Columns[5].HeaderText = "Última Atualização";
-            dgv_Motoristas.Columns[6].HeaderText = "Status";
+                                   
+            dgv_pedidos.DataSource = _query.Get(skip, _NumeroDeRegistroPorPagina, filtroNome, filtroStatus);
+
+            ConfigurarGrid();
 
             lbl_NumeroDePaginas.Text = $"{_PaginaAtual} de {_UltimaPagina} Páginas";
         }
@@ -69,17 +65,17 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
 
         private void AdjustColumnSize()
         {
-            int numberOfColumns = dgv_Motoristas.Columns.Count;
-            int rowHeadersWidth = dgv_Motoristas.RowHeadersWidth;
+            int numberOfColumns = dgv_pedidos.Columns.Count;
+            int rowHeadersWidth = dgv_pedidos.RowHeadersWidth;
             int columnWidth = (this.Width - rowHeadersWidth) / numberOfColumns;
 
-            foreach (DataGridViewColumn column in dgv_Motoristas.Columns)
+            foreach (DataGridViewColumn column in dgv_pedidos.Columns)
             {
                 column.Width = columnWidth;
             }
         }
 
-        private void dgv_Motoristas_SizeChanged(object sender, EventArgs e)
+        private void dgv_pedidos_SizeChanged(object sender, EventArgs e)
         {
             AdjustColumnSize();
         }
@@ -135,5 +131,66 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
             UpdateGrid(skip, _FiltroNomeAtual, _FiltroStatusAtual);
         }
 
+
+        private void ConfigurarGrid()
+        {
+            dgv_pedidos.AutoGenerateColumns = false;
+            dgv_pedidos.Columns.Clear();
+
+            DataGridViewTextBoxColumn pedido = new DataGridViewTextBoxColumn();
+            pedido.HeaderText = "Pedido";
+            pedido.DataPropertyName = "Id";
+            pedido.Name = "Id";
+            dgv_pedidos.Columns.Add(pedido);
+
+
+            DataGridViewTextBoxColumn enderecoColeta = new DataGridViewTextBoxColumn();
+            enderecoColeta.HeaderText = "Endereço Coleta";
+            enderecoColeta.DataPropertyName = "Coleta_Endereco";
+            enderecoColeta.Name = "EnderecoColeta";
+            dgv_pedidos.Columns.Add(enderecoColeta);
+
+            DataGridViewTextBoxColumn enderecoEntrega = new DataGridViewTextBoxColumn();
+            enderecoEntrega.HeaderText = "Endereço Destino";
+            enderecoEntrega.DataPropertyName = "Destino_Endereco";
+            enderecoEntrega.Name = "EnderecoEntrega";
+            dgv_pedidos.Columns.Add(enderecoEntrega);
+            
+            DataGridViewTextBoxColumn distanciaKM = new DataGridViewTextBoxColumn();
+            distanciaKM.HeaderText = "Distancia/KM";
+            distanciaKM.DataPropertyName = "DistanciaKM";
+            distanciaKM.Name = "DistanciaKM";
+            dgv_pedidos.Columns.Add(distanciaKM);
+
+            DataGridViewTextBoxColumn preco = new DataGridViewTextBoxColumn();
+            preco.HeaderText = "Preço";
+            preco.DataPropertyName = "Preco";
+            preco.Name = "Preco";
+            dgv_pedidos.Columns.Add(preco);
+
+            DataGridViewTextBoxColumn previsao = new DataGridViewTextBoxColumn();
+            previsao.HeaderText = "Data de Previsão";
+            previsao.DataPropertyName = "Previsao";
+            previsao.Name = "Previsao";
+            dgv_pedidos.Columns.Add(previsao);
+
+            DataGridViewTextBoxColumn motorista = new DataGridViewTextBoxColumn();
+            motorista.HeaderText = "Motorista";
+            motorista.DataPropertyName = "Motorista";
+            motorista.Name = "Motorista";
+            dgv_pedidos.Columns.Add(motorista);
+            
+            DataGridViewTextBoxColumn status = new DataGridViewTextBoxColumn();
+            status.HeaderText = "Status";
+            status.DataPropertyName = "Status";
+            status.Name = "Status";
+            dgv_pedidos.Columns.Add(status);
+
+        }
+
+        private void dgv_pedidos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            MessageBox.Show("Teste");
+        }
     }
 }
