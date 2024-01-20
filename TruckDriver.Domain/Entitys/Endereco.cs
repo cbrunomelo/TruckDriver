@@ -43,5 +43,10 @@ namespace TruckDriver.Domain.Entitys
             this.Cidade = cidade;
             this.Estado = estado;
         }
+
+        public override string ToString()
+        {
+            return $"{Bairro}, {Cidade}";
+        }
     }
 }
