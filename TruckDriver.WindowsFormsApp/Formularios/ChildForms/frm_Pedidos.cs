@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Linq;
 using System.Windows.Forms;
+using TruckDriver.Domain.Entitys.PedidosState;
 using TruckDriver.Domain.Queries;
 using TruckDriver.Infra.ADO;
 using TruckDriver.WindowsFormsApp.Services;
@@ -37,9 +39,21 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
 
         private void UpdateControls()
         {
-            cmb_MotoristaStatus.Items.Clear();
-            string[] Items = { string.Empty, "Em Viagem", "Férias", "Aguardando", "Em Retorno" };
-            cmb_MotoristaStatus.Items.AddRange(Items);
+            var listaStatus = Enum.GetValues(typeof(EStatus))
+                                                        .Cast<EStatus>()
+                                                        .Select(valor => new
+                                                        {
+                                                            Valor = (int)valor,
+                                                            Display = GetDisplayName(valor)
+                                                        })
+                                                        .ToList();
+
+            listaStatus.Insert(0, new { Valor = -1, Display = string.Empty });
+
+            cmb_PedidoStatus.DataSource = listaStatus;
+
+            cmb_PedidoStatus.DisplayMember = "Display";
+            cmb_PedidoStatus.ValueMember = "Valor";
 
             txt_Ir.NotAllowLetters();
             txt_Ir.NotAllowWhiteSpace();
@@ -191,6 +205,19 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
         private void dgv_pedidos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             MessageBox.Show("Teste");
+        }
+
+
+        private string GetDisplayName(Enum value)
+        {
+            var field = value.GetType().GetField(value.ToString());
+            var attribute = (EnumDisplayNameAttribute)Attribute.GetCustomAttribute(field, typeof(EnumDisplayNameAttribute));
+            return attribute?.DisplayName ?? value.ToString();
+        }
+
+        private void cmb_PedidoStatus_SelectedValueChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
