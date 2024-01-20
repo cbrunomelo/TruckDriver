@@ -84,11 +84,8 @@ namespace TruckDriver.Domain.Entitys
                         { get
                             {
                              if (_coleta_Endereco is null & Fk_Coleta_EnderecoId != 0)
-                             {
-                                 _coleta_Endereco = LoadEndereco(Fk_Coleta_EnderecoId);
-                                 return _coleta_Endereco;
-                             }
-                             else return null;
+                                _coleta_Endereco = LoadEndereco(Fk_Coleta_EnderecoId);
+                              return _coleta_Endereco;
                             }
                             private set => _coleta_Endereco = value;
                            }
@@ -98,16 +95,16 @@ namespace TruckDriver.Domain.Entitys
 
         private Endereco _destino_Endereco;
         public Endereco Destino_Endereco 
-                    { get {
-                if (_destino_Endereco is null & Fk_Destino_EnderecoId != 0)
-                {
-                    _destino_Endereco = LoadEndereco(Fk_Destino_EnderecoId);
-                    return _destino_Endereco;
-                }
-                else return null;
+                        { 
+                        get 
+                            {
+                               if (_destino_Endereco is null & Fk_Destino_EnderecoId != 0)
+                                   _destino_Endereco = LoadEndereco(Fk_Destino_EnderecoId);                
+                                      
+                                return _destino_Endereco;
                             }
-            private set => _destino_Endereco = value;
-                    }
+                        private set => _destino_Endereco = value;
+                        }
 
       
         private int Fk_MotoristaId { get; set; }
@@ -117,12 +114,9 @@ namespace TruckDriver.Domain.Entitys
                         {
                             get
                             {
-                             if (_motorista is null & Fk_MotoristaId != 0)
-                             {
-                                 _motorista = LoadMotorista();
-                                 return _motorista;
-                             }
-                                else return null;
+                             if (_motorista is null & Fk_MotoristaId != 0) 
+                                _motorista = LoadMotorista();
+                             return _motorista;
                             }
                         }
 
