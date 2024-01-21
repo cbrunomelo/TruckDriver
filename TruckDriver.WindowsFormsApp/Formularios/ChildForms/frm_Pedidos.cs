@@ -43,12 +43,12 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
                                                         .Cast<EStatus>()
                                                         .Select(valor => new
                                                         {
-                                                            Valor = (int)valor,
+                                                            Valor = valor.ToString(),
                                                             Display = GetDisplayName(valor)
                                                         })
                                                         .ToList();
 
-            listaStatus.Insert(0, new { Valor = -1, Display = string.Empty });
+            listaStatus.Insert(0, new { Valor = string.Empty, Display = string.Empty });
 
             cmb_PedidoStatus.DataSource = listaStatus;
 
@@ -58,7 +58,7 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
             txt_Ir.NotAllowLetters();
             txt_Ir.NotAllowWhiteSpace();
 
-            txt_BuscarPorNome.NotAllowNumbers();
+            txt_BuscarPorPedido.NotAllowNumbers();
 
             _UltimaPagina = (_query.QuantidadeDePedidos() / _NumeroDeRegistroPorPagina) + 1;
 
@@ -66,10 +66,10 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
 
         }
 
-        private void UpdateGrid(int skip = 0, string filtroNome = "", string filtroStatus = "")
+        private void UpdateGrid(int skip = 0, string filtroPedido = "", string filtroStatus = "")
         {
                                    
-            dgv_pedidos.DataSource = _query.Get(skip, _NumeroDeRegistroPorPagina, filtroNome, filtroStatus);
+            dgv_pedidos.DataSource = _query.Get(skip, _NumeroDeRegistroPorPagina, filtroPedido, filtroStatus);
 
             ConfigurarGrid();
 
@@ -103,26 +103,30 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
 
         private void bnt_filtrar_Click(object sender, EventArgs e)
         {
-            string filtroNome = txt_BuscarPorNome.Text;
-            string filtroStatus = string.Empty;
+            string filtroPedido = txt_BuscarPorPedido.Text;
+            string filtroStatus = cmb_PedidoStatus.SelectedValue.ToString();
 
             txt_Ir.Text = string.Empty;
             _PaginaAtual = 1;
-            _FiltroNomeAtual = filtroNome;
+            _FiltroNomeAtual = filtroPedido;
+            _FiltroStatusAtual = filtroStatus;
 
-            _UltimaPagina = (_query.QuantidadeDePedidos(filtroNome, filtroStatus) / _NumeroDeRegistroPorPagina) + 1;
+            _UltimaPagina = (_query.QuantidadeDePedidos(filtroPedido, filtroStatus) / _NumeroDeRegistroPorPagina) + 1;
 
-            UpdateGrid(0, filtroNome, _FiltroStatusAtual);
+            UpdateGrid(0, filtroPedido, _FiltroStatusAtual);
 
         }
 
         private void btn_LimparFiltro_Click(object sender, EventArgs e)
         {
             _FiltroNomeAtual = string.Empty;
-            txt_BuscarPorNome.Text = string.Empty;
+            txt_BuscarPorPedido.Text = string.Empty;
             txt_Ir.Text = string.Empty;
             _PaginaAtual = 1;
             _UltimaPagina = (_query.QuantidadeDePedidos() / _NumeroDeRegistroPorPagina) + 1;
+            cmb_PedidoStatus.SelectedIndex = 0;
+            txt_BuscarPorPedido.Text = string.Empty;
+
             UpdateGrid();
         }
 
@@ -204,7 +208,7 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
 
         private void dgv_pedidos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show("Teste");
+            
         }
 
 
