@@ -42,16 +42,23 @@ namespace TruckDriver.Infra.ADO
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Pedido> Get(int skip, int take, string filtroNome, string filtroStatus)
+        public IEnumerable<Pedido> Get(int skip, int take, string filtroPedido, string filtroStatus)
         {
             List<Pedido> pedidos = new List<Pedido>();
 
             string query = "select id, distanciaKM, preco, criadoEm, previsao, UltimaAtualizacao, " +
                 "status,FK_coleta_EnderecoId, Fk_Destino_EnderecoId, FK_MotoristaId from pedido ";
-     //       if (!string.IsNullOrEmpty(filtroNome))
-     //           query += "Where LOWER(nome) = LOWER(@filtroNome) ";
-     //
-     //       query += "LIMIT @Take OFFSET @Skip";
+            
+            if (!string.IsNullOrEmpty(filtroPedido))
+            {
+                query += "Where id = @filtroPedido ";
+                if (!string.IsNullOrEmpty(filtroStatus))
+                    query += "And LOWER(Status) = LOWER(@filtroStatus) ";
+            }
+            else if (!string.IsNullOrEmpty(filtroStatus))
+                query += "Where LOWER(Status) = LOWER(@filtroStatus) ";
+
+            query += "LIMIT @Take OFFSET @Skip";
 
 
             using (SqliteConnection connection = new SqliteConnection(_repository.connectionString))
@@ -59,11 +66,13 @@ namespace TruckDriver.Infra.ADO
                 connection.Open();
 
                 SqliteCommand command = new SqliteCommand(query, connection);
-         //       command.Parameters.AddWithValue("@Skip", skip);
-         //       command.Parameters.AddWithValue("@Take", take);
-         //       if (filtroNome != "")
-         //           command.Parameters.AddWithValue("@filtroNome", filtroNome);
+                command.Parameters.AddWithValue("@Skip", skip);
+                command.Parameters.AddWithValue("@Take", take);
 
+                if (!string.IsNullOrEmpty(filtroPedido))
+                    command.Parameters.AddWithValue("@filtroPedido", filtroPedido);
+                if (!string.IsNullOrEmpty(filtroStatus))
+                    command.Parameters.AddWithValue("@filtroStatus", filtroStatus);
 
                 using (SqliteDataReader reader = command.ExecuteReader())
                 {
@@ -120,9 +129,31 @@ namespace TruckDriver.Infra.ADO
             
         }
 
-        public int QuantidadeDePedidos(string filtroNome, string filtroStatus)
+        public int QuantidadeDePedidos(string filtroPedido, string filtroStatus)
         {
-            throw new NotImplementedException();
+            string query = "SELECT COUNT(*) FROM Pedido ";
+            if (!string.IsNullOrEmpty(filtroPedido))
+            {
+                query += "Where id = @filtroPedido ";
+                if (!string.IsNullOrEmpty(filtroStatus))
+                    query += "And LOWER(Status) = LOWER(@filtroStatus) ";
+            }
+            else if (!string.IsNullOrEmpty(filtroStatus))
+                query += "Where LOWER(Status) = LOWER(@filtroStatus) ";
+            
+
+            using(SqliteConnection connection = new SqliteConnection(_repository.connectionString))
+            {
+                connection.Open();
+
+                SqliteCommand command = new SqliteCommand(query, connection);
+                if (!string.IsNullOrEmpty(filtroPedido))
+                    command.Parameters.AddWithValue("@filtroPedido", filtroPedido);
+                if (!string.IsNullOrEmpty(filtroStatus))
+                    command.Parameters.AddWithValue("@filtroStatus", filtroStatus);
+
+                return Convert.ToInt32(command.ExecuteScalar());
+            }
         }
 
 
