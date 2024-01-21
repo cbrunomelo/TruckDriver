@@ -127,6 +127,12 @@
     <Compile Include="Formularios\Cadastros\frm_CadastroMotorista.Designer.cs">
       <DependentUpon>frm_CadastroMotorista.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Cadastros\frm_CadastroPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Cadastros\frm_CadastroPedido.Designer.cs">
+      <DependentUpon>frm_CadastroPedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\ChildForms\ChildBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +206,9 @@
     <Compile Include="Services\AppContainer.cs" />
     <EmbeddedResource Include="Formularios\Cadastros\frm_CadastroMotorista.resx">
       <DependentUpon>frm_CadastroMotorista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Cadastros\frm_CadastroPedido.resx">
+      <DependentUpon>frm_CadastroPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\ChildForms\ChildBase.resx">
       <DependentUpon>ChildBase.cs</DependentUpon>

@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using TruckDriver.Domain.Entitys.PedidosState;
 using TruckDriver.Domain.Queries;
 using TruckDriver.Infra.ADO;
+using TruckDriver.WindowsFormsApp.Formularios.Cadastros;
 using TruckDriver.WindowsFormsApp.Services;
 using WindowsFormsApp1.Formularios.Cadastros;
 
@@ -33,8 +34,8 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
 
         private void btn_Adcionar_Click(object sender, EventArgs e)
         {
-            var Form = new frm_CadastroMotorista();
-            Form.ShowDialog();
+            var form = new frm_CadastroPedido();
+            form.ShowDialog();
         }
 
         private void UpdateControls()
@@ -222,6 +223,11 @@ namespace TruckDriver.WindowsFormsApp.Formularios.ChildForms
         private void cmb_PedidoStatus_SelectedValueChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void btn_Detalhar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
