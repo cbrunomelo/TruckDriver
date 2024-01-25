@@ -1,21 +1,18 @@
 ﻿using FluentValidation.Results;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 using TruckDriver.Domain.Commands;
 using TruckDriver.Domain.Commands.Contracts;
 using TruckDriver.Domain.Commands.PedidosCommands;
 using TruckDriver.Domain.Commands.PedidosCommands.Validations;
 using TruckDriver.Domain.Entitys;
-using TruckDriver.Domain;
+using TruckDriver.Domain.Entitys.Validation;
 using TruckDriver.Domain.Extensions;
+using TruckDriver.Domain.Handlers.Contracts;
 using TruckDriver.Domain.MessageConstants;
+using TruckDriver.Domain.Queries;
 using TruckDriver.Domain.Repository;
 using TruckDriver.Domain.Services;
-using TruckDriver.Domain.Entitys.Validation;
-using TruckDriver.Domain.Handlers.Contracts;
-using System.Threading.Tasks;
-using TruckDriver.Domain.Queries;
 
 namespace TruckDriver.Domain.Handlers
 {
@@ -60,7 +57,7 @@ namespace TruckDriver.Domain.Handlers
                 return new GenericCommandResult(false, MessageConstant.UNABLE_TO_CREATE, resultEnderecoEntrega.Erros);
 
 
-            Pedido pedido = new Pedido((Endereco)resultEnderecoColeta.Data, (Endereco)resultEnderecoEntrega.Data, 
+            Pedido pedido = new Pedido((Endereco)resultEnderecoColeta.Data, (Endereco)resultEnderecoEntrega.Data,
                 _cepDistanceCalculator, _motoristaQuery, _enderecoQuery);
 
             PedidoValidation pedidoValidation = new PedidoValidation();
@@ -68,7 +65,7 @@ namespace TruckDriver.Domain.Handlers
 
             if (!resultPedido.IsValid)
                 return new GenericCommandResult(false, MessageConstant.UNABLE_TO_CREATE, resultPedido.ToList());
-            
+
 
             pedido.Id = _repository.Creat(pedido);
 

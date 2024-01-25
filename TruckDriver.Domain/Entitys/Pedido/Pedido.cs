@@ -9,7 +9,7 @@ namespace TruckDriver.Domain.Entitys
     public sealed class Pedido : Entity
     {
         public override string TABLE_NAME { get => "Pedido"; set => base.TABLE_NAME = value; }
-        public const int DISTANCIA_MINIMA_KM = 100;
+        public const int DISTANCIA_MINIMA_KM = 10;
         private const float VALOR_KM = 2.5f;
         private IPedidoStatus _statusManager;
         private ICepService _cepService;

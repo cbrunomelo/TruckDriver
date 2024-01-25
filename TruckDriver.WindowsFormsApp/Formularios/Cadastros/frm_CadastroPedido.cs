@@ -3,9 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using TruckDriver.Domain.Commands.Contracts;
 using TruckDriver.Domain.Commands.EnderecoCommands;
-using TruckDriver.Domain.Commands.MotoristaCommands;
+using TruckDriver.Domain.Commands.PedidosCommands;
 using TruckDriver.Domain.Entitys;
 using TruckDriver.Domain.Handlers.Contracts;
 using TruckDriver.Domain.Services;
@@ -43,35 +42,51 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Cadastros
 
         private async void btn_Cadastrar_Click(object sender, EventArgs e)
         {
-            //CreateMotoristaCommand command = new CreateMotoristaCommand();
+            if (mtxt_CepColeta.Text.Replace("-", "").Trim() == string.Empty || 
+                mtxt_CepEntrega.Text.Replace("-", "").Trim() == string.Empty)
+            {
+                MessageBox.Show("O campo CEP é obrigatório", "Erro");
+                return;
+            }
 
+            CreatePedidoCommand command = new CreatePedidoCommand();
 
-            //command.enderecoCommand = new CreateEnderecoCommand()
-            //{
-            //    Bairro = txt_BairroEntrega.Text,
-            //    Cep = mtxt_CepEntrega.Text,
-            //    Logradouro = txt_LogradouroEntrega.Text,
-            //    Complemento = txt_ComplementoEntrega.Text,
-            //    Cidade = txt_CidadeEntrega.Text,
-            //    Estado = txt_estadoEntrega.Text
-            //};
+            command.Endereco_coleta = new CreateEnderecoCommand()
+            {
+                Bairro = txt_BairroColeta.Text,
+                Cep = mtxt_CepColeta.Text,
+                Logradouro = txt_LogradouroColeta.Text,
+                Complemento = txt_ComplementoColeta.Text,
+                Cidade = txt_CidadeColeta.Text,
+                Estado = txt_estadoColeta.Text
+            };
 
+            command.Endereco_entrega = new CreateEnderecoCommand()
+            {
+                Bairro = txt_BairroEntrega.Text,
+                Cep = mtxt_CepEntrega.Text,
+                Logradouro = txt_LogradouroEntrega.Text,
+                Complemento = txt_ComplementoEntrega.Text,
+                Cidade = txt_CidadeEntrega.Text,
+                Estado = txt_estadoEntrega.Text
+            };
 
-            //ICommandResult result = await _motoristaHandler.Handle(command);
+            var result =await _pedidoHandler.Handle(command);
 
+            
+            if (!result.Success)
+            {
+                string erros = "";
+                foreach (var erro in (result.Erros))
+                {
+                    erros += erro + "\n";
+                } 
+                MessageBox.Show($"Nao foi possivel criar um novo pedido:\n{erros}", "Erro");                                    
+                return;
+            }
+            
 
-            //if (!result.Success)
-            //{
-            //    string erros = "";
-            //    foreach (var erro in (List<ValidationFailure>)result.Data)
-            //    {
-            //        erros += erro.ErrorMessage + "\n";
-            //    }
-            //    MessageBox.Show($"Nao foi possivel criar um novo motorista:\n{erros}", "Erro");
-            //    return;
-            //}
-
-            MessageBox.Show("Motorista Criado com sucesso", "Sucesso");
+            MessageBox.Show("Pedido cadastrado com sucesso", "Sucesso");   
 
 
         }
@@ -88,6 +103,20 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Cadastros
             txt_CidadeEntrega.Text = endereco.Cidade;
             txt_estadoEntrega.Text = endereco.Estado;
 
+
+        }
+
+        private void mtxt_CepColeta_Leave(object sender, EventArgs e)
+        {
+            if(mtxt_CepColeta.Text.Replace("-", "").Trim() == string.Empty)
+                return;
+
+            Endereco endereco = _cepService.BuscaEnderecoPorCep(mtxt_CepColeta.Text).Result;
+
+            txt_LogradouroColeta.Text = endereco.Logradouro;
+            txt_BairroColeta.Text = endereco.Bairro;
+            txt_CidadeColeta.Text = endereco.Cidade;
+            txt_estadoColeta.Text = endereco.Estado;
 
         }
     }

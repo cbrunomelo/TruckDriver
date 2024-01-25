@@ -11,7 +11,7 @@ namespace TruckDriver.Domain.Entitys.Validation
         public PedidoValidation()
         {
             RuleFor(c => c.DistanciaKM)
-                .GreaterThan(Pedido.DISTANCIA_MINIMA_KM)
+                .LessThan(Pedido.DISTANCIA_MINIMA_KM)
                 .WithMessage($"A distância mínima para um pedido é de {Pedido.DISTANCIA_MINIMA_KM} km");
         }
     }

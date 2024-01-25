@@ -17,25 +17,7 @@ namespace TruckDriver.Infra.ADO
         {
             using (var connection = new SqliteConnection(connectionString))
             {
-
-                try
-                {
-                    connection.Open();
-
-                    if (connection.State == System.Data.ConnectionState.Open)
-                    {
-                        Console.WriteLine("Conexão com o banco de dados estabelecida com sucesso!");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Não foi possível conectar ao banco de dados.");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Erro ao conectar ao banco de dados: " + ex.Message);
-                }
-
+                connection.Open();
 
                 string propNames = "";
                 string values = "";
@@ -85,7 +67,7 @@ namespace TruckDriver.Infra.ADO
             if (str.EndsWith("id", StringComparison.OrdinalIgnoreCase) && !str.StartsWith("fk", StringComparison.OrdinalIgnoreCase))
                 return true;
 
-            if (str == "Coleta_Endereco" || str == "Destino_Endereco")
+            if (str == "Coleta_Endereco" || str == "Destino_Endereco" || str == "Motorista")
                 return true;
 
             return false;

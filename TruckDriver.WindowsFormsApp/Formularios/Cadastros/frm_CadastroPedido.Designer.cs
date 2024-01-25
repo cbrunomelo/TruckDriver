@@ -32,33 +32,33 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Cadastros
         {
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.grp_EnderecoEntrega = new System.Windows.Forms.GroupBox();
-            this.txt_estadoEntrega = new WindowsFormsApp1.Controls.TruckDriverTextBox();
             this.mtxt_CepEntrega = new System.Windows.Forms.MaskedTextBox();
-            this.txt_CidadeEntrega = new WindowsFormsApp1.Controls.TruckDriverTextBox();
             this.lbl_Estado = new System.Windows.Forms.Label();
             this.lbl_Cidade = new System.Windows.Forms.Label();
-            this.txt_BairroEntrega = new WindowsFormsApp1.Controls.TruckDriverTextBox();
             this.lbl_Bairro = new System.Windows.Forms.Label();
-            this.txt_ComplementoEntrega = new WindowsFormsApp1.Controls.TruckDriverTextBox();
             this.lbl_Complemento = new System.Windows.Forms.Label();
-            this.txt_LogradouroEntrega = new WindowsFormsApp1.Controls.TruckDriverTextBox();
             this.lbl_Logradouro = new System.Windows.Forms.Label();
             this.lbl_CEP = new System.Windows.Forms.Label();
             this.btn_Cadastrar = new System.Windows.Forms.Button();
             this.btn_Cancelar = new System.Windows.Forms.Button();
             this.grpEnderecoColeta = new System.Windows.Forms.GroupBox();
-            this.txt_estadoColeta = new WindowsFormsApp1.Controls.TruckDriverTextBox();
             this.mtxt_CepColeta = new System.Windows.Forms.MaskedTextBox();
-            this.txt_CidadeColeta = new WindowsFormsApp1.Controls.TruckDriverTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txt_BairroColeta = new WindowsFormsApp1.Controls.TruckDriverTextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txt_ComplementoColeta = new WindowsFormsApp1.Controls.TruckDriverTextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txt_LogradouroColeta = new WindowsFormsApp1.Controls.TruckDriverTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.txt_estadoColeta = new WindowsFormsApp1.Controls.TruckDriverTextBox();
+            this.txt_CidadeColeta = new WindowsFormsApp1.Controls.TruckDriverTextBox();
+            this.txt_BairroColeta = new WindowsFormsApp1.Controls.TruckDriverTextBox();
+            this.txt_ComplementoColeta = new WindowsFormsApp1.Controls.TruckDriverTextBox();
+            this.txt_LogradouroColeta = new WindowsFormsApp1.Controls.TruckDriverTextBox();
+            this.txt_estadoEntrega = new WindowsFormsApp1.Controls.TruckDriverTextBox();
+            this.txt_CidadeEntrega = new WindowsFormsApp1.Controls.TruckDriverTextBox();
+            this.txt_BairroEntrega = new WindowsFormsApp1.Controls.TruckDriverTextBox();
+            this.txt_ComplementoEntrega = new WindowsFormsApp1.Controls.TruckDriverTextBox();
+            this.txt_LogradouroEntrega = new WindowsFormsApp1.Controls.TruckDriverTextBox();
             this.grp_EnderecoEntrega.SuspendLayout();
             this.grpEnderecoColeta.SuspendLayout();
             this.SuspendLayout();
@@ -84,14 +84,6 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Cadastros
             this.grp_EnderecoEntrega.TabStop = false;
             this.grp_EnderecoEntrega.Text = "Endereço Entrega";
             // 
-            // txt_estadoEntrega
-            // 
-            this.txt_estadoEntrega.Location = new System.Drawing.Point(199, 184);
-            this.txt_estadoEntrega.Name = "txt_estadoEntrega";
-            this.txt_estadoEntrega.ReadOnly = true;
-            this.txt_estadoEntrega.Size = new System.Drawing.Size(59, 20);
-            this.txt_estadoEntrega.TabIndex = 11;
-            // 
             // mtxt_CepEntrega
             // 
             this.mtxt_CepEntrega.Location = new System.Drawing.Point(9, 54);
@@ -100,14 +92,6 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Cadastros
             this.mtxt_CepEntrega.Size = new System.Drawing.Size(71, 20);
             this.mtxt_CepEntrega.TabIndex = 5;
             this.mtxt_CepEntrega.Leave += new System.EventHandler(this.mtxt_CEP_Leave);
-            // 
-            // txt_CidadeEntrega
-            // 
-            this.txt_CidadeEntrega.Location = new System.Drawing.Point(9, 184);
-            this.txt_CidadeEntrega.Name = "txt_CidadeEntrega";
-            this.txt_CidadeEntrega.ReadOnly = true;
-            this.txt_CidadeEntrega.Size = new System.Drawing.Size(170, 20);
-            this.txt_CidadeEntrega.TabIndex = 9;
             // 
             // lbl_Estado
             // 
@@ -127,14 +111,6 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Cadastros
             this.lbl_Cidade.TabIndex = 8;
             this.lbl_Cidade.Text = "Cidade:";
             // 
-            // txt_BairroEntrega
-            // 
-            this.txt_BairroEntrega.Location = new System.Drawing.Point(199, 119);
-            this.txt_BairroEntrega.Name = "txt_BairroEntrega";
-            this.txt_BairroEntrega.ReadOnly = true;
-            this.txt_BairroEntrega.Size = new System.Drawing.Size(131, 20);
-            this.txt_BairroEntrega.TabIndex = 8;
-            // 
             // lbl_Bairro
             // 
             this.lbl_Bairro.AutoSize = true;
@@ -144,13 +120,6 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Cadastros
             this.lbl_Bairro.TabIndex = 6;
             this.lbl_Bairro.Text = "Bairro:";
             // 
-            // txt_ComplementoEntrega
-            // 
-            this.txt_ComplementoEntrega.Location = new System.Drawing.Point(9, 119);
-            this.txt_ComplementoEntrega.Name = "txt_ComplementoEntrega";
-            this.txt_ComplementoEntrega.Size = new System.Drawing.Size(167, 20);
-            this.txt_ComplementoEntrega.TabIndex = 7;
-            // 
             // lbl_Complemento
             // 
             this.lbl_Complemento.AutoSize = true;
@@ -159,14 +128,6 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Cadastros
             this.lbl_Complemento.Size = new System.Drawing.Size(74, 13);
             this.lbl_Complemento.TabIndex = 4;
             this.lbl_Complemento.Text = "Complemento:";
-            // 
-            // txt_LogradouroEntrega
-            // 
-            this.txt_LogradouroEntrega.Location = new System.Drawing.Point(199, 54);
-            this.txt_LogradouroEntrega.Name = "txt_LogradouroEntrega";
-            this.txt_LogradouroEntrega.ReadOnly = true;
-            this.txt_LogradouroEntrega.Size = new System.Drawing.Size(322, 20);
-            this.txt_LogradouroEntrega.TabIndex = 6;
             // 
             // lbl_Logradouro
             // 
@@ -227,14 +188,6 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Cadastros
             this.grpEnderecoColeta.TabStop = false;
             this.grpEnderecoColeta.Text = "Endereço Coleta";
             // 
-            // txt_estadoColeta
-            // 
-            this.txt_estadoColeta.Location = new System.Drawing.Point(199, 184);
-            this.txt_estadoColeta.Name = "txt_estadoColeta";
-            this.txt_estadoColeta.ReadOnly = true;
-            this.txt_estadoColeta.Size = new System.Drawing.Size(59, 20);
-            this.txt_estadoColeta.TabIndex = 11;
-            // 
             // mtxt_CepColeta
             // 
             this.mtxt_CepColeta.Location = new System.Drawing.Point(9, 54);
@@ -242,14 +195,7 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Cadastros
             this.mtxt_CepColeta.Name = "mtxt_CepColeta";
             this.mtxt_CepColeta.Size = new System.Drawing.Size(71, 20);
             this.mtxt_CepColeta.TabIndex = 0;
-            // 
-            // txt_CidadeColeta
-            // 
-            this.txt_CidadeColeta.Location = new System.Drawing.Point(9, 184);
-            this.txt_CidadeColeta.Name = "txt_CidadeColeta";
-            this.txt_CidadeColeta.ReadOnly = true;
-            this.txt_CidadeColeta.Size = new System.Drawing.Size(170, 20);
-            this.txt_CidadeColeta.TabIndex = 9;
+            this.mtxt_CepColeta.Leave += new System.EventHandler(this.mtxt_CepColeta_Leave);
             // 
             // label1
             // 
@@ -269,14 +215,6 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Cadastros
             this.label2.TabIndex = 8;
             this.label2.Text = "Cidade:";
             // 
-            // txt_BairroColeta
-            // 
-            this.txt_BairroColeta.Location = new System.Drawing.Point(199, 119);
-            this.txt_BairroColeta.Name = "txt_BairroColeta";
-            this.txt_BairroColeta.ReadOnly = true;
-            this.txt_BairroColeta.Size = new System.Drawing.Size(131, 20);
-            this.txt_BairroColeta.TabIndex = 8;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -286,13 +224,6 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Cadastros
             this.label3.TabIndex = 6;
             this.label3.Text = "Bairro:";
             // 
-            // txt_ComplementoColeta
-            // 
-            this.txt_ComplementoColeta.Location = new System.Drawing.Point(9, 119);
-            this.txt_ComplementoColeta.Name = "txt_ComplementoColeta";
-            this.txt_ComplementoColeta.Size = new System.Drawing.Size(167, 20);
-            this.txt_ComplementoColeta.TabIndex = 7;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -301,14 +232,6 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Cadastros
             this.label4.Size = new System.Drawing.Size(74, 13);
             this.label4.TabIndex = 4;
             this.label4.Text = "Complemento:";
-            // 
-            // txt_LogradouroColeta
-            // 
-            this.txt_LogradouroColeta.Location = new System.Drawing.Point(199, 54);
-            this.txt_LogradouroColeta.Name = "txt_LogradouroColeta";
-            this.txt_LogradouroColeta.ReadOnly = true;
-            this.txt_LogradouroColeta.Size = new System.Drawing.Size(322, 20);
-            this.txt_LogradouroColeta.TabIndex = 6;
             // 
             // label5
             // 
@@ -327,6 +250,84 @@ namespace TruckDriver.WindowsFormsApp.Formularios.Cadastros
             this.label6.Size = new System.Drawing.Size(31, 13);
             this.label6.TabIndex = 0;
             this.label6.Text = "CEP:";
+            // 
+            // txt_estadoColeta
+            // 
+            this.txt_estadoColeta.Location = new System.Drawing.Point(199, 184);
+            this.txt_estadoColeta.Name = "txt_estadoColeta";
+            this.txt_estadoColeta.ReadOnly = true;
+            this.txt_estadoColeta.Size = new System.Drawing.Size(59, 20);
+            this.txt_estadoColeta.TabIndex = 11;
+            // 
+            // txt_CidadeColeta
+            // 
+            this.txt_CidadeColeta.Location = new System.Drawing.Point(9, 184);
+            this.txt_CidadeColeta.Name = "txt_CidadeColeta";
+            this.txt_CidadeColeta.ReadOnly = true;
+            this.txt_CidadeColeta.Size = new System.Drawing.Size(170, 20);
+            this.txt_CidadeColeta.TabIndex = 9;
+            // 
+            // txt_BairroColeta
+            // 
+            this.txt_BairroColeta.Location = new System.Drawing.Point(199, 119);
+            this.txt_BairroColeta.Name = "txt_BairroColeta";
+            this.txt_BairroColeta.ReadOnly = true;
+            this.txt_BairroColeta.Size = new System.Drawing.Size(131, 20);
+            this.txt_BairroColeta.TabIndex = 8;
+            // 
+            // txt_ComplementoColeta
+            // 
+            this.txt_ComplementoColeta.Location = new System.Drawing.Point(9, 119);
+            this.txt_ComplementoColeta.Name = "txt_ComplementoColeta";
+            this.txt_ComplementoColeta.Size = new System.Drawing.Size(167, 20);
+            this.txt_ComplementoColeta.TabIndex = 7;
+            // 
+            // txt_LogradouroColeta
+            // 
+            this.txt_LogradouroColeta.Location = new System.Drawing.Point(199, 54);
+            this.txt_LogradouroColeta.Name = "txt_LogradouroColeta";
+            this.txt_LogradouroColeta.ReadOnly = true;
+            this.txt_LogradouroColeta.Size = new System.Drawing.Size(322, 20);
+            this.txt_LogradouroColeta.TabIndex = 6;
+            // 
+            // txt_estadoEntrega
+            // 
+            this.txt_estadoEntrega.Location = new System.Drawing.Point(199, 184);
+            this.txt_estadoEntrega.Name = "txt_estadoEntrega";
+            this.txt_estadoEntrega.ReadOnly = true;
+            this.txt_estadoEntrega.Size = new System.Drawing.Size(59, 20);
+            this.txt_estadoEntrega.TabIndex = 11;
+            // 
+            // txt_CidadeEntrega
+            // 
+            this.txt_CidadeEntrega.Location = new System.Drawing.Point(9, 184);
+            this.txt_CidadeEntrega.Name = "txt_CidadeEntrega";
+            this.txt_CidadeEntrega.ReadOnly = true;
+            this.txt_CidadeEntrega.Size = new System.Drawing.Size(170, 20);
+            this.txt_CidadeEntrega.TabIndex = 9;
+            // 
+            // txt_BairroEntrega
+            // 
+            this.txt_BairroEntrega.Location = new System.Drawing.Point(199, 119);
+            this.txt_BairroEntrega.Name = "txt_BairroEntrega";
+            this.txt_BairroEntrega.ReadOnly = true;
+            this.txt_BairroEntrega.Size = new System.Drawing.Size(131, 20);
+            this.txt_BairroEntrega.TabIndex = 8;
+            // 
+            // txt_ComplementoEntrega
+            // 
+            this.txt_ComplementoEntrega.Location = new System.Drawing.Point(9, 119);
+            this.txt_ComplementoEntrega.Name = "txt_ComplementoEntrega";
+            this.txt_ComplementoEntrega.Size = new System.Drawing.Size(167, 20);
+            this.txt_ComplementoEntrega.TabIndex = 7;
+            // 
+            // txt_LogradouroEntrega
+            // 
+            this.txt_LogradouroEntrega.Location = new System.Drawing.Point(199, 54);
+            this.txt_LogradouroEntrega.Name = "txt_LogradouroEntrega";
+            this.txt_LogradouroEntrega.ReadOnly = true;
+            this.txt_LogradouroEntrega.Size = new System.Drawing.Size(322, 20);
+            this.txt_LogradouroEntrega.TabIndex = 6;
             // 
             // frm_CadastroPedido
             // 
