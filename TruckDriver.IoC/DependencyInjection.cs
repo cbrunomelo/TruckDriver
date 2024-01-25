@@ -26,6 +26,7 @@ namespace TruckDriver.IoC
             services.AddScoped<IEnderecoQuery, EnderecoRepository>();
             services.AddScoped<IPedidoQuery, PedidoRepository>();
             services.AddScoped<IMotoristaQuery, MotoristaRepository>();
+            services.AddScoped<IPedidoHandle, PedidoHandler>();
 
             services.AddScoped<IPedidoQuery, PedidoRepository>(provider =>
             {

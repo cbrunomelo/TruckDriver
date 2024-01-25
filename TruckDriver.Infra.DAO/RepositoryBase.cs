@@ -20,10 +20,12 @@ namespace TruckDriver.Infra.ADO
             using (var connection = new SqliteConnection(connectionString))
             {
                 connection.Open();
+
                 
                 var map = entity.GetMap().Insert();
 
                 string campos = "";
+
                 string values = "";
                 int i = 1;
 
