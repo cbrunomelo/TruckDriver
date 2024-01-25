@@ -13,9 +13,9 @@ namespace TruckDriver.Domain.Entitys
         {
             Nome = name;
             Sobrenome = sobrenome;
-            this.cpf = cpf;
-            this.cnh = cnh;
-            this.telefone = telefone;
+            this.Cpf = cpf;
+            this.Cnh = cnh;
+            this.Telefone = telefone;
             this.Fk_enderecoId = Fk_enderecoId;
             _status = EStatus.DISPONIVEL;
         }
@@ -26,9 +26,9 @@ namespace TruckDriver.Domain.Entitys
             Id = id;
             Nome = name;
             Sobrenome = sobrenome;
-            this.cpf = cpf;
-            this.cnh = cnh;
-            this.telefone = telefone;
+            this.Cpf = cpf;
+            this.Cnh = cnh;
+            this.Telefone = telefone;
             this.Fk_enderecoId = Fk_enderecoId;
             _status = (EStatus)Enum.Parse(typeof(EStatus), status);
         }
@@ -39,11 +39,11 @@ namespace TruckDriver.Domain.Entitys
 
         public string Sobrenome { get; private set; }
 
-        public string cpf { get; private set; }
+        public string Cpf { get; private set; }
 
-        public string cnh { get; private set; }
+        public string Cnh { get; private set; }
 
-        public string telefone { get; private set; }
+        public string Telefone { get; private set; }
 
         public int Fk_enderecoId { get; private set; }
 
