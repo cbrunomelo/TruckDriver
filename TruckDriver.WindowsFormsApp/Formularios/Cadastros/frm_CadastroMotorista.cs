@@ -72,12 +72,9 @@ namespace WindowsFormsApp1.Formularios.Cadastros
 
             if (!result.Success)
             {
-                string erros = "";
-                foreach (var erro in (List<ValidationFailure>)result.Data)
-                {
-                    erros += erro.ErrorMessage + "\n";
-                }
-                MessageBox.Show($"Nao foi possivel criar um novo motorista:\n{erros}", "Erro");
+                string erros = string.Join("\n", result.Erros);
+
+                MessageBox.Show($"Nao foi possivel criar um novo motorista:\n{erros}", $"{result.Message}");
                 return;
             }
 

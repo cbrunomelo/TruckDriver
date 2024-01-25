@@ -76,8 +76,8 @@ namespace TruckDriver.Domain.Entitys
         public double DistanciaKM { get; private set; }
 
         public double Preco { get; private set; }
-
-        private int Fk_Coleta_EnderecoId;
+        
+        public int Fk_Coleta_EnderecoId { get; internal set; }
 
         private Endereco _coleta_Endereco;
         public Endereco Coleta_Endereco
@@ -91,7 +91,7 @@ namespace TruckDriver.Domain.Entitys
                            }
 
 
-        private int Fk_Destino_EnderecoId;
+        public int Fk_Destino_EnderecoId { get; internal set; }
 
         private Endereco _destino_Endereco;
         public Endereco Destino_Endereco 
@@ -106,8 +106,8 @@ namespace TruckDriver.Domain.Entitys
                         private set => _destino_Endereco = value;
                         }
 
-      
-        private int Fk_MotoristaId { get; set; }
+
+        public int Fk_MotoristaId { get; internal set; }
 
         private Motorista _motorista;
         public Motorista Motorista 
