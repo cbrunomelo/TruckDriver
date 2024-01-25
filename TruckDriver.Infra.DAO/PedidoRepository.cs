@@ -101,8 +101,8 @@ namespace TruckDriver.Infra.ADO
                             previsao: Convert.ToDateTime(reader[4]),
                             ultimaAtualizacao: Convert.ToDateTime(reader[5]),
                             status: (EStatus)Enum.Parse(typeof(EStatus), reader[6].ToString()),
-                            fk_Coleta_EnderecoId: Convert.ToInt32(reader[7]),
-                            fk_Destino_EnderecoId: Convert.ToInt32(reader[8]),
+                            fk_Coleta_EnderecoId: DBNull.Value == reader[7] ? 0 : Convert.ToInt32(reader[7]),
+                            fk_Destino_EnderecoId: DBNull.Value == reader[8] ? 0 : Convert.ToInt32(reader[8]),
                             fk_MotoristaId: reader[9] == DBNull.Value ? 0 : Convert.ToInt32(reader[9]),
                             _enderecoQuery, _motoristaQuery
                             ); ;

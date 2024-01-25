@@ -1,9 +1,11 @@
 ﻿using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Text;
 using TruckDriver.Domain.Entitys;
 using TruckDriver.Domain.Repository;
+using TruckDriver.Infra.ADO.Extensions;
 using TruckDriver.Infra.DAO;
 
 namespace TruckDriver.Infra.ADO
@@ -19,31 +21,35 @@ namespace TruckDriver.Infra.ADO
             {
                 connection.Open();
 
-                string propNames = "";
+                
+                var map = entity.GetMap().Insert();
+
+                string campos = "";
+
                 string values = "";
                 int i = 1;
 
                 foreach (var prop in entity.GetType().GetProperties())
                 {
-                    if (PropriedadeDeClassesASeremIgnoradas(prop.Name))
+                    if (!map.ContainsKey(prop.Name))
                         continue;
-                    propNames += prop.Name + ",";
+                    campos += map[prop.Name] + ", ";
                     values += $"@valor{i}, ";
                     i++;
                 }
 
-                propNames = propNames.Substring(0, propNames.Length - 1);
+                campos = campos.Substring(0, campos.Length - 2);
                 values = values.Substring(0, values.Length - 2);
 
 
 
-                string sql = $"INSERT INTO [{entity.TABLE_NAME}] ({propNames}) VALUES ({values}); SELECT last_insert_rowid();";
+                string sql = $"INSERT INTO [{map["TABLE"]}] ({campos}) VALUES ({values}); SELECT last_insert_rowid();";
                 SqliteCommand command = new SqliteCommand(sql, connection);
 
                 i = 1;
                 foreach (var prop in entity.GetType().GetProperties())
                 {
-                    if (PropriedadeDeClassesASeremIgnoradas(prop.Name))
+                    if(!map.ContainsKey(prop.Name))
                         continue;
                     command.Parameters.AddWithValue($"valor{i}", prop.GetValue(entity) ?? DBNull.Value);
                     i++;
@@ -59,18 +65,5 @@ namespace TruckDriver.Infra.ADO
             }
         }
 
-        private bool PropriedadeDeClassesASeremIgnoradas(string str)
-        {
-            if (str == "TABLE_NAME")
-                return true;
-
-            if (str.EndsWith("id", StringComparison.OrdinalIgnoreCase) && !str.StartsWith("fk", StringComparison.OrdinalIgnoreCase))
-                return true;
-
-            if (str == "Coleta_Endereco" || str == "Destino_Endereco" || str == "Motorista")
-                return true;
-
-            return false;
-        }
     }
 }

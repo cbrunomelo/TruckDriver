@@ -90,6 +90,7 @@
             // 
             // btn_Detalhar
             // 
+
             this.btn_Detalhar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Detalhar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Detalhar.Location = new System.Drawing.Point(1264, 501);
@@ -99,6 +100,7 @@
             this.btn_Detalhar.Text = "Detalhar";
             this.btn_Detalhar.UseVisualStyleBackColor = true;
             this.btn_Detalhar.Click += new System.EventHandler(this.btn_Detalhar_Click);
+
             // 
             // btn_Cancelar
             // 
@@ -123,7 +125,7 @@
             this.grp_filtros.Controls.Add(this.label1);
             this.grp_filtros.Location = new System.Drawing.Point(6, 12);
             this.grp_filtros.Name = "grp_filtros";
-            this.grp_filtros.Size = new System.Drawing.Size(1417, 82);
+            this.grp_filtros.Size = new System.Drawing.Size(1491, 82);
             this.grp_filtros.TabIndex = 4;
             this.grp_filtros.TabStop = false;
             this.grp_filtros.Text = "Filtros";
