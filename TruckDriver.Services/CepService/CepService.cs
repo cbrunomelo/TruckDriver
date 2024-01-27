@@ -21,11 +21,10 @@ namespace TruckDriver.Services.CepService
         {
                         
 
-            var geolocalizacaoOrigem = BuscaGeolocalizacao(EnderecoColeta);
-            var geolocalizacaoDestino = BuscaGeolocalizacao(EnderecoDestino);
+            var geolocalizacaoOrigem = await BuscaGeolocalizacao(EnderecoColeta);
+            var geolocalizacaoDestino = await BuscaGeolocalizacao(EnderecoDestino);
 
-
-            var distancia = CalcularDistanciaPelaGeolocalizacao(await geolocalizacaoOrigem, await geolocalizacaoDestino);
+            var distancia = CalcularDistanciaPelaGeolocalizacao(geolocalizacaoOrigem, geolocalizacaoDestino);
 
             
             return Math.Round(distancia, 2);
@@ -76,17 +75,19 @@ namespace TruckDriver.Services.CepService
             string uriParametros = ContruirUriComParametro(endereco);
             string apiUrl = $"https://nominatim.openstreetmap.org/search?{uriParametros}&format=geojson";
             string responseBody = string.Empty;
+            GeolocationJson geolocationJson = null;
 
             using (HttpClient httpClient = new HttpClient())
             {
                 httpClient.DefaultRequestHeaders.Add("User-Agent", "MinhaApp/1.0"); 
                 try
                 {
-                    HttpResponseMessage response = await httpClient.GetAsync(apiUrl);
+                    HttpResponseMessage response = httpClient.GetAsync(apiUrl).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
                         responseBody = await response.Content.ReadAsStringAsync();
+                        geolocationJson = JsonConvert.DeserializeObject<GeolocationJson>(responseBody);
 
                     }
 
@@ -97,7 +98,6 @@ namespace TruckDriver.Services.CepService
                 }
             }
 
-            GeolocationJson geolocationJson = JsonConvert.DeserializeObject<GeolocationJson>(responseBody);
             
 
             if (geolocationJson.features.Count > 0)

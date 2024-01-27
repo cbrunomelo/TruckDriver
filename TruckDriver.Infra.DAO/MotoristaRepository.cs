@@ -119,5 +119,11 @@ namespace TruckDriver.Infra.ADO
 
             return quantidadeRegistros;
         }
+
+        //crie um descontrutor
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
+        }
     }
 }
