@@ -36,15 +36,14 @@ namespace TruckDriver.Infra.ADO
                     if (reader.HasRows)
                     {
                         reader.Read();
-                        return new Endereco(
-                        reader.GetInt32(0),
-                        reader.GetString(1),
-                        reader.GetString(2),
-                        reader.GetString(3),
-                        reader.GetString(4),
-                        reader.GetString(5),
-                        reader.GetString(6)
-                                            );
+                        string cep = reader.IsDBNull(1) ? null : reader.GetString(1);
+                        string logradouro = reader.IsDBNull(2) ? null : reader.GetString(2);
+                        string complemento = reader.IsDBNull(3) ? null : reader.GetString(3);
+                        string bairro = reader.IsDBNull(4) ? null : reader.GetString(4);
+                        string cidade = reader.IsDBNull(5) ? null : reader.GetString(5);
+                        string estado = reader.IsDBNull(6) ? null : reader.GetString(6);
+
+                        return new Endereco(id, cep, logradouro, complemento, bairro, cidade, estado);
                     }
                     else
                         return null;

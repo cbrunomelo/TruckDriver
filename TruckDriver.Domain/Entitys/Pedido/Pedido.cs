@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TruckDriver.Domain.Entitys.PedidosState;
 using TruckDriver.Domain.Queries;
 using TruckDriver.Domain.Services;
@@ -25,7 +26,7 @@ namespace TruckDriver.Domain.Entitys
             _cepService = cepService;
             _statusManager = new PedidoPendente();
             _status = _statusManager.GetStatus();
-            PreencherValores();
+            PreencherValores().Wait();
 
 
         }
@@ -107,7 +108,7 @@ namespace TruckDriver.Domain.Entitys
                         }
 
 
-        public int Fk_MotoristaId { get; internal set; }
+        public int? Fk_MotoristaId { get; internal set; }
 
         private Motorista _motorista;
         public Motorista Motorista 
@@ -146,18 +147,24 @@ namespace TruckDriver.Domain.Entitys
             return DistanciaKM * VALOR_KM;
         }
 
-        private async void PreencherValores()
+        private async Task PreencherValores()
         {
             DistanciaKM =await _cepService.CalcularDistancia(Coleta_Endereco, Destino_Endereco);
             CriadoEm = UltimaAtualizacao = DateTime.Now;
             Previsao = CalcularPrevisao();
             Preco = CalcularPreco();
+            Fk_Coleta_EnderecoId = Coleta_Endereco.Id;
+            Fk_Destino_EnderecoId = Destino_Endereco.Id;
+
         }
 
 
         private Motorista LoadMotorista()
         {
-            return _motoristaquery.GetById(Fk_MotoristaId);
+            if(Fk_MotoristaId != null)
+                return _motoristaquery.GetById(Fk_MotoristaId.Value);
+            else
+                return null;
         }
 
 
